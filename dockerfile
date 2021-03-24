@@ -8,7 +8,7 @@ RUN apt-get install -y nasm
 RUN apt-get install -y xorriso
 RUN apt-get install -y grub-pc-bin
 RUN apt-get install -y gcc
-RUN apt-get install qemu qemu-system-x86_64
+RUN apt-get install qemu
 
 VOLUME .
 
