@@ -1,6 +1,6 @@
 x86_64_asm_source_files := $(shell find bootloader -name *.asm)
 x86_64_asm_source_files := $(shell find kernel -name *.asm)
-x86_64_asm_object_files := $(patsubst bootloader/bin/%.o, $(x86_64_asm_source_files))
+x86_64_asm_object_files := $(patsubst bootloader/bin -name *.o, $(x86_64_asm_source_files))
 x86_64_asm_object_files := $(patsubst kernel/bin/%.o, $(x86_64_asm_source_files))
 
 $(x86_64_asm_object_files): build/x86_64/%.o : bootloadr/%.asm
