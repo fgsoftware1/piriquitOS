@@ -1,8 +1,7 @@
-[bits 16]           ; tell assembler that working in real mode(16 bit mode)
-[org 0x7c00]        ; organize from 0x7C00 memory location where BIOS will load us
+[bits x86_64]                
 
 
-start:              ; start label from where our code starts
+_start:              ; start label from where our code starts
 
 
 	xor ax,ax           ; set ax register to 0
