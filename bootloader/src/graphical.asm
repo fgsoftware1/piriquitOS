@@ -1,4 +1,4 @@
-[bits x86_64]                
+[bits 16]                
 
 
 _start:              ; start label from where our code starts
@@ -74,7 +74,7 @@ _start:              ; start label from where our code starts
 	login_username db 'Username : ',0
 	login_password db 'Password : ',0
     
-	display_text db '! Welcome to my Operating System !', 0
+	display_text db '! Welcome to fgOS!', 0
 
 	os_info db 10, 'My Operating System, 16-Bit, version=1.0.0',13,0
 
