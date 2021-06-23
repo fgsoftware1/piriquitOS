@@ -1,3 +1,4 @@
+/* entry point of our kernel */
 ENTRY(_start)
 
 SECTIONS
