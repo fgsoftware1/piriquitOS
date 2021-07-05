@@ -8,7 +8,7 @@ gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 gcc -T linker.ld -o fgOS.bin -ffreestanding -O2 -nostdlib kernel.o boot.o -lgcc
 
 #check MyOS.bin file is x86 multiboot file or not
-grub-file --is-x86-multiboot MyOS.bin
+grub-file --is-x86-multiboot fgOS.bin
 
 #building the iso file
 mkdir -p isodir/boot/grub
