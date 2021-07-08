@@ -1,15 +1,15 @@
 ENTRY(start)
 
-sections
+SECTIONS
 {
     . = 1M;
 
-    .boot:
+    .boot :
     {
         KEEP(*(.multiboot_header))
     }
 
-    .text:
+    .text :
     {
         *(.text)
     }
