@@ -1,6 +1,5 @@
 FROM randomdude/gcc-cross-x86_64-elf
 
-RUN rm /var/lib/apt/lists/*
 RUN apt-get update
 RUN apt-get upgrade -y --no-install-recommends
 RUN apt-get install nasm -y --no-install-recommends
