@@ -1,11 +1,12 @@
 ninja_required_version = 1.8.2
 
 root = .
-builddir = build
 
-ldflags = -T$buildir
-
+rule asm
+  command = nasm $in $out
+  description = nasm -f elf $in -o $out
 rule link
-  command = gcc $ldflags -c $in -o $out
+  command = gcc -o $out $in
 
-build: 
+build main: asm src/x86_64/boot/main.asm build/x86_64/main.o
+build header: asm src/x86_64/boot/header.asm build/x86_64/header.o
