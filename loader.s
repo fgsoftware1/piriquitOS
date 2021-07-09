@@ -5,21 +5,21 @@
 .section .multiboot
 	.long MAGIC
 	.long FLAGS
-	.lon CHECKSUM
+	.long CHECKSUM
 	
-
 .section .text
 .extern KernelMain
 .global loader
 
-
 loader:
 	mov $kernel_stack, %esp
+	push %eax
+	push %ebx
 	call KernelMain
-
+	
 _stop:
-	cl
-	htl
+	cli
+	hlt
 	jmp _stop
 
 .section .bss
