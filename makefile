@@ -1,5 +1,5 @@
-x86_64_asm_source_files = $(shell find src/x86_64/boot -name *.asm)
-x86_64_asm_object_files = $(patsubst src/x86_64/boot/%.asm, build/x86_64/%.o, $(x86_64_asm_source_files))
+x86_64_asm_source_files := $(shell find src/x86_64/boot -name *.asm)
+x86_64_asm_object_files := $(patsubst src/x86_64/boot/%.asm, build/x86_64/%.o, $(x86_64_asm_source_files))
 
 $(x86_64_asm_object_files): build/x86_64/%.o : src/x86_64/boot/%.asm
 	mkdir -p $(dir $@) && \

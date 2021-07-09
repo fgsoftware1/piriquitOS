@@ -1,1 +1,0 @@
-docker run -u 0 -it -e SERVER_URL="http://localhost:8111" -v C:\Users\gabri\Desktop\projects\fgOS-BETA\ci\configs:/data/teamcity_agent/conf jetbrains/teamcity-agent

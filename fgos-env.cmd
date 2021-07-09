@@ -1,1 +1,1 @@
-docker run -u 0 -it --rm --name fgos-env fgygh/fgos-env
+docker run -u 0 -it --rm --name fgos-env fgygh/fgos-env:latest
