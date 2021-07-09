@@ -1,0 +1,11 @@
+ninja_required_version = 1.8.2
+
+root = .
+builddir = build
+
+ldflags = -T$buildir
+
+rule link
+  command = gcc $ldflags -c $in -o $out
+
+build: 
