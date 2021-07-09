@@ -20,4 +20,13 @@ SECTIONS{
 
 		*(.data)
 	}
+
+	.bss{
+		*(.bss)
+	}
+
+	/DISCARD/ : {
+		*(fini_array*)
+		*(.comment)
+	}
 }
