@@ -1,0 +1,19 @@
+GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
+ASPARAMS = --32
+LDPARAMS = -melf_i386 -T
+
+rule compile-cpp
+	command = g++ $GPPPARAMS -o $out -c $in
+
+rule compile-asm
+	command = as $ASPARAMS -o $out $in
+
+rule link
+	command = ld $LDPARAMS $in -o $out
+
+rule kernel
+	command = sudo cp $in /boot/kernel.bin 
+
+build kernel.o: compile-cpp ./kernel.o ./kernel.cpp
+build loader.o: compile-asm ./loader.o ./loader.s
+build fgos: link ./loader.o ./kernel.o
