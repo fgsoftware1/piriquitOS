@@ -1,0 +1,5 @@
+/home/amin/Desktop/projects/fgOS-BETA/CMakeFiles/rebuild_cache.dir
+/home/amin/Desktop/projects/fgOS-BETA/CMakeFiles/edit_cache.dir
+/home/amin/Desktop/projects/fgOS-BETA/src/CMakeFiles/rebuild_cache.dir
+/home/amin/Desktop/projects/fgOS-BETA/src/CMakeFiles/kernel.dir
+/home/amin/Desktop/projects/fgOS-BETA/src/CMakeFiles/edit_cache.dir

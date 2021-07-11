@@ -87,14 +87,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amin/Desktop/projects/fgOS-BETA/CMakeFiles /home/amin/Desktop/projects/fgOS-BETA//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(CMAKE_COMMAND) -E cmake_progress_start /home/amin/Desktop/projects/fgOS-BETA/CMakeFiles /home/amin/Desktop/projects/fgOS-BETA/src//CMakeFiles/progress.marks
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/amin/Desktop/projects/fgOS-BETA/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,31 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named kernel
+# Convenience name for target.
+src/CMakeFiles/kernel.dir/rule:
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/kernel.dir/rule
+.PHONY : src/CMakeFiles/kernel.dir/rule
 
-# Build rule for target.
-kernel: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kernel
+# Convenience name for target.
+kernel: src/CMakeFiles/kernel.dir/rule
 .PHONY : kernel
 
 # fast build rule for target.
 kernel/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/kernel.dir/build.make src/CMakeFiles/kernel.dir/build
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kernel.dir/build.make src/CMakeFiles/kernel.dir/build
 .PHONY : kernel/fast
+
+kernel.o: kernel.cpp.o
+.PHONY : kernel.o
+
+# target to build an object file
+kernel.cpp.o:
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kernel.dir/build.make src/CMakeFiles/kernel.dir/kernel.cpp.o
+.PHONY : kernel.cpp.o
+
+kernel.i: kernel.cpp.i
+.PHONY : kernel.i
+
+# target to preprocess a source file
+kernel.cpp.i:
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kernel.dir/build.make src/CMakeFiles/kernel.dir/kernel.cpp.i
+.PHONY : kernel.cpp.i
+
+kernel.s: kernel.cpp.s
+.PHONY : kernel.s
+
+# target to generate assembly for a file
+kernel.cpp.s:
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kernel.dir/build.make src/CMakeFiles/kernel.dir/kernel.cpp.s
+.PHONY : kernel.cpp.s
 
 # Help Target
 help:
@@ -138,6 +163,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... kernel"
+	@echo "... kernel.o"
+	@echo "... kernel.i"
+	@echo "... kernel.s"
 .PHONY : help
 
 
@@ -149,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/amin/Desktop/projects/fgOS-BETA && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

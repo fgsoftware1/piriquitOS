@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/kernel.dir/kernel.cpp.o -o kernel 
