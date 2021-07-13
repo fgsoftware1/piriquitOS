@@ -5,7 +5,7 @@ OUTPUT_ARCH(i386:i386)
 SECTIONS{
 	. = 0x0100000
 
-	.text :
+	.text:
 	{
 		*(.multiboot)
 		*(.text*)
@@ -13,10 +13,10 @@ SECTIONS{
 	}
 
 	.data{
-		start_ctors = .;
+		start_ctors = ./src/;
 		KEEP(*(.init_array));
 		KEEP(*(SORT_BY_INIT_PRIOROTY(.init_array.*)));
-		end_ctors = .;
+		end_ctors = ./src/;
 
 		*(.data)
 	}
