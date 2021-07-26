@@ -16,3 +16,4 @@ rule kernel
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
+build fgos: link ./loader.o ./kernel.o
