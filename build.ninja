@@ -13,4 +13,4 @@ rule kernel
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
-build fgos: ld -o fgos.exe kernel.o loader.o -T linker.ld
+build fgos.exe: ld -o fgos.exe kernel.o loader.o -T linker.ld
