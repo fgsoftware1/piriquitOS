@@ -9,10 +9,10 @@ rule compile-asm
   command = as $ASPARAMS -o $out -c $in
 
 rule link
-  command = ld -T $in -o $out
-
+  command = ld $LDPARAMS -c $in 
 rule kernel
   command = sudo cp $in /boot/kernel.bin 
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
+build fgos: link ./loader.o ./kernel.o
