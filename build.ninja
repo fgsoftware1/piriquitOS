@@ -17,4 +17,4 @@ rule iso
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
-build iso: iso
+build cd: iso
