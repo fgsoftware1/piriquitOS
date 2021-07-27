@@ -12,9 +12,5 @@ rule link
 rule kernel
   command = sudo cp $in /boot/kernel.bin 
 
-rule iso
-	command = grub-mkrescue --output=$@ iso
-
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
-build cd: iso
