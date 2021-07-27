@@ -4,13 +4,13 @@ rule compile-cpp
   command = gcc $GPPPARAMS -o $out -c $in
 
 rule compile-asm
-  command = as --32 $ASPARAMS -o $out -c $in
+  command = as --32 -o $out -c $in
 
 rule link
-  command = ld $LDPARAMS -c $in 
+  command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld~
+
 rule kernel
   command = sudo cp $in /boot/kernel.bin 
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
-build fgos.exe: ld -o fgos.exe kernel.o loader.o -T linker.ld
