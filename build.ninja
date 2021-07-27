@@ -3,7 +3,7 @@ ASPARAMS = --32
 LDPARAMS = -melf_i386 -T
 
 rule compile-cpp
-  command = g++ $GPPPARAMS -o $out -c $in
+  command = gcc $GPPPARAMS -o $out -c $in
 
 rule compile-asm
   command = as $ASPARAMS -o $out -c $in
