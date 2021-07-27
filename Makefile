@@ -3,9 +3,13 @@ ASPARAMS = --32
 LDPARAMS = -melf_i386
 objects = ./src/loader.o ./src/kernel.o
 
-%.o: %.cpp g++ $(GPPPARAMS) -o $@ -c $<
-%.o: %.s as $(ASPARAMS) -o $@ $<
+all: main
 
-kernel.bin: ./src/linker.ld ld -T $< -o $@ $(objects)
+main: ./src/kernel.o ./src/loader.o ./src/
+
+kernel.o: ./src/kernel.cpp gcc $(GPPPARAMS) -c ./src/kernel.cpp
+loader.o: ./src/loader.s as $(ASPARAMS) -o $@ $<
+
+kernel.bin: ./src/linker.ld ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 install: ./src/kernel.bin sudo cp $< ./src/boot/kernel.bin
