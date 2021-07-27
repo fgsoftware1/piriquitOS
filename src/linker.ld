@@ -6,11 +6,10 @@ SECTIONS {
 	. = 0x0100000
 
 	.text : {
-      *(.multiboot)
-      *(.text)
-      *(.rodata)
+    *(.multiboot)
+    *(.text)
+    *(.rodata)
   }
-
 
 	.data {
 		start_ctors = .;
