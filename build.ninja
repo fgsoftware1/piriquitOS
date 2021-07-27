@@ -1,16 +1,16 @@
 GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
 
 rule compile-cpp
-  command = gcc $GPPPARAMS -o $out -c $in
+ command = gcc $GPPPARAMS -o $out -c $in
 
 rule compile-asm
-  command = as --32 -o $out -c $in
+ command = as --32 -o $out -c $in
 
 rule link
-  command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
+ command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
 	
 rule kernel
-  command = sudo cp $in /boot/kernel.bin 
+ command = sudo cp $in /boot/kernel.bin 
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
