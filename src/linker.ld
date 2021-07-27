@@ -5,8 +5,7 @@ OUTPUT_ARCH(i386:i386)
 SECTIONS{
 	. = 0x0100000
 
-	.text :
-	{
+	.text{
 		*(.multiboot)
 		*(.text*)
 		*(.rodata)
