@@ -15,4 +15,4 @@ rule kernel
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
 build ./src/loader.o:  compile-asm ./src/loader.s
-build fgos: link ./src/linker.ld ./src/loader.o ./src/kernel.o
+build fgos: link ./src/linker.ld -c ./src/loader.o ./src/kernel.o
