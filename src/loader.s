@@ -10,20 +10,21 @@
 .section .text
 .extern fgosmain
 .extern callContructors
-.global loader
+.global loader 
 
 loader:
-	mov $kernel_stack, %esp
-	call callContructors
-	push %eax
-	push %ebx
-	call fgosmain
-	
+    mov $kernal_stack, %esp # save stack top
+    call callContructors #init each constructure
+    push %eax 
+    push %ebx
+    call fgosmain
+    
 _stop:
-	cli
-	hlt
-	jmp _stop
+    cli
+    hlt
+    jmp _stop
 
 .section .bss
+# 4 M stack 
 .space 4*1024*1024
-kernel_stack:
+kernal_stack:
