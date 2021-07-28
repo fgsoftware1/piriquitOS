@@ -1,5 +1,7 @@
+#ENV VARIABLES
 GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
 
+#RULES
 rule compile-cpp
  command = gcc $GPPPARAMS -o $out -c $in
 
@@ -12,5 +14,9 @@ rule link
 rule kernel
  command = sudo cp $in /boot/kernel.bin 
 
-build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
-build ./src/loader.o:  compile-asm ./src/loader.s
+#OBJECTS
+build ./bin/kernel.o:  compile-cpp ./src/kernel.cpp
+build ./bin/loader.o:  compile-asm ./src/loader.s
+#BINARIES
+build ./bin/kernel.bin:  compile-cpp ./src/kernel.cpp
+build ./bin/loader.bin:  compile-asm ./src/loader.s
