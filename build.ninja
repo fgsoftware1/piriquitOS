@@ -12,7 +12,7 @@ rule link
  command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
 
 rule iso
-  command = grub-mkrescure $in -o $out
+  command = grub-mkrescue $in -o $out
 
 #OBJECTS
 build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
