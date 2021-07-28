@@ -12,5 +12,7 @@ rule link
 rule kernel
  command = sudo cp $in /boot/kernel.bin 
 
-build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
-build ./src/loader.o:  compile-asm ./src/loader.o ./src/loader.bin
+build ./src/kernel.o:  compile-cpp ./src/kernel.cpp ./bin/kernel.o
+build ./src/kernel.o:  compile-cpp ./src/kernel.cpp ./bin/kernel.bin
+build ./src/loader.o:  compile-asm ./src/loader.o ./bin/loader.o
+build ./src/loader.o:  compile-asm ./src/loader.o ./bin/loader.bin
