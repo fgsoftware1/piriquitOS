@@ -10,13 +10,15 @@ rule compile-asm
 
 rule link
  command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
-  
-rule kernel
- command = sudo cp $in /boot/kernel.bin 
+
+rule iso
+  command = mkdir build build/boot build/grub
 
 #OBJECTS
-build ./bin/kernel.o:  compile-cpp ./src/kernel.cpp
-build ./bin/loader.o:  compile-asm ./src/loader.s
+build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
+build ./bin/loader.o: compile-asm ./src/loader.s
 #BINARIES
-build ./bin/kernel.bin:  compile-cpp ./src/kernel.cpp
-build ./bin/loader.bin:  compile-asm ./src/loader.s
+build ./bin/kernel.bin: compile-cpp ./src/kernel.cpp
+build ./bin/loader.bin: compile-asm ./src/loader.s
+#ISO
+build ./build/fgOS.iso: 
