@@ -1,4 +1,5 @@
 #include "include/types.h";
+#include "include/gdt.h";
 
 void printf (char* str) {
   static uint16_t* VideoMemory = (uint16_t*)0xb8000;
@@ -9,14 +10,6 @@ void printf (char* str) {
 
 extern "C" void fgosMain (const void* multiboot_structure, uint32_t) {
   printf("Hello World");
+  GlobalDescriptorTable gdt;
   while(1);
-}
-
-typedef void (*constructor)();
-extern "C" constructor start_ctors;
-extern "C" constructor end_ctors;
-extern "C" void callContructors () {
-  for(constructor* i = &start_ctors; i != &end_ctors; i++) {
-    (*i)();
-  }
 }
