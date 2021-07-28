@@ -12,7 +12,7 @@ rule link
  command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
 
 rule iso
-  command = mkdir build build/boot build/grub
+  command = grub-mkrescure $in -o $out
 
 #OBJECTS
 build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
@@ -20,5 +20,6 @@ build ./bin/loader.o: compile-asm ./src/loader.s
 #BINARIES
 build ./bin/kernel.bin: compile-cpp ./src/kernel.cpp
 build ./bin/loader.bin: compile-asm ./src/loader.s
-#ISO
-build ./build/fgOS.iso: iso
+build ./build/boot/fgOS.bin: compile-cpp ./src/kernel.cpp
+#iso
+build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
