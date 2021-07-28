@@ -15,8 +15,8 @@ rule kernel
  command = sudo cp $in /boot/kernel.bin 
 
 #objects
-build ./src/kernel.o:  compile-cpp ./src/kernel.cpp ./bin/kernel.o
-build ./src/kernel.bin:  compile-cpp ./src/kernel.cpp ./bin/kernel.bin
+build ./src/kernel.o:  compile-cpp ./bin/kernel.o ./src/kernel.cpp
+build ./src/kernel.bin:  compile-cpp ./bin/kernel.bin ./src/kernel.cpp 
 #binaries
-build ./src/loader.o:  compile-asm ./src/loader.s ./bin/loader.o
-build ./src/loader.bin:  compile-asm ./src/loader.s ./bin/loader.bin
+build ./src/loader.o:  compile-asm ./bin/loader.o ./src/loader.s 
+build ./src/loader.bin:  compile-asm ./bin/loader.bin ./src/loader.s 
