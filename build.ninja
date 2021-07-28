@@ -1,4 +1,4 @@
-GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
+GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
 
 rule compile-cpp
  command = gcc $GPPPARAMS -o $out -c $in
@@ -7,18 +7,10 @@ rule compile-asm
  command = as --32 -o $out -c $in
 
 rule link
- command = ld -o $out $in -T $linkScript
-
+ command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
+	
 rule kernel
  command = sudo cp $in /boot/kernel.bin 
 
-# Path Variables
-bld  = ./build
-src  = ./src
-obj  = $bld/obj
-boot = $bld/boot
-
-build $obj/kernel.o:   compile-cpp $src/kernel.cpp
-build $obj/loader.o:   compile-asm $src/loader.s
-build $boot/boot.bin:  link        $obj/kernel.o $obj/loader.o
- linkScript = $src/linker.ld
+build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
+build ./src/loader.o:  compile-asm ./src/loader.s
