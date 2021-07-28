@@ -21,4 +21,4 @@ build ./bin/loader.o: compile-asm ./src/loader.s
 build ./bin/kernel.bin: compile-cpp ./src/kernel.cpp
 build ./bin/loader.bin: compile-asm ./src/loader.s
 #ISO
-build ./build/fgOS.iso: 
+build ./build/fgOS.iso: iso
