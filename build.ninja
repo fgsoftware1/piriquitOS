@@ -16,7 +16,7 @@ rule kernel
 
 #objects
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp ./bin/kernel.o
-build ./src/loader.o:  compile-asm ./src/loader.o ./bin/loader.o
-#binaries
 build ./src/kernel.bin:  compile-cpp ./src/kernel.cpp ./bin/kernel.bin
-build ./src/loader.bin:  compile-asm ./src/loader.o ./bin/loader.bin
+#binaries
+build ./src/loader.o:  compile-asm ./src/loader.s ./bin/loader.o
+build ./src/loader.bin:  compile-asm ./src/loader.s ./bin/loader.bin
