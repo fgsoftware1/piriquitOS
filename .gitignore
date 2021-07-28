@@ -1,5 +1,4 @@
-/.dccache
 /.vscode
-*.o
 /build
-/archive
+
+*.o
