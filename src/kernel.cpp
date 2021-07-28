@@ -5,7 +5,7 @@ void printf (char* str) {
     }
 }
 
-extern "C" void fgosMain () {
+extern "C" void fgosMain (const void* multiboot_structure, unsigned int) {
     printf("Hello World");
     while(1);
 }
