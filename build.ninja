@@ -8,7 +8,7 @@ rule compile-asm
 
 rule link
  command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
-	
+  
 rule kernel
  command = sudo cp $in /boot/kernel.bin 
 
