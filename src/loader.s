@@ -8,7 +8,7 @@
 	.long CHECKSUM
 	
 .section .text
-.extern fgosmain
+.extern fgosMain
 .extern callContructors
 .global loader 
 
@@ -17,7 +17,7 @@ loader:
     call callContructors #init each constructure
     push %eax 
     push %ebx
-    call fgosmain
+    call fgosMain
     
 _stop:
     cli
