@@ -5,7 +5,7 @@ void printf (char* str) {
     }
 }
 
-extern "C" void fgosMain () {
+extern "C" void fgosmain () {
     printf("Hello World");
     while(1);
 }
