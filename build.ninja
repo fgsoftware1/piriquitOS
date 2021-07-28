@@ -15,9 +15,8 @@ rule iso
   command = grub-mkrescue $in -o $out
 
 #OBJECTS
-build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
+build ./bin/kernel.o: compile-cpp ./src/kernel.cpp -L ./src/include/gdt.h
 build ./bin/loader.o: compile-asm ./src/loader.s
-build ./bin/gdt.o: compile-cpp ./src/include/gdt.h
 #BINARIES
 build ./bin/kernel.bin: compile-cpp ./src/kernel.cpp
 build ./bin/loader.bin: compile-asm ./src/loader.s
