@@ -13,4 +13,4 @@ rule kernel
  command = sudo cp $in /boot/kernel.bin 
 
 build ./src/kernel.o:  compile-cpp ./src/kernel.cpp
-build ./src/loader.o:  compile-asm ./src/loader.s
+build ./src/loader.o:  compile-asm ./src/loader.bin
