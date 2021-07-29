@@ -1,5 +1,5 @@
 namespace std {
-  using int8_t         = signed int8_t;
+  using int8_t         = signed;
   using int16_t        = signed int16_t;
   using int32_t        = signed int32_t;
   using int64_t        = signed int64_t
