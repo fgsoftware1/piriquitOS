@@ -1,7 +1,8 @@
 #ifndef __GDT_H
 #define __GDT_H
 
-#include <cstdint>
+#include <stdint.h>
+
     class GlobalDescriptorTable
     {
       public:
