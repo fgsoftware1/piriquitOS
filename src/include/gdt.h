@@ -2,6 +2,7 @@
 #define __GDT_H
 
 #include <stdint.h>
+#include <cstdint>
 
     class GlobalDescriptorTable
     {
@@ -9,16 +10,16 @@
         class SegmentDescriptor
         {
           private:
-            uint16_t limit_lo;
-            uint16_t base_lo;
-            uint8_t base_hi;
-            uint8_t type;
-            uint8_t limit_hi;
-            uint8_t base_vhi;
+            std::uint16_t limit_lo;
+            std::uint16_t base_lo;
+            std::uint8_t base_hi;
+            std::uint8_t type;
+            std::uint8_t limit_hi;
+            std::uint8_t base_vhi;
           public:
-            SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t type);
-            uint32_t Base();
-            uint32_t Limit();
+            SegmentDescriptor(std::uint32_t base, std::uint32_t limit, std::uint8_t type);
+            std::uint32_t Base();
+            std::uint32_t Limit();
         } __attribute__((packed));
 
         private:
@@ -31,7 +32,7 @@
           GlobalDescriptorTable();
           ~GlobalDescriptorTable();
 
-          uint16_t CodeSegmentSelector();
-          uint16_t DataSegmentSelector();
+          std::uint16_t CodeSegmentSelector();
+          std::uint16_t DataSegmentSelector();
       };
 #endif
