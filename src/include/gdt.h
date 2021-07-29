@@ -1,5 +1,5 @@
-#ifndef GDT_H
-#define GDT_H
+#ifndef __GDT_H
+#define __GDT_H
 
 #include "types.h";
 
@@ -17,14 +17,16 @@ class GlobalDescriptorTable
 
       public:
         SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t type);
-        uint32_t Base();
-        uint32_t Limit();
-    };
+        
+        uint32_t base();
+        uint32_t limit();
+    }__attribute__((packed));
 
-    SegmentDescriptor nullSegmentSelector;
-    SegmentDescriptor unusedSegmentSelector;
-    SegmentDescriptor codeSegmentSelector;
-    SegmentDescriptor dataSegmentSelector;
+    private:
+      SegmentDescriptor nullSegmentSelector;
+      SegmentDescriptor unusedSegmentSelector;
+      SegmentDescriptor codeSegmentSelector;
+      SegmentDescriptor dataSegmentSelector;
 
     public:
       GlobalDescriptorTable();
