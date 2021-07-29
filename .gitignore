@@ -1,4 +1,5 @@
 /.vscode
 
+*.iso
 .ninja_deps
 .ninja_log
