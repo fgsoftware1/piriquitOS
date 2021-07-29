@@ -69,3 +69,7 @@ uint32_t GlobalDescriptorTable::SegmentDescriptor::Limit(){
 
     return result;
 }
+
+uint32_t __stack_chk_fail_local(){
+    return 0;
+}
