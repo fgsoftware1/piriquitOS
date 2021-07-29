@@ -20,4 +20,4 @@ build ./bin/loader.o: compile-asm ./src/loader.s
 #BINARIES
 #build ./build/boot/fgOS.bin: link ./bin/kernel.o ./bin/loader.o
 #iso
-build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
+#build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
