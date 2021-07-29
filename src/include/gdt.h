@@ -2,6 +2,7 @@
 #define __GDT_H
 
 #include "../libs/stdint.h"
+#include "../libs/cstdint.h"
 
     class GlobalDescriptorTable
     {
