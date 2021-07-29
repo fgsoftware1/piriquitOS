@@ -22,6 +22,6 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 build ./bin/loader.o: compile-asm ./src/loader.s
 #BINARIES
 #ld
-#build ./build/boot/fgOS.bin: link ./bin/kernel.o ./bin/loader.o
+build ./build/boot/fgOS.bin: link ./bin/kernel.o ./bin/loader.o ./bin/gdt.o
 #iso
-#build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
+build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
