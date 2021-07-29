@@ -31,7 +31,3 @@
 # define SIZE_WIDTH __WORDSIZE
 # define WCHAR_WIDTH 32
 # define WINT_WIDTH 32
-
-#endif
-
-#endif /* stdint.h */
