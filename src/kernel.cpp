@@ -1,5 +1,5 @@
-#include "include/types.h";
-#include "include/gdt.h";
+#include "include/types.h"
+#include "include/gdt.h"
 
 void printf (char* str) {
   static uint16_t* VideoMemory = (uint16_t*)0xb8000;
