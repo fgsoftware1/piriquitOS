@@ -9,12 +9,12 @@
 	
 .section .text
 .extern fgosMain
-.extern callContructors
+.extern callConstructors
 .global loader 
 
 loader:
     mov $kernal_stack, %esp # save stack top
-    call callContructors #init each constructure
+    call callConstructors
     push %eax 
     push %ebx
     call fgosMain
