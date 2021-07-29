@@ -59,7 +59,7 @@ uint32_t GlobalDescriptorTable::SegmentDescriptor::Base(){
 }
 
 std::uint32_t GlobalDescriptorTable::SegmentDescriptor::Limit(){
-    std::uint8_t* target = (std::uint8_t*)this;
+    uint8_t* target = (uint8_t*)this;
     std::uint32_t result = target[6] & 0xF;
     result = (result << 8) + target[1];
     result = (result << 8) + target[0];
