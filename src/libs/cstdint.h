@@ -1,49 +1,49 @@
 namespace std {
   using int8_t         = signed;
-  using int16_t        = signed int16_t;
-  using int32_t        = signed int32_t;
-  using int64_t        = signed int64_t
+  using int16_t        = signed;
+  using int32_t        = signed;
+  using int64_t        = signed;
   
-  using uint8_t        = unsigned uint8_t;
-  using uint16_t       = unsigned uint16_t;
-  using uint32_t       = unsigned uint32_t;
-  using uint64_t       = unsigned uint64_t;
+  using uint8_t        = unsigned;
+  using uint16_t       = unsigned;
+  using uint32_t       = unsigned;
+  using uint64_t       = unsigned;
 }
  
-#define INTN_MIN         /* see description */
-#define INTN_MAX         /* see description */
-#define UINTN_MAX        /* see description */
+#define INTN_MIN        
+#define INTN_MAX       
+#define UINTN_MAX       
  
-#define INT_FASTN_MIN    /* see description */
-#define INT_FASTN_MAX    /* see description */
-#define UINT_FASTN_MAX   /* see description */
+#define INT_FASTN_MIN    
+#define INT_FASTN_MAX   
+#define UINT_FASTN_MAX  
  
-#define INT_LEASTN_MIN   /* see description */
-#define INT_LEASTN_MAX   /* see description */
-#define UINT_LEASTN_MAX  /* see description */
+#define INT_LEASTN_MIN   
+#define INT_LEASTN_MAX 
+#define UINT_LEASTN_MAX 
  
-#define INTMAX_MIN       /* see description */
-#define INTMAX_MAX       /* see description */
-#define UINTMAX_MAX      /* see description */
+#define INTMAX_MIN      
+#define INTMAX_MAX      
+#define UINTMAX_MAX     
  
-#define INTPTR_MIN       /* see description */        // optional
-#define INTPTR_MAX       /* see description */        // optional
-#define UINTPTR_MAX      /* see description */        // optional
+#define INTPTR_MIN     
+#define INTPTR_MAX      
+#define UINTPTR_MAX      
  
-#define PTRDIFF_MIN      /* see description */
-#define PTRDIFF_MAX      /* see description */
-#define SIZE_MAX         /* see description */
+#define PTRDIFF_MIN      
+#define PTRDIFF_MAX    
+#define SIZE_MAX        
  
-#define SIG_ATOMIC_MIN   /* see description */
-#define SIG_ATOMIC_MAX   /* see description */
+#define SIG_ATOMIC_MIN 
+#define SIG_ATOMIC_MAX 
  
-#define WCHAR_MIN        /* see description */
-#define WCHAR_MAX        /* see description */
+#define WCHAR_MIN       
+#define WCHAR_MAX        
  
-#define WINT_MIN         /* see description */
-#define WINT_MAX         /* see description */
+#define WINT_MIN       
+#define WINT_MAX       
  
-#define INTN_C(value)    /* see description */
-#define UINTN_C(value)   /* see description */
-#define INTMAX_C(value)  /* see description */
-#define UINTMAX_C(value) /* see description */
+#define INTN_C(value)   
+#define UINTN_C(value)  
+#define INTMAX_C(value) 
+#define UINTMAX_C(value) 
