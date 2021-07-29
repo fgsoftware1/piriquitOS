@@ -8,8 +8,6 @@ RUN mkdir src
 RUN cd src
 RUN mkdir include
 
-ADD bin/** home/admin/Desktop/projects/fgOS-BETA/bin
-ADD build/** home/admin/Desktop/projects/fgOS-BETA/build
 ADD src/*.cpp home/admin/Desktop/projects/fgOS-BETA/src
 ADD src/*.ld home/admin/Desktop/projects/fgOS-BETA/src
 ADD src/*.s home/admin/Desktop/projects/fgOS-BETA/src
@@ -25,3 +23,4 @@ ADD README.md /home/admin/Desktop/projects/fgOS-BETA/
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y apt-utils
 RUN apt-get install -y git gcc ninja-build grub-common
+RUN ninja
