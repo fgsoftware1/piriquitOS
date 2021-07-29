@@ -17,8 +17,8 @@ class GlobalDescriptorTable
 
       public:
         SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t type);
-        uint32_t base();
-        uint32_t limit();
+        uint32_t Base();
+        uint32_t Limit();
     };
 
     SegmentDescriptor nullSegmentSelector;
