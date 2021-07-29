@@ -3,28 +3,31 @@
 .set CHECKSUM, -(MAGIC + FLAGS)
 
 .section .multiboot
-	.long MAGIC
-	.long FLAGS
-	.long CHECKSUM
-	
+    .long MAGIC
+    .long FLAGS
+    .long CHECKSUM
+
+
 .section .text
 .extern fgosMain
 .extern callConstructors
-.global loader 
+.global loader
+
 
 loader:
-    mov $kernal_stack, %esp # save stack top
+    mov $kernel_stack, %esp
     call callConstructors
-    push %eax 
+    push %eax
     push %ebx
     call fgosMain
-    
+
+
 _stop:
     cli
     hlt
     jmp _stop
 
+
 .section .bss
-# 4 M stack 
-.space 4*1024*1024
-kernal_stack:
+.space 2*1024*1024; # 2 MiB
+kernel_stack:
