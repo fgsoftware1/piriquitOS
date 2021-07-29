@@ -22,11 +22,11 @@ std::uint16_t GlobalDescriptorTable::DataSegmentSelector(){
 }
 
 std::uint16_t GlobalDescriptorTable::CodeSegmentSelector(){
-  return (uint8_t*)&codeSegmentSelector - (uint8_t*)this;
+  return (std::uint8_t*)&codeSegmentSelector - (std::uint8_t*)this;
 }
 
-GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint32_t limit,uint8_t flags){
-  uint8_t* target = (uint8_t*)this;
+GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(std::uint32_t base, std::uint32_t limit, std::uint8_t flags){
+  std::uint8_t* target = (std::uint8_t*)this;
 
   if(limit < 65556){
     target[6] = 0x40;
@@ -49,8 +49,8 @@ GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint3
 }
 
 std::uint32_t GlobalDescriptorTable::SegmentDescriptor::Base(){
-    uint8_t* target = (uint8_t*)this;
-    uint32_t result = target[7];
+    std::uint8_t* target = (std::uint8_t*)this;
+    std::uint32_t result = target[7];
     result = (result << 8) + target[4];
     result = (result << 8) + target[3];
     result = (result << 8) + target[2];
