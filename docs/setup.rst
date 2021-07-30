@@ -10,7 +10,7 @@ Setup
 |                        |                                                                                                    |
 |                        |win-env.cmd                                                                                         |
 +------------------------+----------------------------------------------------------------------------------------------------+
-|Linux                   |sudo bash linux-deps.sh(linux)                                                                      |
+|Linux                   |sudo bash linux-deps.sh(it should clone repository too)                                             |
 |                        |                                                                                                    |
 |                        |and                                                                                                 |
 |                        |                                                                                                    |
