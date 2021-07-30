@@ -7,6 +7,7 @@ RUN apt-get update -y
 RUN apt-get install -y apt-utils --no-install-recommends
 RUN apt-get install -y git gcc ninja-build grub-common build-essential gcc-multilib wget openssl --no-install-recommends
 RUN apt-get install --reinstall ca-certificates -y --no-install-recommends
+RUN apt-get update -y
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 RUN mkdir /usr/local/share/ca-certificates/cacert.org
