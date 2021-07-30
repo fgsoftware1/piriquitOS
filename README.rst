@@ -13,7 +13,5 @@
 ------------------------------
 Windows(docker)  False  
 ===============  =============
-True   False  True
-False  True   True
-True   True   True
+
 =====  =====  ======
