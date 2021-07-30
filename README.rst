@@ -1,9 +1,11 @@
 Setup                            
 ====================== ==================================
-      Windows(docker)  docker-compose.yml or win-env.cmd
+                        docker-compose.yml 
+  Windows(docker)       or 
+                        win-env.cmd
 ====================== ==================================
       Linux                  sudo bash linux-deps.sh                           
-      Linux(docker)                  bash linux-env.sh
+      Linux(docker)          bash linux-env.sh
 ====================== ==================================
 
 +-------------------------------------------------------------------------------------------------------------------------------+
