@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  fgos:
+    image: fgos-fgygh/fgos-env
+    container_name: fgos-env
+    build: .
+    volumes: 
+      - .:/home/admin/Desktop/projects/fgOS-BETA
