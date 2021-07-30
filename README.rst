@@ -8,12 +8,10 @@
                             3. write ninja on shell                                                                              
 =======================   =======================================================================================================
 
-=====  =====  ======
-   Inputs     Output
---------------------
-  A      B    A or B
-=====  =====  ======
-False  False  False
+===============  =============
+       Build
+===============  =============
+Windows(docker)  False  False
 True   False  True
 False  True   True
 True   True   True
