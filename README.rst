@@ -5,7 +5,9 @@ Setup
 |           OS           |                                   instructions                                                     |
 +========================+====================================================================================================+
 |      Windows(docker)   |docker-compose.yml                                                                                  |
+|                        |                                                                                                    |
 |                        |or                                                                                                  |
+|                        |                                                                                                    |
 |                        |win-env.cmd                                                                                         |
 +------------------------+----------------------------------------------------------------------------------------------------+
 |Linux                   |sudo bash linux-deps.sh(linux)                                                                      |
@@ -22,7 +24,9 @@ Build
 |             OS         |                                     instructions                                                   |         
 +========================+====================================================================================================+
 |Windows(docker)         |run docker container                                                                                |
-|                        |enter on container shell(if you run win-env.cmd you will auto enter on shell after container run)   |  
+|                        |                                                                                                    |
+|                        |enter on container shell(if you run win-env.cmd you will auto enter on shell after container run)   | 
+|                        |                                                                                                    | 
 |                        |execute ninja on shell writing ninja                                                                |
 +------------------------+----------------------------------------------------------------------------------------------------+
 |Linux                   |run sudo bash linux-deps.sh it will install dependencies and clone the repository                   |                                                          
