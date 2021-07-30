@@ -12,6 +12,7 @@
        Build
 ---------------  -------------
 Windows(docker)  False  False
+===============  =============
 True   False  True
 False  True   True
 True   True   True
