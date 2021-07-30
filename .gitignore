@@ -1,6 +1,6 @@
 /.vscode
+/bin
 
-*.o
 *.bin
 .ninja_deps
 .ninja_log
