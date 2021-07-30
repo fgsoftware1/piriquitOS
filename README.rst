@@ -10,10 +10,9 @@
 
 ===============  =============
 Build
-======
 ------------------------------
 Windows(docker)  1. run docker container
-                 2. enter on container shell(if you run win-env.cmd you will auto enter on shell after container run)   
+                 1. enter on container shell(if you run win-env.cmd you will auto enter on shell after container run)   
 ===============  =============
 
 =====  =====  ======
