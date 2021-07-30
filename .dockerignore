@@ -1,0 +1,9 @@
+/.vscode
+/bin
+/build
+/docs
+
+win-*.cmd
+README.md
+.ninja_deps
+.ninja_log
