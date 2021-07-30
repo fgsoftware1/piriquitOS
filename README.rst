@@ -7,8 +7,8 @@ Setup
 |      ㅤ                |docker-compose.yml                                                                                  |
 |        ㅤ              |                                                                                                    |
 |     Windows(docker)    |or                                                                                                  |
-|                        |                                                                                                    |
-|                        |win-env.cmd                                                                                         |
+|          ㅤ            |                                                                                                    |
+|       ㅤ               |win-env.cmd                                                                                         |
 +------------------------+----------------------------------------------------------------------------------------------------+
 |Linux                   |sudo bash linux-deps.sh(linux)                                                                      |
 |                        |                                                                                                    |
