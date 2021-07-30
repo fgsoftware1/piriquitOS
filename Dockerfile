@@ -1,7 +1,7 @@
 FROM library/ubuntu:rolling
 
-VOLUME /home/admin/Desktop/projects/
-WORKDIR /home/admin/Desktop/projects/
+VOLUME /home/admin/Desktop/projects/fgOS
+WORKDIR /home/admin/Desktop/projects/fgOS
 
 RUN apt-get update -y
 RUN apt-get install -y apt-utils --no-install-recommends
