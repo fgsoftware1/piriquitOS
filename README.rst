@@ -10,8 +10,8 @@
 
 ===============  =============
        Build
----------------  -------------
-Windows(docker)  False  False
+------------------------------
+Windows(docker)  False  
 ===============  =============
 True   False  True
 False  True   True
