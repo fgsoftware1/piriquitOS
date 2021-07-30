@@ -1,6 +1,6 @@
 =======================   ======================================================================================================
      Windows(docker)        1. run docker container            
-                            2. enter on container shell(if you run win-env.cmd you will auto enter on shell after container run)   
+                            2. 
                             2. write ninja on shell                                                                                                                                                                    |
 ---------------------------------------------------------------------------------------------------------------------------------
       Linux(docker)         1. run docker container                                                                              
@@ -11,7 +11,8 @@
 ===============  =============
        Build
 ------------------------------
-Windows(docker)  False  
+Windows(docker)  1. run docker container
+                 2. enter on container shell(if you run win-env.cmd you will auto enter on shell after container run)   
 ===============  =============
 
 =====  =====  ======
