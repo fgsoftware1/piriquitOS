@@ -33,13 +33,15 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 build ./bin/loader.o: compile-asm ./src/loader.s
 #clang
 build ./bin/types.h.o: compile-h ./src/include/types.h
+build ./bin/cstdint.h.o: compile-h ./src/include/cstdint.h
 build ./bin/gdt.h.o: compile-h ./src/include/gdt.h
 #LIBS
 build ./src/libs/types.lib: lib ./bin/types.h.o
+build ./src/libs/cstdint.lib: lib ./bin/cstdint.h.o
 build ./src/libs/gdt.lib: lib ./bin/gdt.h.o
 #LINKS
 #ld
-build ./bin/libs.o: cc ./src/libs/types.lib ./src/libs/gdt.lib
+build ./bin/libs.o: cc ./src/libs/types.lib ./src/libs/gdt.lib ./src/libs/gdt.lib
 build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #BUILDS
 #iso
