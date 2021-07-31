@@ -17,7 +17,7 @@ rule compile-asm
 rule link
  command = ld -o $out $in $LDPARAMS ./src/linker.ld
 rule cc
-  command = cc $CCPARAMS -o $out -c $in
+  command = cc $CCPARAMS -c $in -o $out -I
 #builders
 rule iso
   command = grub-mkrescue $in -o $out
