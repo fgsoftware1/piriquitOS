@@ -7,6 +7,6 @@ clean:
   @echo "deleting generated objects"
   rm ./**.o
   @echo "deleting generated binaries"
-  rm ./**.bin 
+  rm ./**.bin
   @echo "deleting generated iso"
   rm ./**.iso
