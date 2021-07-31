@@ -3,4 +3,5 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 ASPARAMS = --32
 LDPARAMS = -T
 
-clean: @echo "deleting generated objects" rm ./**.o
+clean: 
+  @echo "deleting generated objects" rm ./**.o
