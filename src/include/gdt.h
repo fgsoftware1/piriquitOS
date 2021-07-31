@@ -16,7 +16,7 @@
             uint8_t limit_hi;
             uint8_t base_vhi;
           public:
-            SegmentDescriptor(std::uint32_t base, std::uint32_t limit, std::uint8_t type);
+            SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t type);
             uint32_t Base();
             uint32_t Limit();
         } __attribute__((packed));
