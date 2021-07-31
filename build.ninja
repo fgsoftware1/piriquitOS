@@ -27,7 +27,7 @@ build ./bin/loader.o: compile-asm ./src/loader.s
 #clang
 build ./bin/types.o: compile-c ./src/include/types.h
 #LIBS
-
+build ./src/libs/types.lib: lib ./bin/types.o
 #LINKS
 #ld
 build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
