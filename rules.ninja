@@ -11,12 +11,16 @@ rule CLEAN
   description = cleaning built files
 #compilers
 rule compile-cpp
- command = gcc $GPPPARAMS $in -o $out
+  command = gcc $GPPPARAMS $in -o $out
+  description = --GCC compiling $in generating $out
 rule compile-asm
- command = as $ASPARAMS -o $out -c $in
+  command = as $ASPARAMS -o $out -c $in
+  description = --AS compiling $in generating $out
 #linkers
 rule link
- command = ld -o $out $in $LDPARAMS ./src/linker.ld
+  command = ld -o $out $in $LDPARAMS ./src/linker.ld
+  description = --LD linking $in generating $out
 #builders
 rule iso
   command = grub-mkrescue $in -o $out
+  description = creating fgOS iso
