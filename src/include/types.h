@@ -1,7 +1,7 @@
 #ifndef __TYPES_H
 #define __TYPES_H
 
-int main(){
+int types(){
   typedef char                     int8_t;
   typedef unsigned char           uint8_t;
   typedef short                   int16_t;
