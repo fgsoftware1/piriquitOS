@@ -1,22 +1,30 @@
 #ENV VARIABLES
 GPPPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-stack-protector -std=c++11 -Dsnprintf=snprintf -D_WIN32_WINNT=0x0501 -D_MSC_VER=1600
+ARPARAMS = rcs
+ASPARAMS = --32
+LDPARAMS = -T
 
 #RULES
 rule compile-cpp
  command = gcc $GPPPARAMS -o $out -c $in
 
 rule compile-asm
- command = as --32 -o $out -c $in
+ command = as $ASPARAMS -o $out -c $in
 
 rule link
- command = ld -o $out $in -T ./src/linker.ld
+ command = ld -o $out $in $LDPARAMS ./src/linker.ld
 
 rule iso
   command = grub-mkrescue $in -o $out
+rule lib
+  command = ar $ARPARAMS -o $out -c $in
 
 #gcc
 build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
 build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
+build ./bin/csdint.h: compile-cpp ./src/include/csdint.h
+#lib
+
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
 #ld
