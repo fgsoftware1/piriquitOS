@@ -2,7 +2,7 @@
 #include "include/gdt.h"
 
 void printf (char* str) {
-  static std::uint16_t* VideoMemory = (std::uint16_t*)0xb8000;
+  static uint16_t* VideoMemory = (uint16_t*)0xb8000;
   for (int i = 0; str[i] != '\0'; ++i) {
     VideoMemory[i] = (VideoMemory[i] & 0xFF00) | str[i];
   }
@@ -17,7 +17,7 @@ extern "C" void callConstructors()
     (*i)();
 }
 
-extern "C" void fgosMain (const void* multiboot_structure, std::uint32_t) {
+extern "C" void fgosMain (const void* multiboot_structure, uint32_t) {
   printf("Hello World");
   GlobalDescriptorTable gdt;
   while(1);
