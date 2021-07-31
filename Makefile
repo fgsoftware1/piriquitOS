@@ -14,10 +14,10 @@ clean:
 	@if test -f "./bin/*.o"; then
 		@echo "--RM deleting generated objects"
 		@rm	./bin/*.o
-	}else if !test -f "./bin/*.o"; then
+	@else if !test -f "./bin/*.o"; then
 		@echo "--RM deleting generated binariies"
 		@rm	./bin/*.bin
-	}
+	@fi
 	@echo "--RM deleting generated iso"
 	@rm	./build/*.iso
 compile:
