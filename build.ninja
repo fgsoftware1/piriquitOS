@@ -4,7 +4,7 @@ GCCPARAMS = -std=c99 -g
 ASPARAMS = --32
 LDPARAMS = -T
 CCPARAMS = -m64 -Wall
-ARPARAMS = -rcsv
+ARPARAMS = -cvq
 
 #RULES
 #compilers
