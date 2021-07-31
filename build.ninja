@@ -5,14 +5,19 @@ ASPARAMS = --32
 LDPARAMS = -T
 
 #RULES
+#compilers
 rule compile-cpp
  command = g++ $GPPPARAMS $in -o $out
 rule compile-c
   command = clang $in -o $out
 rule compile-asm
  command = as $ASPARAMS -o $out -c $in
+#linkers
 rule link
  command = ld -o $out $in $LDPARAMS ./src/linker.ld
+rule cc
+  command = cc -o $out -c $in
+#builders
 rule iso
   command = grub-mkrescue $in -o $out
 rule lib
@@ -25,11 +30,14 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
 #clang
-build ./bin/types.o: compile-c ./src/include/types.h
+build ./bin/types.h.o: compile-c ./src/include/types.h
+build ./bin/gdt.h.o: compile-c ./src/include/gdt.h
 #LIBS
-build ./src/libs/types.lib: lib ./bin/types.o
+build ./src/libs/types.lib: lib ./bin/types.h.o
+build ./src/libs/gdt.lib: lib ./bin/gdt.h.o
 #LINKS
 #ld
+build ./bin/libs.o: cc 
 build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #BUILDS
 #iso
