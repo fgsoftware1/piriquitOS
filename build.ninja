@@ -2,6 +2,9 @@ ninja_required_version = 1.5
 
 include rules.ninja
 
+build build: BUILD
+default build
+
 build help: HELP
 build clean: CLEAN
 #gcc
