@@ -37,7 +37,7 @@ build ./src/libs/types.lib: lib ./bin/types.h.o
 build ./src/libs/gdt.lib: lib ./bin/gdt.h.o
 #LINKS
 #ld
-build ./bin/libs.o: cc 
+build ./bin/libs.o: cc ./src/libs/types.lib ./src/libs/gdt.lib
 build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #BUILDS
 #iso
