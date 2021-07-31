@@ -4,4 +4,5 @@ ASPARAMS = --32
 LDPARAMS = -T
 
 .PHONY: clean
-clean: rm ./**.o
+clean:
+ rm ./**.o
