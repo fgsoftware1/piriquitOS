@@ -31,18 +31,13 @@ build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
 build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
-#clang
-build ./bin/types.h.o: compile-h ./src/include/types.h
-build ./bin/cstdint.h.o: compile-h ./src/include/cstdint.h
-build ./bin/gdt.h.o: compile-h ./src/include/gdt.h
 #LIBS
-build ./src/libs/types.lib: lib ./bin/types.h.o
-build ./src/libs/cstdint.lib: lib ./bin/cstdint.h.o
-build ./src/libs/gdt.lib: lib ./bin/gdt.h.o
+build ./src/libs/loader.lib: lib ./bin/loader.o
+build ./src/libs/kernel.lib: lib ./bin/kernel.o
 #LINKS
 #ld
-build ./bin/libs.o: cc ./src/libs/cstdint.lib ./src/libs/gdt.lib 
-build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
+build ./bin/sys.o: cc ./src/libs/loader.lib ./src/libs/kernel.lib: lib
+build ./build/boot/fgOS.bin: link ./bin/sys.o ./bin/gdt.o
 #BUILDS
 #iso
 build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
