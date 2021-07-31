@@ -31,7 +31,7 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 build ./bin/loader.o: compile-asm ./src/loader.s
 #clang
 build ./bin/types.h.o: compile-c ./src/include/types.h
-build ./bin/gdt.h.o: compile-c ./src/include/gdt.h
+build ./bin/gdt.h.o: compile-cpp ./src/include/gdt.h
 #LIBS
 build ./src/libs/types.lib: lib ./bin/types.h.o
 build ./src/libs/gdt.lib: lib ./bin/gdt.h.o
