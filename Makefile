@@ -4,4 +4,4 @@ ASPARAMS = --32
 LDPARAMS = -T
 
 .PHONY: clean
-clean: @echo "deleting generated objects" rm ./**.o
+clean: rm ./**.o
