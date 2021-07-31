@@ -4,7 +4,7 @@ GCCPARAMS = -m32 -g -Iinclude -nostdlib -Wno-write-strings -std=c11 -Dsnprintf=s
 ARPARAMS = -rs
 ASPARAMS = --32
 LDPARAMS = -T
-CCPARAMS = -std=c99 -lm -Wall -Wextra -pedantic -O3 -Wfloat-equal -g
+CCPARAMS = -g
 
 #RULES
 #compilers
