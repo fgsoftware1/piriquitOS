@@ -9,7 +9,7 @@ help:
 	@echo "OPTIONS"
 	@echo "help: list all available commands"
 	@echo "clean: delete built files(this files can be regenrated by ninja or make)"
-	@echo "build: compile and generate all project files"
+	@echo "compile: compile and generate all project files"
 clean:
 	@if test -f "./bin/*.o"; then
 		@echo "--RM deleting generated objects"
@@ -20,7 +20,7 @@ clean:
 	}
 	@echo "--RM deleting generated iso"
 	@rm	./build/*.iso
-build:
+compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
 	@make objects
