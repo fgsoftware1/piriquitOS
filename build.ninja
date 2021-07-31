@@ -22,7 +22,7 @@ rule cc
 rule iso
   command = grub-mkrescue $in -o $out
 rule lib
-  command = ar $ARPARAMS -o $out -c $in
+  command = ar $ARPARAMS $out $in
 
 #OBJECTS
 #gcc
