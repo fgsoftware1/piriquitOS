@@ -5,4 +5,5 @@ LDPARAMS = -T
 
 .PHONY: clean
 clean:
-	rm	./**.o
+  @echo "removing generated objects"
+	rm	./**/.o
