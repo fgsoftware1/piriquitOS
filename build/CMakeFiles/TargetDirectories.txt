@@ -1,0 +1,2 @@
+/home/fgygh/fgOS-BETA/build/CMakeFiles/rebuild_cache.dir
+/home/fgygh/fgOS-BETA/build/CMakeFiles/edit_cache.dir
