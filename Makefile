@@ -11,15 +11,18 @@ help:
 	@echo "clean: delete built files(this files can be regenrated by ninja or make)"
 	@echo "build: compile and generate all project files"
 clean:
-	@echo "--RM deleting generated objects"
-	@rm	./bin/*.o
-	@echo "--RM deleting generated binariies"
-	@rm	./bin/*.bin
+	@if(test -f "./bin/*.o"){
+		@echo "--RM deleting generated objects"
+		@rm	./bin/*.o
+	}else if(!test -f "./bin/*.o"){
+		@echo "--RM deleting generated binariies"
+		@rm	./bin/*.bin
+	}
 	@echo "--RM deleting generated iso"
 	@rm	./build/*.iso
 build:
 	@echo "to list options run make help"
-  @echo "generating objects"
+	@echo "generating objects"
 	@make objects
 objects: ./src/kernel.cpp
 	gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
