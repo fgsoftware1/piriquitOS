@@ -9,8 +9,6 @@ rule HELP
 rule CLEAN
   command = ninja -t clean
   description = cleaning built files
-rule BUILD
-  command = ninja -v
 #compilers
 rule compile-cpp
   command = gcc $GPPPARAMS $in -o $out
