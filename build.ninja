@@ -5,7 +5,7 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 #gcc
-build ./bin/kernel.o: @compile-cpp ./src/kernel.cpp
+build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
 build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
