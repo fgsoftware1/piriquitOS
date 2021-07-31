@@ -23,5 +23,5 @@ compile:
 	@echo "generating objects"
 	@make $(MAKEPARAMS) objects
 objects: ./src/kernel.cpp
+	@echo "[1/3]--GCC compiling $< generating $@"
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
-	@echo "[1/3]--GCC compiling $< generating ./bin/kernel.o"
