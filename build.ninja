@@ -3,7 +3,7 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 GCCPARAMS = -std=c99 -g
 ASPARAMS = --32
 LDPARAMS = -T
-CCPARAMS = -g
+CCPARAMS = -m64 -Wall
 ARPARAMS = -rcsv
 
 #RULES
@@ -18,7 +18,7 @@ rule compile-asm
 rule link
  command = ld -o $out $in $LDPARAMS ./src/linker.ld
 rule cc
-  command = cc $CCPARAMS $in -o $out
+  command = cc $CCPARAMS -o $out $in
 #builders
 rule iso
   command = grub-mkrescue $in -o $out
