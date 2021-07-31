@@ -5,7 +5,7 @@ WORKDIR /home/admin/Desktop/projects/fgOS
 
 RUN apt-get update -y
 RUN apt-get install -y apt-utils --no-install-recommends
-RUN apt-get install -y git gcc ninja-build grub-common build-essential gcc-multilib wget openssl --no-install-recommends
+RUN apt-get install -y git g++ clang ninja-build grub-common build-essential gcc-multilib wget openssl --no-install-recommends
 RUN apt-get install --reinstall ca-certificates -y --no-install-recommends
 RUN apt-get update -y
 RUN apt autoremove
