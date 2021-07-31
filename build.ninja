@@ -2,8 +2,7 @@ ninja_required_version = 1.5
 
 include rules.ninja
 
-build ./bin/kernel.o ./bin/gdt.o ./bin/loader.o
-default build
+default ./bin/kernel.o ./bin/gdt.o ./bin/loader.o
 
 build help: HELP
 build clean: CLEAN
