@@ -30,11 +30,10 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
 #LIBS
-build ./src/libs/loader.lib: lib ./bin/loader.o
-build ./src/libs/kernel.lib: lib ./bin/kernel.o
+build ./src/libs/gdt.lib: lib ./bin/gdt.o
 #LINKS
 #ld
-build ./bin/sys.o: cc ./src/libs/loader.lib ./src/libs/kernel.lib
+build ./bin/sys.o: cc ./src/libs/gdt.lib ./src/kernel.cpp
 build ./build/boot/fgOS.bin: link ./bin/sys.o ./bin/gdt.o
 #BUILDS
 #iso
