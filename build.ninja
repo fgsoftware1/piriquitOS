@@ -6,7 +6,7 @@ LDPARAMS = -T
 
 #RULES
 rule compile-cpp
- command = gcc $GPPPARAMS -o $out -c $in
+ command = gcc $GPPPARAMS -c -o $out $in
 
 rule compile-asm
  command = as $ASPARAMS -o $out -c $in
