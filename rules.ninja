@@ -3,6 +3,12 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 ASPARAMS = --32
 LDPARAMS = -T
 
+rule HELP
+  command = ninja -t targets
+  description = targets available:
+rule CLEAN
+  command = ninja -t clean
+  description = cleaning built files
 #compilers
 rule compile-cpp
  command = gcc $GPPPARAMS $in -o $out
