@@ -11,7 +11,7 @@ help:
 	@echo "clean: delete built files(this files can be regenrated by ninja or make)"
 	@echo "compile: compile and generate all project files"
 clean:
-	if test -f "./bin/*.o"; then
+	if [-f "./bin/*.o"]; then
 		@echo "--RM deleting generated objects"
 		@rm	./bin/*.o
 	fi
