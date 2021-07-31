@@ -3,14 +3,14 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 GCCPARAMS = -std=c99 -g
 ASPARAMS = --32
 LDPARAMS = -T
-CCPARAMS = -g -L
+CCPARAMS = -g
 
 #RULES
 #compilers
 rule compile-cpp
  command = gcc $GPPPARAMS $in -o $out
 rule compile-h
-  command = gcc $CCPARAMS -o $out -c $in
+  command = g++ $CCPARAMS $in -c $out
 rule compile-asm
  command = as $ASPARAMS -o $out -c $in
 #linkers
