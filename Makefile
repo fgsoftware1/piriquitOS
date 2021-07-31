@@ -7,5 +7,7 @@ LDPARAMS = -T
 clean:
 	@echo "--RM deleting generated objects"
 	@rm	./bin/*.o
-	@echo "removing generated binariies"
+	@echo "--RM deleting generated binariies"
 	@rm	./bin/*.bin
+	@echo "--RM deleting generated iso"
+	@rm	./build/*.iso
