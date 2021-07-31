@@ -3,7 +3,7 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 ASPARAMS = --32
 LDPARAMS = -T
 
-help:
+help:           ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 .PHONY: clean
 clean:
