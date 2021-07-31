@@ -20,7 +20,7 @@ clean:
 compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
-	@make -w objects
+	@make –no-print-directory objects
 objects: ./src/kernel.cpp
 	@echo "--GCC compiling ./src/kernel.cpp generating ./bin/kernel.o"
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
