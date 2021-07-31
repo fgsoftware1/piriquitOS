@@ -14,13 +14,11 @@ rule link
 rule iso
   command = grub-mkrescue $in -o $out
 
-#OBJECTS
 #gcc
 build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
 build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
-#BINARIES
 #ld
 build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #iso
