@@ -14,7 +14,7 @@ clean:
 	@if test -f "./bin/*.o"; then
 		@echo "--RM deleting generated objects"
 		@rm	./bin/*.o
-	@else if !test -f "./bin/*.o"; then
+	@else
 		@echo "--RM deleting generated binariies"
 		@rm	./bin/*.bin
 	@fi
