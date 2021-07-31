@@ -2,6 +2,7 @@
 GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-stack-protector -std=c++11 -Dsnprintf=snprintf -D_WIN32_WINNT=0x0501 -D_MSC_VER=1600 -Wno-write-strings
 ASPARAMS = --32
 LDPARAMS = -T
+MAKEPARAMS = –-no-print-directory
 
 .PHONY: help
 
@@ -20,7 +21,7 @@ clean:
 compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
-	@make –-no-print-directory objects
+	@make $(MAKEPARAMS) objects
 objects: ./src/kernel.cpp
 	@echo "--GCC compiling ./src/kernel.cpp generating ./bin/kernel.o"
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
