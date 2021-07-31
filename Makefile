@@ -22,6 +22,10 @@ compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
 	@make $(MAKEPARAMS) objects
-objects: ./src/kernel.cpp
+objects: ./src/kernel.cpp ./src/gdt.cpp
+	@echo "[1/3]--GCC compiling src/kernel.cpp generating bin/kernel.o"
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
-	@echo "[1/3]--GCC compiling $< generating $@"
+	@echo "[2/3]--GCC compiling src/gdt.cpp generating bin/gdt.o"
+	@gcc $(CPPPARAMS) -c ./src/gdt.cpp -o ./bin/gdt.o
+	@echo "[3/3]--GCC compiling src/loader.s generating bin/loader.o"
+	@as $(ASPARAMS) -c ./src/loader.s -o ./bin/loader.o
