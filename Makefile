@@ -22,6 +22,6 @@ compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
 	@make $(MAKEPARAMS) objects
-objects: ./src/kernel.cpp ./bin/kernel.o
-	@echo "[1/3]--GCC compiling $< generating $@"
+objects: ./src/kernel.cpp
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
+	@echo "[1/3]--GCC compiling $< generating $@"
