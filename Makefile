@@ -3,10 +3,10 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 ASPARAMS = --32
 LDPARAMS = -T
 
-help:           ## Show this help.
+help: ## list targets available
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 .PHONY: clean
-clean:
+clean:  ## clean built files
 	@echo "--RM deleting generated objects"
 	@rm	./bin/*.o
 	@echo "--RM deleting generated binariies"
