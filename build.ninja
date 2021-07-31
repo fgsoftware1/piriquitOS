@@ -2,6 +2,9 @@ ninja_required_version = 1.5
 
 include rules.ninja
 
+build build: ./bin/kernel.o ./bin/gdt.o ./bin/loader.o
+default build
+
 build help: HELP
 build clean: CLEAN
 #gcc
@@ -13,5 +16,3 @@ build ./bin/loader.o: compile-asm ./src/loader.s
 build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #iso
 build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
-
-default ./bin/kernel.o ./bin/gdt.o
