@@ -3,7 +3,7 @@ GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno
 GCCPARAMS = -std=c99 -g
 ASPARAMS = --32
 LDPARAMS = -T
-CCPARAMS = -m64 -Wall
+CCPARAMS = -m32 -Wall
 ARPARAMS = -cvrs
 
 #RULES
