@@ -6,7 +6,7 @@ unusedSegmentSelector(0,0,0),
 codeSegmentSelector(0,64*1024*1024,0x9A),
 dataSegmentSelector(0,64*1024*1024,0x92)
 {
-  std::uint32_t i[2];
+  uint32_t i[2];
   i[1] = (uint32_t)this;
   i[0] = sizeof(GlobalDescriptorTable) << 16;
 
