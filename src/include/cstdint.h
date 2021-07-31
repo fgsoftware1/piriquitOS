@@ -1,6 +1,3 @@
-#ifndef __CSTDINT_H
-#define __CSTDINT_H
-
 namespace std{
   using int8_t         = signed;
   using int16_t        = signed;
@@ -50,5 +47,3 @@ namespace std{
 #define UINTN_C(value)  
 #define INTMAX_C(value) 
 #define UINTMAX_C(value) 
-
-#endif
