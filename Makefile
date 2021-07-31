@@ -4,9 +4,5 @@ ASPARAMS = --32
 LDPARAMS = -T
 
 clean:
-^@echo "deleting generated objects"
-^rm ./**.o
-^@echo "deleting generated binaries"
-^rm ./**.bin
-^@echo "deleting generated iso"
-^rm ./**.iso
+\t@echo "deleting generated objects"
+\trm ./**.o
