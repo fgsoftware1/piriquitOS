@@ -2,9 +2,10 @@ ninja_required_version = 1.5
 
 include rules.ninja
 
+build all: phony
+
 default all
 
-build all: phony
 build help: HELP
 build clean: CLEAN
 #gcc
