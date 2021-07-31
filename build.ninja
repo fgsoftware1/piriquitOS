@@ -7,7 +7,6 @@ LDPARAMS = -T
 #compilers
 rule compile-cpp
  command = gcc $GPPPARAMS $in -o $out
- description = compiling $in
 rule compile-asm
  command = as $ASPARAMS -o $out -c $in
 #linkers
