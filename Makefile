@@ -18,7 +18,8 @@ clean:
 	@echo "--RM deleting generated iso"
 	@rm	./build/*.iso
 build:
-	@to list options run make help
-	@make ./bin/kernel.o
-./bin/kernel.o: ./src/kernel.cpp
-	gcc $(CPPPARAMS) -c ./src/kernel.cpp
+	@echo "to list options run make help"
+  @echo "generating objects"
+	@make objects
+objects: ./src/kernel.cpp
+	gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
