@@ -14,4 +14,4 @@ build ./bin/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #iso
 build ./build/fgOS.iso: iso ./bin/fgOS.bin
 
-default ./bin/kernel.o ./bin/gdt.o ./bin/loader.o ./build/boot/fgOS.bin ./build/fgOS.iso
+default ./bin/kernel.o ./bin/gdt.o ./bin/loader.o ./bin/fgOS.bin ./build/fgOS.iso
