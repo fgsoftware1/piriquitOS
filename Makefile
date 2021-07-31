@@ -12,11 +12,11 @@ help:
 	@echo "compile: compile and generate all project files"
 clean:
 	@echo "--RM deleting generated objects"
-	@rm	./bin/*.o
+	@rm	-f ./bin/*.o
 	@echo "--RM deleting generated binariies"
-	@rm	./bin/*.bin
+	@rm	-f ./bin/*.bin
 	@echo "--RM deleting generated iso"
-	@rm	./build/*.iso
+	@rm	-f ./build/*.iso
 compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
