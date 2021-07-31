@@ -1,10 +1,7 @@
 #ENV VARIABLES
 GPPPARAMS = -m32 -g -c -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-stack-protector -std=c++11 -Dsnprintf=snprintf -D_WIN32_WINNT=0x0501 -D_MSC_VER=1600
-GCCPARAMS = -std=c99 -g
 ASPARAMS = --32
 LDPARAMS = -T
-CCPARAMS = -m32 -Wall -fPIC
-ARPARAMS = -cvrs
 
 #RULES
 #compilers
@@ -15,13 +12,9 @@ rule compile-asm
 #linkers
 rule link
  command = ld -o $out $in $LDPARAMS ./src/linker.ld
-rule cc
-  command = cc $CCPARAMS -o $out $in
 #builders
 rule iso
   command = grub-mkrescue $in -o $out
-rule lib
-  command = ar $ARPARAMS $out $in
 
 #OBJECTS
 #gcc
@@ -29,12 +22,9 @@ build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
 build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
-#LIBS
-build ./src/libs/gdt.lib: lib ./bin/gdt.o
 #LINKS
 #ld
-build ./bin/sys.o: cc ./src/libs/gdt.lib ./src/kernel.cpp
-build ./build/boot/fgOS.bin: link ./bin/sys.o ./bin/gdt.o
+build ./build/boot/fgOS.bin: link ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #BUILDS
 #iso
 build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
