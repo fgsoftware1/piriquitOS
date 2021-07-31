@@ -5,12 +5,20 @@ LDPARAMS = -T
 
 .PHONY: help
 
-help: ## list all targets available
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
-clean:  ## clean built files
+help:
+	@echo "OPTIONS"
+	@echo "help: list all available commands"
+	@echo "clean: delete built files(this files can be regenrated by ninja or make)"
+	@echo "build: compile and generate all project files"
+clean:
 	@echo "--RM deleting generated objects"
 	@rm	./bin/*.o
 	@echo "--RM deleting generated binariies"
 	@rm	./bin/*.bin
 	@echo "--RM deleting generated iso"
 	@rm	./build/*.iso
+build:
+	@to list options run make help
+	@make ./bin/kernel.o
+./bin/kernel.o: ./src/kernel.cpp
+	gcc $(CPPPARAMS) -c ./src/kernel.cpp
