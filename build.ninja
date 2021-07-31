@@ -10,8 +10,8 @@ CCPARAMS = -std=c99 -lm -Wall -Wextra -pedantic -O3 -Wfloat-equal -g
 #compilers
 rule compile-cpp
  command = g++ $GPPPARAMS $in -o $out
-rule compile-c
-  command = gcc $GCCPARAMS $in -o $out
+rule compile-h
+  command = g++ $GCCPARAMS $in -o $out
 rule compile-asm
  command = as $ASPARAMS -o $out -c $in
 #linkers
@@ -32,8 +32,8 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
 #clang
-build ./bin/types.h.o: compile-c ./src/include/types.h
-build ./bin/gdt.h.o: compile-c ./src/include/gdt.h
+build ./bin/types.h.o: compile-h ./src/include/types.h
+build ./bin/gdt.h.o: compile-h ./src/include/gdt.h
 #LIBS
 build ./src/libs/types.lib: lib ./bin/types.h.o
 build ./src/libs/gdt.lib: lib ./bin/gdt.h.o
