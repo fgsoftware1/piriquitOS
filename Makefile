@@ -26,6 +26,6 @@ objects: ./src/kernel.cpp ./src/gdt.cpp
 	@echo "--GCC compiling src/kernel.cpp"
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
 	@echo "--GCC compiling src/gdt.cpp"
-	@gcc $(CPPPARAMS) -c ./src/gdt.cpp -o ./bin/gdt.o
+	@g++ $(CPPPARAMS) -c ./src/gdt.cpp -o ./bin/gdt.o
 	@echo "--GCC compiling src/loader.s"
 	@as $(ASPARAMS) -c ./src/loader.s -o ./bin/loader.o
