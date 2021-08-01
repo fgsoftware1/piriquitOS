@@ -1,5 +1,5 @@
 #ENV VARIABLES
-GPPPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -fPIC --relocatable-device-code true
+GPPPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -fPIC
 LDPARAMS = -shared -ffreestanding -O2 -nostdlib
 
 rule HELP
