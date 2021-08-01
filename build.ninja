@@ -10,7 +10,7 @@ build ./bin/gdt.o: compile-cpp ./src/gdt.cpp
 #as
 build ./bin/loader.o: compile-asm ./src/loader.s
 #ld
-build ./bin/fgOS.bin: link ./build/boot ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
+build ./build/boot/fgOS.bin: link ./build/boot ./bin/loader.o ./bin/kernel.o ./bin/gdt.o
 #iso
 build ./build/fgOS.iso: iso ./bin/fgOS.bin
 
