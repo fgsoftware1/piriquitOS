@@ -1,5 +1,5 @@
 #ENV VARIABLES
-GPPPARAMS = -c -I src/include -ffreestanding -w
+GPPPARAMS = -c -I src/include -ffreestanding -w -nostdlib
 NASMPARAMS = -elf64
 LDPARAMS = -n
 
