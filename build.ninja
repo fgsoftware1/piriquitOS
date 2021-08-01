@@ -7,17 +7,11 @@ build clean: CLEAN
 #gcc
 #build ./bin/kernel.o: compile-c ./src/kernel.c
 #as
-#bootloader
-build ./bin/64.sys: compile-asm ./src/bootloader/64.asm
-build ./bin/mbr.sys: compile-asm ./src/bootloader/bootsectors/mbr.asm
-build ./bin/multiboot.sys: compile-asm ./src/bootloader/bootsectors/multiboot.asm
-build ./bin/multiboot2.sys: compile-asm ./src/bootloader/bootsectors/multiboot2.asm
-build ./bin/pxestart.sys: compile-asm ./src/bootloader/bootsectors/pxestart.asm
-#kernel
-build ./bin/kernel.sys: compile-asm ./src/kernel/kernel.asm
+build ./bin/boot.bin: compile-asm ./src/boot.s
 #ld
-build ./build/boot/fgOS.bin: link ./bin/64.sys
+#build ./build/boot/fgOS.bin: link ./bin/boot.bin
 #iso
-build ./build/fgOS.iso: iso ./bin/64.sys
+build ./build/fgOS.flp: iso ./bin/boot.bin
+build ./build/fgOS.iso: iso ./build/fgOS.flp
 
-default ./bin/64.sys ./bin/mbr.sys ./bin/multiboot.sys ./bin/multiboot2.sys ./bin/pxestart.sys
+default ./bin/boot.bin ./build/fgOS.flp ./build/fgOS.iso
