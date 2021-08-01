@@ -17,7 +17,7 @@ clean:
 	@echo "--RM deleting generated binariies"
 	@rm	-f ./bin/*.bin
 	@echo "--RM deleting generated iso"
-	@rm	-f ./build/*.iso
+	@rm	-f ./build/**/*.iso
 compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
