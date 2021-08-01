@@ -1,5 +1,5 @@
 #ENV VARIABLES
-GPPPARAMS = -c -I src/include -ffreestanding -w -nostdlib
+GPPPARAMS = -c -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 LDPARAMS = -n
 
 rule HELP
