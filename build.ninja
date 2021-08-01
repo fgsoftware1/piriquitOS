@@ -7,7 +7,7 @@ build clean: CLEAN
 #gcc
 build ./bin/kernel.o: compile-c ./src/kernel.c
 #as
-build ./bin/boot.o: compile-asm ./src/header.asm
+build ./bin/boot.o: compile-asm ./src/boot.s
 #ld
 build ./build/fgOS.bin: link ./bin/boot.o ./bin/kernel.o
 #iso
