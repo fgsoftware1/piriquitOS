@@ -1,5 +1,5 @@
 #ENV VARIABLES
-GPPPARAMS = -c -std=gnu99 -ffreestanding -O2 -Wall -Wextra -fPIC
+GPPPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -fPIC --relocatable-device-code true
 LDPARAMS = -shared -ffreestanding -O2 -nostdlib
 
 rule HELP
@@ -10,7 +10,7 @@ rule CLEAN
   description = cleaning built files
 #compilers
 rule compile-c
-  command = gcc $GPPPARAMS $in -o $out
+  command = gcc -c $in -o $out $GPPPARAMS
   description = --GCC compiling $in
 rule compile-asm
   command = as $in -o $out
