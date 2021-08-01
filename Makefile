@@ -22,7 +22,7 @@ compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
 	@make $(MAKEPARAMS) objects
-objects: ./src/kernel.cpp ./src/gdt.cpp
+objects: ./src/kernel.cpp
 	@echo "--GCC compiling src/kernel.cpp"
 	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
 	@echo "--GCC compiling src/loader.s"
