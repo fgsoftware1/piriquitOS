@@ -1,8 +1,7 @@
 #ENV VARIABLES
-GPPPARAMS = -m32 -g -c -nostdlib -fno-builtin -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-stack-protector -std=c11 -Dsnprintf=snprintf -D_WIN32_WINNT=0x0501 -D_MSC_VER=1600
-ASPARAMS = --32
-LDPARAMS = -n -T
-ARPARAMS = -rcs
+GPPPARAMS = -c -I src/include -ffreestanding -w
+NASMPARAMS = -elf64
+LDPARAMS = -n
 
 rule HELP
   command = ninja -t targets
@@ -15,15 +14,13 @@ rule compile-c
   command = gcc $GPPPARAMS $in -o $out
   description = --GCC compiling $in
 rule compile-asm
-  command = as $ASPARAMS -o $out -c $in
-  description = --AS compiling $in
+  command = nasm $NASMPARAMS $in -o $out
+  description = --NASM compiling $in
 #linkers
 rule link
-  command = ld -o $out $in $LDPARAMS ./src/linker.ld
+  command = ld $LDPARAMS -o $out -T ./src/linker.ld $in
   description = --LD linking $in
 #builders
-rule lib
-  command = ar $ARPARAMS $out -c $in
 rule iso
   command = grub-mkrescue $in -o $out
   description = creating fgOS iso
