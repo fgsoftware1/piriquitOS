@@ -22,8 +22,6 @@ compile:
 	@echo "to list options run make help"
 	@echo "generating objects"
 	@make $(MAKEPARAMS) objects
-objects: ./src/kernel.cpp
-	@echo "--GCC compiling src/kernel.cpp"
-	@gcc $(CPPPARAMS) -c ./src/kernel.cpp -o ./bin/kernel.o
-	@echo "--GCC compiling src/loader.s"
-	@as $(ASPARAMS) -c ./src/loader.s -o ./bin/loader.o
+objects: ./src/kernel.c
+	@echo "--GCC compiling src/kernel.c"
+	@gcc $(CPPPARAMS) -c ./src/kernel.c -o ./bin/kernel.o
