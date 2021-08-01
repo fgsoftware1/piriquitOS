@@ -1,6 +1,10 @@
+#folders
 /.vscode
 /bin
-
-*.bin
+#especific ffiles
 .ninja_deps
 .ninja_log
+#files by extension
+*.iso
+*.o
+*.bin
