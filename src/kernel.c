@@ -1,7 +1,8 @@
 #pragma GCC diagnostic ignored "-Wwrite-strings"
-#include "stdio.h"
+#include "include/print.h"
 
 void fgosMain () {
-  printf("Hello World");
-  while(1);
+  print_clear();
+  print_set_color(PRINT_COLOR_YELLOW, PRINT_COLOR_BLACK);
+  print_str("Welcome to fgOS");
 }
