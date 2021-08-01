@@ -1,6 +1,6 @@
 #ENV VARIABLES
-GPPPARAMS = -c -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-LDPARAMS = -ffreestanding -O2 -nostdlib
+GPPPARAMS = -c -std=gnu99 -ffreestanding -O2 -Wall -Wextra -fPIC
+LDPARAMS = -shared -ffreestanding -O2 -nostdlib
 
 rule HELP
   command = ninja -t targets
