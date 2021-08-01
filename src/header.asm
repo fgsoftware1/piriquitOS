@@ -1,3 +1,4 @@
+global header
 section .multiboot_header
 header_start:
 	dd 0xe85250d6
