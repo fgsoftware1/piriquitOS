@@ -1,6 +1,6 @@
 #ENV VARIABLES
 GPPPARAMS = -c -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-LDPARAMS = -n
+LDPARAMS = -ffreestanding -O2 -nostdlib
 
 rule HELP
   command = ninja -t targets
@@ -17,7 +17,7 @@ rule compile-asm
   description = --AS compiling $in
 #linkers
 rule link
-  command = ld $LDPARAMS -o $out -T ./src/linker.ld $in
+  command = ld -T ./src/linker.ld -o $out $LDPARAMS $in -lgcc
   description = --LD linking $in
 #builders
 rule iso
