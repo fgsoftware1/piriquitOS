@@ -5,19 +5,17 @@ SECTIONS
 {
   . = 1M;
 
-  .boot :
-	{
-		KEEP(*(.multiboot_header))
-	}
-
-  .text :
+  .text : ALIGN(0x1000)
   {
-    *(.multiboot_header)
     *(.text)
+  }
+
+  .rodata : ALIGN(0x1000)
+  {
     *(.rodata)
   }
 
-  .bss :
+  .bss : ALIGN(0x1000)
   {
     *(.bss)
   }
