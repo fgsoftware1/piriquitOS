@@ -3,9 +3,9 @@ FROM library/ubuntu:rolling
 VOLUME /home/admin/Desktop/projects/fgOS
 WORKDIR /home/admin/Desktop/projects/fgOS
 
-RUN apt-get update -y
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y apt-utils --no-install-recommends
-RUN apt-get install -y git gcc ninja-build grub-common xorriso build-essential gcc-multilib wget openssl --no-install-recommends
+RUN apt-get install -y git gcc ninja-build make grub-common xorriso gcc-multilib wget openssl --no-install-recommends
 RUN apt-get install --reinstall ca-certificates -y --no-install-recommends
 RUN apt-get update -y
 RUN apt autoremove
