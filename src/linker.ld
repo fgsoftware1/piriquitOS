@@ -1,4 +1,6 @@
-ENTRY(start)
+ENTRY(loader)
+OUTPUT_FORMAT(elf64)
+OUTPUT_ARCH(i386:i386)
 
 SECTIONS 
 {
@@ -11,6 +13,13 @@ SECTIONS
 
   .text :
   {
+    *(.multiboot_header)
     *(.text)
+    *(.rodata)
+  }
+
+  .bss :
+  {
+    *(.bss)
   }
 }
