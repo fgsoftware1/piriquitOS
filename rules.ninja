@@ -17,7 +17,7 @@ rule compile-asm
   description = --AS compiling $in
 #linkers
 rule link
-  command = ld -T ./src/linker.ld -o $out $LDPARAMS $in -lgcc
+  command = ld -T ./src/linker.ld -o $out $LDPARAMS $in
   description = --LD linking $in
 #builders
 rule iso
