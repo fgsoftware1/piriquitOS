@@ -1,8 +1,18 @@
-#pragma GCC diagnostic ignored "-Wwrite-strings"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-
+ 
+/* Check if the compiler thinks you are targeting the wrong operating system. */
+#if defined(__linux__)
+#error "You are not using a cross-compiler, you will most certainly run into trouble"
+#endif
+ 
+/* This tutorial will only work for the 32-bit ix86 targets. */
+#if !defined(__i386__)
+#error "This tutorial needs to be compiled with a ix86-elf compiler"
+#endif
+ 
+/* Hardware text mode color constants. */
 enum vga_color {
 	VGA_COLOR_BLACK = 0,
 	VGA_COLOR_BLUE = 1,
@@ -21,7 +31,7 @@ enum vga_color {
 	VGA_COLOR_LIGHT_BROWN = 14,
 	VGA_COLOR_WHITE = 15,
 };
-
+ 
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg) 
 {
 	return fg | bg << 4;
@@ -96,6 +106,9 @@ void terminal_writestring(const char* data)
  
 void kernel_main(void) 
 {
+	/* Initialize terminal interface */
 	terminal_initialize();
-	terminal_writestring("Welcome to fgOS!\n");
+ 
+	/* Newline support is left as an exercise. */
+	terminal_writestring("Hello, kernel World!\n");
 }
