@@ -1,23 +1,28 @@
-ENTRY(start)
-OUTPUT_FORMAT(elf64-little)
-OUTPUT_ARCH(i386:i386)
-
-SECTIONS 
+ENTRY(_start)
+ 
+SECTIONS
 {
-  . = 1M;
+	. = 1M;
 
-  .text : ALIGN(0x1000)
-  {
-    *(.text)
-  }
-
-  .rodata : ALIGN(0x1000)
-  {
-    *(.rodata)
-  }
-
-  .bss : ALIGN(0x1000)
-  {
-    *(.bss)
-  }
+	.text BLOCK(4K) : ALIGN(4K)
+	{
+		*(.multiboot)
+		*(.text)
+	}
+ 
+	.rodata BLOCK(4K) : ALIGN(4K)
+	{
+		*(.rodata)
+	}
+ 
+	.data BLOCK(4K) : ALIGN(4K)
+	{
+		*(.data)
+	}
+ 
+	.bss BLOCK(4K) : ALIGN(4K)
+	{
+		*(COMMON)
+		*(.bss)
+	}
 }
