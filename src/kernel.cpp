@@ -1,3 +1,4 @@
+#pragma GCC diagnostic ignored "-Wwrite-strings"
 #include "include/types.h"
 
 void printf (char* str) {
@@ -18,6 +19,5 @@ extern "C" void callConstructors()
 
 extern "C" void fgosMain (const void* multiboot_structure, uint32_t) {
   printf("Hello World");
-  GlobalDescriptorTable gdt;
   while(1);
 }
