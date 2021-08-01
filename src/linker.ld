@@ -1,4 +1,5 @@
 ENTRY(start)
+OUTPUT_FORMAT(elf64-little)
 OUTPUT_ARCH(i386:i386)
 
 SECTIONS 
