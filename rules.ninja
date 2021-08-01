@@ -1,5 +1,5 @@
 #ENV VARIABLES
-GPPPARAMS = -std=gnu99 -O2 -Wall -Wextra -fPIC
+GPPPARAMS = -I src/include -std=gnu99 -O2 -Wall -Wextra -fPIC
 LDPARAMS = -O2 -nostdlib
 
 rule HELP
