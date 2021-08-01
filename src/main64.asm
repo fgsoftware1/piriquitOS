@@ -1,4 +1,4 @@
-lobal long_mode_start
+global long_mode_start
 extern fgosMain
 
 section .text
