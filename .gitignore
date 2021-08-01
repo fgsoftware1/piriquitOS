@@ -6,5 +6,6 @@
 .ninja_log
 #files by extension
 *.iso
+*.flp
 *.o
 *.bin
