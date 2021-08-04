@@ -1,9 +1,12 @@
-FROM library/ubuntu
+FROM library/ubuntu:rolling
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y apt-utils
-RUN apt-get install -y git gcc ninja-build grub-common
+VOLUME /home/admin/Desktop/projects
+WORKDIR /home/admin/Desktop/projects
 
-VOLUME /home/amin/Desktop/projects/fgOS-BETA
-WORKDIR /home/amin/Desktop/projects/fgOS-BETA
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y apt-utils --no-install-recommends
+RUN apt-get install -y git gcc nasm ninja-build grub-common xorriso gcc-multilib ca-certificates wget --no-install-recommends
+RUN apt autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN mkdir /usr/local/share/ca-certificates/cacert.org && wget -P /usr/local/share/ca-certificates/cacert.org http://www.cacert.org/certs/root.crt http://www.cacert.org/certs/class3.crt && update-ca-certificates
+RUN git config --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt
+RUN git clone --depth 1 https://github.com/fgsoftware1/fgOS-BETA.git

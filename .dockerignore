@@ -1,12 +1,13 @@
 #folders
 /.vscode
 /bin
-#especific ffiles
+/docs
+/utils
+#especific files
+README.md
 .ninja_deps
 .ninja_log
 #files by extension
 *.iso
-*.flp
 *.o
 *.bin
-*.sys

@@ -1,25 +1,17 @@
-#ENV VARIABLES
-GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
+ninja_required_version = 1.5
 
-#RULES
-rule compile-cpp
- command = gcc $GPPPARAMS -o $out -c $in
+include rules.ninja
 
-rule compile-asm
- command = as --32 -o $out -c $in
-
-rule link
- command = ld -o fgos.exe ./src/kernel.o ./src/loader.o -T ./src/linker.ld
-
-rule iso
-  command = grub-mkrescue $in -o $out
-
-#OBJECTS
-build ./bin/kernel.o: compile-cpp ./src/kernel.cpp
-build ./bin/loader.o: compile-asm ./src/loader.s
-#BINARIES
-build ./bin/kernel.bin: compile-cpp ./src/kernel.cpp
-build ./bin/loader.bin: compile-asm ./src/loader.s
-build ./build/boot/fgOS.bin: compile-cpp ./src/kernel.cpp
+build help: HELP
+build clean: CLEAN
+#gcc
+#build ./bin/kernel.o: compile-c ./src/kernel.c
+#as
+build ./bin/boot.bin: compile-asm ./src/boot.s
+#ld
+#build ./build/boot/fgOS.bin: link ./bin/boot.bin
 #iso
-build ./build/fgOS.iso: iso ./build/boot/fgOS.bin
+build ./build/fgOS.flp: iso ./bin/boot.bin
+build ./build/fgOS.iso: iso ./build/fgOS.flp
+
+default ./bin/boot.bin ./build/fgOS.flp ./build/fgOS.iso
