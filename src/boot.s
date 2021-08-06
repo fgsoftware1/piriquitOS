@@ -1,29 +1,36 @@
-.set MAGIC, 0x1badb002
-.set FLAGS, (1<<0 | 1 <<1)
-.set CHECKSUM, -(MAGIC + FLAGS)
+BITS 16
 
-.section .multiboot
-	.long MAGIC
-	.long FLAGS
-	.long CHECKSUM
-	
-.section .text
-.extern fgosmain
-.extern callContructors
-.global loader
+start:
+	mov ax, 07C0h
+	add ax, 288	
+	mov ss, ax
+	mov sp, 4096
 
-loader:
-	mov $kernel_stack, %esp
-	call callContructors
-	push %eax
-	push %ebx
-	call fgosmain
-	
-_stop:
-	cli
-	hlt
-	jmp _stop
+	mov ax, 07C0h	
+	mov ds, ax
 
-.section .bss
-.space 4*1024*1024
-kernel_stack:
+
+	mov si, text_string	
+	call print_string
+
+	jmp $		
+
+
+	text_string db 'This is my cool new OS!', 0
+
+
+print_string:			
+	mov ah, 0Eh	
+.repeat:
+	lodsb			
+	cmp al, 0
+	je .done		
+	int 10h			
+	jmp .repeat
+
+.done:
+	ret
+
+
+	times 510-($-$$) db 0	
+	dw 0xAA55		; 
