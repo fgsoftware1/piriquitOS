@@ -2,6 +2,7 @@
 GPPPARAMS = -I src/include -std=gnu99 -O2 -Wall -Wextra -fPIC
 LDPARAMS = -T src/linker.ld -O2 -nostdlib
 DDPARAMS = status=noxfer conv=notrunc
+NASMPARAMS = -f bin
 
 rule HELP
   command = ninja -t targets
@@ -14,7 +15,7 @@ rule compile-c
   command = gcc -c $in -o $out $GPPPARAMS
   description = --GCC compiling $in
 rule compile-asm
-  command = nasm  $in -o $out
+  command = nasm $NASMPARAMS $in -o $out
   description = --AS compiling $in
 #linkers
 rule link
