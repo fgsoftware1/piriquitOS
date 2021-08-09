@@ -4,13 +4,8 @@ include rules.ninja
 
 build help: HELP
 build clean: CLEAN
-#gcc
-#build ./bin/kernel.o: compile-c ./src/kernel.c
-#as
+
 build ./bin/boot.bin: compile-asm ./src/boot.s
-#ld
-#build ./build/boot/fgOS.bin: link ./bin/boot.bin
-#iso
 build ./build/fgOS.flp: iso ./bin/boot.bin
 build ./build/fgOS.iso: iso ./build/fgOS.flp
 
