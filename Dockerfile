@@ -9,4 +9,4 @@ RUN apt-get install -y git gcc nasm ninja-build grub-common xorriso gcc-multilib
 RUN apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN mkdir /usr/local/share/ca-certificates/cacert.org
 RUN git config --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt
-RUN git clone --depth 1 https://github.com/fgsoftware1/fgOS-BETA.git
+RUN git clone --depth 1 https://github.com/fgsoftware1/fgOS.git
