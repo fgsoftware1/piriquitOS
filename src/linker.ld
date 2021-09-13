@@ -1,28 +1,29 @@
 ENTRY(_start)
- 
+
 SECTIONS
 {
 	. = 1M;
 
+  	/* text section */
 	.text BLOCK(4K) : ALIGN(4K)
 	{
 		*(.multiboot)
 		*(.text)
 	}
- 
-	/* Read-only data. */
+
+	/* read only data section */
 	.rodata BLOCK(4K) : ALIGN(4K)
 	{
 		*(.rodata)
 	}
- 
-	/* Read-write data (initialized) */
+
+	/* data section */
 	.data BLOCK(4K) : ALIGN(4K)
 	{
 		*(.data)
 	}
- 
-	/* Read-write data (uninitialized) and stack */
+
+	/* bss section */
 	.bss BLOCK(4K) : ALIGN(4K)
 	{
 		*(COMMON)
