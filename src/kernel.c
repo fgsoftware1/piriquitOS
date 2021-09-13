@@ -1,8 +1,5 @@
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
 #include "include/kernel.h"
- 
+
 uint16 vga_entry(unsigned char ch, uint8 fore_color, uint8 back_color) 
 {
   uint16 ax = 0;
@@ -18,7 +15,7 @@ uint16 vga_entry(unsigned char ch, uint8 fore_color, uint8 back_color)
 
   return ax;
 }
- 
+
 void clear_vga_buffer(uint16 **buffer, uint8 fore_color, uint8 back_color)
 {
   uint32 i;
@@ -32,10 +29,10 @@ void init_vga(uint8 fore_color, uint8 back_color)
   vga_buffer = (uint16*)VGA_ADDRESS;  
   clear_vga_buffer(&vga_buffer, fore_color, back_color); 
 }
- 
-void kernel_main() 
+
+void kernel_entry()
 {
-	init_vga(WHITE, BLACK);
+  init_vga(WHITE, BLACK);
 
   vga_buffer[0] = vga_entry('H', WHITE, BLACK);
   vga_buffer[1] = vga_entry('e', WHITE, BLACK);
