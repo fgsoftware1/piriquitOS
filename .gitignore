@@ -1,6 +1,5 @@
 #folders
 /.vscode
-/bin
 #especific ffiles
 .ninja_deps
 .ninja_log
@@ -9,4 +8,3 @@
 *.flp
 *.o
 *.bin
-*.sys
