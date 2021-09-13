@@ -1,48 +1,22 @@
 #include "include/kernel.h"
 
-uint16 vga_entry(unsigned char ch, uint8 fore_color, uint8 back_color) 
-{
-  uint16 ax = 0;
-  uint8 ah = 0, al = 0;
-
-  ah = back_color;
-  ah <<= 4;
-  ah |= fore_color;
-  ax = ah;
-  ax <<= 8;
-  al = ch;
-  ax |= al;
-
-  return ax;
-}
-
-void clear_vga_buffer(uint16 **buffer, uint8 fore_color, uint8 back_color)
-{
-  uint32 i;
-  for(i = 0; i < BUFSIZE; i++){
-    (*buffer)[i] = vga_entry(NULL, fore_color, back_color);
-  }
-}
-
-void init_vga(uint8 fore_color, uint8 back_color)
-{
-  vga_buffer = (uint16*)VGA_ADDRESS;  
-  clear_vga_buffer(&vga_buffer, fore_color, back_color); 
-}
-
-void kernel_entry()
-{
-  init_vga(WHITE, BLACK);
-
-  vga_buffer[0] = vga_entry('H', WHITE, BLACK);
-  vga_buffer[1] = vga_entry('e', WHITE, BLACK);
-  vga_buffer[2] = vga_entry('l', WHITE, BLACK);
-  vga_buffer[3] = vga_entry('l', WHITE, BLACK);
-  vga_buffer[4] = vga_entry('o', WHITE, BLACK);
-  vga_buffer[5] = vga_entry(' ', WHITE, BLACK);
-  vga_buffer[6] = vga_entry('W', WHITE, BLACK);
-  vga_buffer[7] = vga_entry('o', WHITE, BLACK);
-  vga_buffer[8] = vga_entry('r', WHITE, BLACK);
-  vga_buffer[9] = vga_entry('l', WHITE, BLACK);
-  vga_buffer[10] = vga_entry('d', WHITE, BLACK);
-}
+static UINT16 VGA_DefaultEntry(unsigned char to_print) {  
+    return (UINT16) to_print | (UINT16)WHITE_COLOR << 8;  
+}  
+  
+void kernel_entry()  
+{  
+  TERMINAL_BUFFER = (UINT16*) VGA_ADDRESS;  
+  
+  TERMINAL_BUFFER[0] = VGA_DefaultEntry('H');  
+  TERMINAL_BUFFER[1] = VGA_DefaultEntry('e');  
+  TERMINAL_BUFFER[2] = VGA_DefaultEntry('l');  
+  TERMINAL_BUFFER[3] = VGA_DefaultEntry('l');  
+  TERMINAL_BUFFER[4] = VGA_DefaultEntry('o');  
+  TERMINAL_BUFFER[5] = VGA_DefaultEntry(' ');  
+  TERMINAL_BUFFER[6] = VGA_DefaultEntry('W');  
+  TERMINAL_BUFFER[7] = VGA_DefaultEntry('o');  
+  TERMINAL_BUFFER[8] = VGA_DefaultEntry('r');  
+  TERMINAL_BUFFER[9] = VGA_DefaultEntry('l');  
+  TERMINAL_BUFFER[10] = VGA_DefaultEntry('d');  
+}  

@@ -5,11 +5,9 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 
-build ./build/boot/boot.bin: compile-asm ./src/boot.s
-build ./build/boot.o: compile-asm ./src/boot.s
-build ./build/kernel.o: compile-c ./src/kernel.c
-build ./fgOS.bin: link ./
-build ./build/fgOS.flp: iso ./build/boot/boot.bin
-build ./build/fgOS.iso: iso ./build/fgOS.flp
+build ./build/bin/boot.o: compile-asm ./src/boot.s
+build ./build/bin/kernel.o: compile-c ./src/kernel.c
+build ./isodir/boot/fgOS.bin: link ./build/bin/boot.o ./build/bin/kernel.o
+build fgOS.iso: iso ./isodir
 
-default ./build/boot/boot.bin ./build/boot.o ./build/kernel.o ./fgOS.bin ./build/fgOS.flp ./build/fgOS.iso
+default ./build/bin/boot.o ./build/bin/kernel.o ./isodir/boot/fgOS.bin fgOS.iso

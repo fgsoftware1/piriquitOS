@@ -1,7 +1,4 @@
-#ENV VARIABLES
 GPPPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-LDPARAMS = -ffreestanding -O2 -nostdlib -shared
-DDPARAMS = status=noxfer conv=notrunc
 
 rule HELP
   command = ninja -t targets
@@ -11,16 +8,16 @@ rule CLEAN
   description = cleaning built files
 #compilers
 rule compile-c
-  command = gcc -c $in -o $out $GPPPARAMS
+  command = gcc -m32 -c $in -o $out $GPPPARAMS
   description = --GCC compiling $in
 rule compile-asm
-  command = as $in -o $out
+  command = as --32 $in -o $out
   description = --AS compiling $in
 #linkers
 rule link
-  command = ld -T src/linker.ld -o $out $LDPARAMS $in
+  command = ld -m elf_i386 -T src/linker.ld -o $out $in -nostdlib
   description = --LD linking $in
 #builders
 rule iso
-  command = dd $DDPARAMS if=$in of=$out
+  command = grub-mkrescue -o $out $in
   description = creating fgOS iso
