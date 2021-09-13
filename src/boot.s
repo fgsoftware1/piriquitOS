@@ -1,5 +1,5 @@
-.set FLAGS,    ALIGN | MEMINFO  
 .set MAGIC,    0x1BADB002       /* magic number */
+.set FLAGS,    0
 .set CHECKSUM, -(MAGIC + FLAGS) /* multiboot checksum */
 
 .section .multiboot
@@ -8,17 +8,17 @@
 .long FLAGS
 .long CHECKSUM
 
-stack_bottom:
-.skip 16384 # 16 KiB
+stackBottom:
+.skip 1024
 
-stack_top:
+stackTop:
 .section .text
 .global _start
 .type _start, @function
 
 _start:
 mov $stackTop, %esp
-call kernel_main
+call kernel_entry
 cli
 
 hltLoop:
