@@ -1,36 +1,28 @@
-BITS 16
+.set ALIGN,    1<<0             /* align loaded modules on page boundaries */
+.set MEMINFO,  1<<1             /* provide memory map */
+.set FLAGS,    ALIGN | MEMINFO  /* this is the Multiboot 'flag' field */
+.set MAGIC,    0x1BADB002       /* 'magic number' lets bootloader find the header */
+.set CHECKSUM, -(MAGIC + FLAGS) /* checksum of above, to prove we are multiboot */
 
-start:
-	mov ax, 07C0h
-	add ax, 288	
-	mov ss, ax
-	mov sp, 4096
+.section .multiboot
+.align 4
+.long MAGIC
+.long FLAGS
+.long CHECKSUM
+.section .bss
+.align 16
+stack_bottom:
+.skip 16384 # 16 KiB
+stack_top:
 
-	mov ax, 07C0h	
-	mov ds, ax
-
-
-	mov si, text_string	
-	call print_string
-
-	jmp $		
-
-
-	text_string db 'Welcome to fgOS!', 0
-
-
-print_string:			
-	mov ah, 0Eh	
-.repeat:
-	lodsb			
-	cmp al, 0
-	je .done		
-	int 10h			
-	jmp .repeat
-
-.done:
-	ret
-
-
-	times 510-($-$$) db 0	
-	dw 0xAA55		; 
+.section .text
+.global _start
+.type _start, @function
+_start:
+    mov $stack_top, %esp
+    call kernel_main
+    cli 
+1:  hlt
+    jmp 1b
+ 
+.size _start, . - _start

@@ -6,7 +6,10 @@ build help: HELP
 build clean: CLEAN
 
 build ./build/boot/boot.bin: compile-asm ./src/boot.s
+build ./build/boot.o: compile-asm ./src/boot.s
+build ./build/kernel.o: compile-c ./src/kernel.c
+build ./fgOS.bin: link ./
 build ./build/fgOS.flp: iso ./build/boot/boot.bin
 build ./build/fgOS.iso: iso ./build/fgOS.flp
 
-default ./build/boot/boot.bin ./build/fgOS.flp ./build/fgOS.iso
+default ./build/boot/boot.bin ./build/boot.o ./build/kernel.o ./fgOS.bin ./build/fgOS.flp ./build/fgOS.iso
