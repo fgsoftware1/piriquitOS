@@ -1,4 +1,4 @@
-FROM library/ubuntu:rolling
+FROM library/ubuntu:focal
 
 VOLUME /home/admin/Desktop/projects
 WORKDIR /home/admin/Desktop/projects
