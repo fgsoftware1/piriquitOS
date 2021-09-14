@@ -1,4 +1,4 @@
-GPPPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+GPPPARAMS = -I src/include -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 
 rule HELP
   command = ninja -t targets
@@ -8,14 +8,14 @@ rule CLEAN
   description = cleaning built files
 #compilers
 rule compile-c
-  command = gcc -m32 -c $in -o $out $GPPPARAMS
+  command = gcc -c $in -o $out $GPPPARAMS
   description = --GCC compiling $in
 rule compile-asm
-  command = as --32 $in -o $out
-  description = --AS compiling $in
+  command = nasm -f elf64 $in -o $out
+  description = --NASM compiling $in
 #linkers
 rule link
-  command = ld -m elf_i386 -T src/linker.ld -o $out $in -nostdlib
+  command = ld -n -o $out -T src/linker.ld $in
   description = --LD linking $in
 #builders
 rule iso
