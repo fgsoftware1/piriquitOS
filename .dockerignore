@@ -1,8 +1,8 @@
 #folders
+/.github
 /.vscode
-/bin
+/build
 /docs
-/utils
 #especific files
 README.md
 .ninja_deps

@@ -1,6 +1,6 @@
 #folders
 /.vscode
-#especific ffiles
+#especific files
 .ninja_deps
 .ninja_log
 #files by extension
