@@ -4,7 +4,7 @@
 #include <stddef.h>
 
 enum {
-    PRINT_COLOR_BLACK = 0,
+  PRINT_COLOR_BLACK = 0,
 	PRINT_COLOR_BLUE = 1,
 	PRINT_COLOR_GREEN = 2,
 	PRINT_COLOR_CYAN = 3,
