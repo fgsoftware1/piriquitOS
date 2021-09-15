@@ -6,11 +6,13 @@ build help: HELP
 build clean: CLEAN
 
 build ./build/bin/kernel.o: compile-c ./src/kernel.c
+build ./build/bin/print.o: compile-c ./src/print.c
 
 build ./build/bin/main.o: compile-asm ./src/main.asm
+build ./build/bin/main64.o: compile-asm ./src/main64.asm
 build ./build/bin/header.o: compile-asm ./src/header.asm
 
-build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o
+build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/print.o
 build ./build/fgOS.iso: iso ./isodir
 
-default ./build/bin/main.o ./build/bin/header.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
+default ./build/bin/kernel.o ./build/bin/main.o ./build/bin/main64.o ./build/bin/header.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
