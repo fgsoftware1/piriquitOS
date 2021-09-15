@@ -1,5 +1,3 @@
-GPPPARAMS = -I src/include -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-
 rule HELP
   command = ninja -t targets
   description = targets available:
@@ -8,16 +6,16 @@ rule CLEAN
   description = cleaning built files
 #compilers
 rule compile-c
-  command = gcc -c $in -o $out $GPPPARAMS
+  command = gcc -c -I src/include -ffreestanding $in -o $out
   description = --GCC compiling $in
 rule compile-asm
   command = nasm -f elf64 $in -o $out
-  description = --NASM compiling $in
+  description = --NASM compiling $in 
 #linkers
 rule link
   command = ld -n -o $out -T src/linker.ld $in
   description = --LD linking $in
 #builders
 rule iso
-  command = grub-mkrescue -o $out $in
+  command = grub-mkrescue /usr/lib/grub/i386-pc -o $out $in
   description = creating fgOS iso
