@@ -15,4 +15,4 @@ build ./build/bin/header.o: compile-asm ./src/header.asm
 build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/print.o
 build ./build/fgOS.iso: iso ./isodir
 
-default ./build/bin/kernel.o ./build/bin/main.o ./build/bin/main64.o ./build/bin/header.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
+default ./build/bin/kernel.o ./build/bin/print.o ./build/bin/main.o ./build/bin/main64.o ./build/bin/header.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
