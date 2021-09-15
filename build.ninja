@@ -5,9 +5,11 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 
+build ./build/bin/kernel.o: compile-c ./src/kernel.c
+
 build ./build/bin/main.o: compile-asm ./src/main.asm
 build ./build/bin/header.o: compile-asm ./src/header.asm
-build ./build/bin/kernel.o: compile-c ./src/kernel.c
+
 build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o
 build ./build/fgOS.iso: iso ./isodir
 
