@@ -5,8 +5,8 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 
-build ./build/bin/kernel.o: compile-c ./src/kernel.c
-build ./build/bin/print.o: compile-c ./src/print.c
+build ./build/bin/kernel.o: compile-c ./src/kernel/kernel.c
+build ./build/bin/print.o: compile-c ./src/kernel/print.c
 
 build ./build/bin/main.o: compile-asm ./src/main.asm
 build ./build/bin/main64.o: compile-asm ./src/main64.asm
