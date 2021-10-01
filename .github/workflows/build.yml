@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: m4
       run: aclocal
     - name: autoconf
-      run: autoconf 
-    - name: autoreconf
-      run: autoreconf
+      run: autoconf
     - name: automake
       run: automake --add-missing
+    - name: autoreconf
+      run: autoreconf
     - name: configure
       run: ./configure
     - name: make

@@ -2,8 +2,7 @@
 
 aclocal
 autoconf
+automake --add-missing
 autoreconf
-automake
---add-missing
 ./configure
 make
