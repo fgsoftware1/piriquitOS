@@ -20,3 +20,4 @@ missing
 install-sh
 config.h
 compile
+/aclocal.m4

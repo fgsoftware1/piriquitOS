@@ -5,16 +5,12 @@ Compile
 +------------+----------------------------+
 | OS         | instructions               |
 +============+============================+
-||           || 1. ninja                   |
-||           ||                           |
-|| ninja     ||                           |
-||           ||                           |
-||           ||                           |
+|| ninja     || 1. ninja                  |
 +------------+----------------------------+
 ||           || 1. aclocal                |
 ||           || 2. autoconf               |
-|| autotools || 3. automake --add-missing |
-||           || 4. autoreconf             |
+|| autotools || 3. autoreconf             |
+||           || 4. automake --add-missing |
 ||           || 5. ./configure            |
 ||           || 6. make                   |
 +------------+----------------------------+
