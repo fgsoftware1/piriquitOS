@@ -1,10 +1,10 @@
-#folders
 /.vscode
-#especific files
 .ninja_deps
 .ninja_log
-#files by extension
 *.iso
 *.flp
 *.o
 *.bin
+/configure
+/autom4te.cache
+/config.log
