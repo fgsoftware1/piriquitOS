@@ -1,0 +1,27 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: m4
+      run: aclocal
+    - name: autoconf
+      run: autoconf 
+    - name: autoreconf
+      run: autoreconf
+    - name: automake
+      run: automake --add-missing
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
