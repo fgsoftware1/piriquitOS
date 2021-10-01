@@ -1,0 +1,7 @@
+AC_PREREQ([2.69])
+AC_INIT([fgOS], [1.0], [https://github.com/fgsoftware1/fgOS/issues])
+AC_CONFIG_SRCDIR([src/include/print.h])
+AC_CONFIG_HEADERS([config.h])
+AC_CHECK_HEADERS([src/include/*])
+AM_INIT_AUTOMAKE(fgOS, 1)
+AC_OUTPUT(Makefile src/Makefile)
