@@ -20,5 +20,3 @@ missing
 install-sh
 config.h
 compile
-src/Makefile
-src/Makefile.in
