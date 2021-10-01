@@ -12,3 +12,13 @@
 /Makefile
 /Makefile.in
 /stamp-h1
+/config.h.in
+/INSTALL
+src/Makefile.in
+src/Makefile
+missing
+install-sh
+config.h
+compile
+src/Makefile
+src/Makefile.in
