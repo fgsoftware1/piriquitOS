@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 VOLUME /home/admin/Desktop/projects
 WORKDIR /home/admin/Desktop/projects
