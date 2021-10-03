@@ -1,5 +1,5 @@
 GCCFLAGS = -c -I include/ -ffreestanding
-LDFLAGS = -n -o -T linker.ld
+LDFLAGS = -n -o -T ./linker.ld
 ASFLAGS = -f elf64
 
 .PHONY: all
