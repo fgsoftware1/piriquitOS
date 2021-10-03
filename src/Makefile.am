@@ -11,10 +11,10 @@ ASFLAGS = -f elf64
 ../build/bin/main.o: kernel/main.asm
 	nasm $(ASFLAGS) -o $@ $<
 
-../build/bin/main.o: kernel/main64.asm
+../build/bin/main64.o: kernel/main64.asm
 	nasm $(ASFLAGS) -o $@ $<
 
-../build/bin/main.o: kernel/header.asm
+../build/bin/header.o: kernel/header.asm
 	nasm $(ASFLAGS) -o $@ $<
 
 ../isodir/boot/kernel.bin: linker.ld ../build/bin/main.o ../build/bin/header.o ../build/bin/main64.o ../build/bin/kernel.o ../build/bin/print.o
