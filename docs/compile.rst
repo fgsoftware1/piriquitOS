@@ -7,10 +7,8 @@ Compile
 +============+============================+
 | ninja      | 1. ninja                   |
 +------------+----------------------------+
-||           || 1. aclocal                |
-||           || 2. autoconf               |
-|| autotools || 3. automake --add-missing |
-||           || 4. autoreconf             |
-||           || 5. ./configure            |
-||           || 6. make                   |
+||           || 1. automake --add-missing |
+||           || 2. autoreconf             |
+|| autotools || 3. ./configure            |
+||           || 4. make                   |
 +------------+----------------------------+
