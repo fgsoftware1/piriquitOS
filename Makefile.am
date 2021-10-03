@@ -1,2 +1,2 @@
-UTOMAKE_OPTIONS = foreign
+AUTOMAKE_OPTIONS = foreign
 SUBDIRS = src
