@@ -7,7 +7,7 @@ objects = ../build/bin/main.o \
 					../build/bin/kernel.o
 
 .PHONY: all
-all: ../build/bin/kernel.o ../build/bin/main.o ../build/bin/main64.o ../build/bin/header.o ../isodir/boot/kernel.bin ../build/fgOS.iso
+all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin/main64.o ../build/bin/header.o ../isodir/boot/kernel.bin ../build/fgOS.iso
 
 ../build/bin/kernel.o: ./kernel/kernel.c ./include/print.h
 	gcc $(GCCFLAGS) -o $@ $<
