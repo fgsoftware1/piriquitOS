@@ -13,5 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: deps
+      run: bash ./linux-deps.sh
     - name: build
       run: bash ./autogen.sh
