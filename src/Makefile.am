@@ -20,7 +20,7 @@ all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin
 	nasm $(ASFLAGS) -o $@ $<
 
 ../isodir/boot/kernel.bin: ../build/bin/main.o ../build/bin/header.o ../build/bin/main64.o ../build/bin/kernel.o ../build/bin/print.o
-	ld -n -T linker.ld $< -o $@
+	ld -T linker.ld $< -o $@
 
 ../build/fgOS.iso: ../isodir/
 	grub-mkrescue /usr/lib/grub/i386-pc -o $@ $<
