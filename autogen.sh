@@ -1,5 +1,5 @@
 #! /bin/bashclear
-aclocal
+automake --add-missing
 autoreconf
 ./configure
 make
