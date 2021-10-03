@@ -1,5 +1,4 @@
 GCCFLAGS = -c -I include/ -ffreestanding
-LDFLAGS = -n -o -T ./linker.ld
 ASFLAGS = -f elf64
 
 .PHONY: all
@@ -20,8 +19,8 @@ all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin
 ../build/bin/header.o: kernel/header.asm
 	nasm $(ASFLAGS) -o $@ $<
 
-../isodir/boot/kernel.bin: linker.ld ../build/bin/main.o ../build/bin/header.o ../build/bin/main64.o ../build/bin/kernel.o ../build/bin/print.o
-	ld $(LDFLAGS) -o $@ $<
+../isodir/boot/kernel.bin: ../build/bin/main.o ../build/bin/header.o ../build/bin/main64.o ../build/bin/kernel.o ../build/bin/print.o
+	ld -n -T linker.ld $< -o $@
 
 ../build/fgOS.iso: ../isodir/
 	grub-mkrescue /usr/lib/grub/i386-pc -o $@ $<
