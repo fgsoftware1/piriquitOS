@@ -2,6 +2,9 @@ GCCFLAGS = -c -I include/ -ffreestanding
 LDFLAGS = -n -o -T linker.ld
 ASFLAGS = -f elf64
 
+.PHONY: all
+all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin/main64.o ../build/bin/header.o ../isodir/boot/kernel.bin ../build/fgOS.iso
+
 ../build/bin/kernel.o: ./kernel/kernel.c ./include/print.h
 	gcc $(GCCFLAGS) -o $@ $<
 
