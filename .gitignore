@@ -13,3 +13,7 @@
 src/Makefile.in
 src/Makefile
 config.h
+compile
+INSTALL
+missing
+install-sh
