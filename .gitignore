@@ -10,10 +10,9 @@
 /config.status
 /stamp-h1
 /config.h.in
-src/Makefile.in
-src/Makefile
 config.h
 compile
 INSTALL
 missing
 install-sh
+/config.h.in~
