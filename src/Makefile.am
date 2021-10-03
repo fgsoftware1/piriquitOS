@@ -12,7 +12,7 @@ all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin
 ../build/bin/kernel.o: ./kernel/kernel.c ./include/print.h
 	gcc $(GCCFLAGS) -o $@ $<
 
-../build/bin/print.o: ./include/print.h
+../build/bin/print.o: ./kernel/print.c ./include/print.h
 	gcc $(GCCFLAGS) -o $@ $<
 
 ../build/bin/main.o: kernel/main.asm
