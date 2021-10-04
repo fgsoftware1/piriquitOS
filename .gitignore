@@ -16,3 +16,4 @@ INSTALL
 missing
 install-sh
 /config.h.in~
+/src/Makefile.in
