@@ -6,14 +6,14 @@ rule CLEAN
   description = cleaning built files
 #compilers
 rule compile-c
-  command = gcc -c -I src/include -ffreestanding $in -o $out
+  command = gcc -c -I src/include/ -ffreestanding $in -o $out
   description = --GCC compiling $in
 rule compile-asm
   command = nasm -f elf64 $in -o $out
-  description = --NASM compiling $in 
+  description = --NASM compiling $in
 #linkers
 rule link
-  command = ld -n -o $out -T src/linker.ld $in
+  command = ld -T src/linker.ld -o $out $in
   description = --LD linking $in
 #builders
 rule iso
