@@ -1,4 +1,4 @@
-#! /bin/bashclear
+#! /bin/bash
 aclocal
 automake --add-missing
 autoconf
