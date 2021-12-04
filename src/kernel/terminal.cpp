@@ -2,6 +2,11 @@
 #include "../include/string.hpp"
 #include "../include/vga.hpp"
 
+size_t terminal_row;
+size_t terminal_column;
+uint8_t terminal_color;
+uint16_t* terminal_buffer;
+
 void terminal_initialize()
 {
 	terminal_row = 0;
