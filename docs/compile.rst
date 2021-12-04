@@ -3,7 +3,7 @@ Compile
 =======
 
 +------------+----------------------------+
-| OS         | instructions               |
+| compiler   | instructions               |
 +============+============================+
 || autotools || sudo bash fgOS/autogen.sh |
 +------------+----------------------------+
