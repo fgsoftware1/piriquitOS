@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-enum
+enum vga_color
 {
 	COLOR_BLACK = 0,
 	COLOR_BLUE = 1,
@@ -24,5 +24,5 @@ enum
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
-uint8_t vga_entry_color(uint8_t fg, uint8_t bg);
-uint16_t vga_entry(unsigned char uc, uint8_t color);
+uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
+uint16_t vga_entry(char c, uint8_t color);
