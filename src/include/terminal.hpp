@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stddef.h>
 
 size_t terminal_row;
 size_t terminal_column;
