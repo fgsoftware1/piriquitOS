@@ -1,6 +1,6 @@
 GCCFLAGS = -c -I include/ -ffreestanding -fpermissive
 ASFLAGS = -f elf64
-LDFLAGS = -nostdlib -nodefaultlibs -lgcc
+LDFLAGS = -nostdlib -nodefaultlibs
 objects = ../build/bin/main.o \
 					../build/bin/header.o \
 					../build/bin/main64.o \
