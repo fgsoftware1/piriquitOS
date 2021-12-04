@@ -1,6 +1,6 @@
 #include "./include/vga.hpp"
 
-uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg)
+uint8_t vga_entry_color(uint8_t fg, uint8_t bg)
 {
   return fg | bg << 4;
 }
