@@ -5,10 +5,5 @@ Compile
 +------------+----------------------------+
 | OS         | instructions               |
 +============+============================+
-| ninja      | 1. ninja                   |
-+------------+----------------------------+
-||           || 1. automake --add-missing |
-||           || 2. autoreconf             |
-|| autotools || 3. ./configure            |
-||           || 4. make                   |
+|| autotools || sudo bash fgOS/autogen.sh |
 +------------+----------------------------+
