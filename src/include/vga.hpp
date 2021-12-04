@@ -1,8 +1,8 @@
-#include <stdint.h>
-#include <stddef.h>
+#ifndef VGA_HPP
+# define VGA_HPP
 
-static const size_t VGA_WIDTH = 80;
-static const size_t VGA_HEIGHT = 24;
+#include <stddef.h>
+#include <stdint.h>
 
 enum vga_color
 {
@@ -24,5 +24,10 @@ enum vga_color
 	COLOR_WHITE = 15,
 };
 
-uint8_t make_color(enum vga_color fg, enum vga_color bg);
-uint16_t make_vgaentry(char c, uint8_t color);
+static const size_t VGA_WIDTH = 80;
+static const size_t VGA_HEIGHT = 25;
+
+uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
+uint16_t vga_entry(unsigned char uc, uint8_t color);
+
+#endif
