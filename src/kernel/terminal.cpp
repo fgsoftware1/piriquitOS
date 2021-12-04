@@ -18,9 +18,9 @@ void terminal_initialize()
 	}
 }
 
-void terminal_setcolor(uint8_t color)
+void terminal_setcolor(uint8_t fg, uint8_t bg)
 {
-	terminal_color = color;
+	terminal_color = fg, bg;
 }
 
 void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
