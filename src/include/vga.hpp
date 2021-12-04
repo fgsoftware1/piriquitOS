@@ -1,6 +1,3 @@
-#ifndef VGA_HPP
-#define VGA_HPP
-
 #include <stddef.h>
 #include <stdint.h>
 
@@ -29,5 +26,3 @@ static const size_t VGA_HEIGHT = 25;
 
 uint8_t vga_entry_color(uint8_t fg, uint8_t bg);
 uint16_t vga_entry(unsigned char uc, uint8_t color);
-
-#endif
