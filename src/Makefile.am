@@ -1,19 +1,36 @@
 GCCFLAGS = -c -I include/ -ffreestanding
 ASFLAGS = -f elf64
+LDFLAGS = -nostdlib -nodefaultlibs -lgcc
 objects = ../build/bin/main.o \
 					../build/bin/header.o \
 					../build/bin/main64.o \
-					../build/bin/print.o \
+					../build/bin/string.o \
+          ../build/bin/vga.o \
+          ../build/bin/terminal.o \
 					../build/bin/kernel.o
 
 .PHONY: all
-all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin/main64.o ../build/bin/header.o ../isodir/boot/kernel.bin ../build/fgOS.iso
+all:  ../build/bin/kernel.o \
+      ../build/bin/string.o \
+      ../build/bin/vga.o \
+      ../build/bin/terminal.o \
+      ../build/bin/main.o \
+      ../build/bin/main64.o \
+      ../build/bin/header.o \
+      ../isodir/boot/kernel.bin \
+      ../build/fgOS.iso
 
-../build/bin/kernel.o: ./kernel/kernel.c ./include/print.h
-	gcc $(GCCFLAGS) -o $@ $<
+../build/bin/kernel.o: ./kernel/kernel.cpp ./include/terminal.hpp ./include/vga.hpp
+	g++ $(GCCFLAGS) -o $@ $<
 
-../build/bin/print.o: ./kernel/print.c ./include/print.h
-	gcc $(GCCFLAGS) -o $@ $<
+../build/bin/print.o: ./kernel/string.cpp ./include/string.hpp
+	g++ $(GCCFLAGS) -o $@ $<
+
+../build/bin/vga.o: ./kernel/vga.cpp ./include/vga.hpp
+	g++ $(GCCFLAGS) -o $@ $<
+
+../build/bin/terminal.o: ./kernel/terminal.cpp ./include/terminal.hpp ./include/string.hpp ./include/vga.hpp
+	g++ $(GCCFLAGS) -o $@ $<
 
 ../build/bin/main.o: kernel/main.asm
 	nasm $(ASFLAGS) -o $@ $<
@@ -25,7 +42,7 @@ all: ../build/bin/kernel.o ../build/bin/print.o ../build/bin/main.o ../build/bin
 	nasm $(ASFLAGS) -o $@ $<
 
 ../isodir/boot/kernel.bin: linker.ld $(objects)
-	ld -T $< -o $@ $(objects)
+	ld -T $< -o $@ $(objects) $(LDFLAGS)
 
 ../build/fgOS.iso: ../isodir/
 	grub-mkrescue /usr/lib/grub/i386-pc -o $@ $<
