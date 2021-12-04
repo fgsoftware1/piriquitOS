@@ -1,4 +1,4 @@
-GCCFLAGS = -c -I include/ -ffreestanding
+GCCFLAGS = -c -I include/ -ffreestanding -fpermissive
 ASFLAGS = -f elf64
 LDFLAGS = -nostdlib -nodefaultlibs -lgcc
 objects = ../build/bin/main.o \
