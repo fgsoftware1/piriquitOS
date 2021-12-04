@@ -1,4 +1,4 @@
-GCCFLAGS = -c -I include/ -ffreestanding -fpermissive
+GCCFLAGS = -c -I include/ -ffreestandinng -fno-exceptions -fno-rtti -fpermissive
 ASFLAGS = -f elf64
 LDFLAGS = -nostdlib -nodefaultlibs
 objects = ../build/bin/main.o \
