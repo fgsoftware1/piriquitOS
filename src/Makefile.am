@@ -23,7 +23,7 @@ all:  ../build/bin/kernel.o \
 ../build/bin/kernel.o: ./kernel/kernel.cpp ./include/terminal.hpp ./include/vga.hpp
 	g++ $(GCCFLAGS) -o $@ $<
 
-../build/bin/print.o: ./kernel/string.cpp ./include/string.hpp
+../build/bin/string.o: ./kernel/string.cpp ./include/string.hpp
 	g++ $(GCCFLAGS) -o $@ $<
 
 ../build/bin/vga.o: ./kernel/vga.cpp ./include/vga.hpp
