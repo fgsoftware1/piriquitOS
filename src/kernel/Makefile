@@ -1,50 +1,51 @@
 include ../../Makefile.inc
 
-objects = ../../build/bin/main.o \
-					../../build/bin/header.o \
-					../../build/bin/main64.o \
-					../../build/bin/string.o \
-					../../build/bin/vga.o \
-					../../build/bin/terminal.o \
-					../../build/bin/kernel.o
+BINDIR = ../../build
+objects = $(BINDIR)/main.o \
+					$(BINDIR)/header.o \
+					$(BINDIR)/main64.o \
+					$(BINDIR)/string.o \
+					$(BINDIR)/vga.o \
+					$(BINDIR)/terminal.o \
+					$(BINDIR)/kernel.o
 
 .PHONY: all
-all:	../../build/bin/kernel.o \
-			../../build/bin/string.o \
-			../../build/bin/vga.o \
-			../../build/bin/terminal.o \
-			../../build/bin/main.o \
-			../../build/bin/main64.o \
-			../../build/bin/header.o \
+all:	$(BINDIR)/kernel.o \
+			$(BINDIR)/string.o \
+			$(BINDIR)/vga.o \
+			$(BINDIR)/terminal.o \
+			$(BINDIR)/main.o \
+			$(BINDIR)/main64.o \
+			$(BINDIR)/header.o \
 			../../isodir/boot/kernel.bin \
 			../../build/fgOS.iso \
 			../../build/fgOS.flp
 
-../../build/bin/kernel.o: ./kernel.cpp ../include/terminal.hpp ../include/vga.hpp
+$(BINDIR)/kernel.o: ./kernel.cpp ../include/terminal.hpp ../include/vga.hpp
 	@$(ECHO) --CXX compiling $<
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
-../../build/bin/string.o: ./string.cpp ../include/string.hpp
+$(BINDIR)/string.o: ./string.cpp ../include/string.hpp
 	@$(ECHO) --CXX compiling $<
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
-../../build/bin/vga.o: ./vga.cpp ../include/vga.hpp
+$(BINDIR)/vga.o: ./vga.cpp ../include/vga.hpp
 	@$(ECHO) --CXX compiling $<
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
-../../build/bin/terminal.o: ./terminal.cpp ../include/terminal.hpp ../include/string.hpp ../include/vga.hpp
+$(BINDIR)/terminal.o: ./terminal.cpp ../include/terminal.hpp ../include/string.hpp ../include/vga.hpp
 	@$(ECHO) --CXX compiling $<
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
-../../build/bin/main.o: ./main.asm
+$(BINDIR)/main.o: ./main.asm
 	@$(ECHO) --NASM compiling $<
 	@nasm $(ASFLAGS) -o $@ $<
 
-../../build/bin/main64.o: ./main64.asm
+$(BINDIR)/main64.o: ./main64.asm
 	@$(ECHO) --NASM compiling $<
 	@nasm $(ASFLAGS) -o $@ $<
 
-../../build/bin/header.o: ./header.asm
+$(BINDIR)/header.o: ./header.asm
 	@$(ECHO) --NASM compiling $<
 	@nasm $(ASFLAGS) -o $@ $<
 
