@@ -3,6 +3,6 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 # bootloader
-build ./build/bin/bootloader.o: compile-asm-bootloader bootloader.asm
+build ./build/bin/bootloader.o: compile-asm-bootloader ./src/bootloader/src/bootloader.asm
 
 default ./build/bin/bootloader.o
