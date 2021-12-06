@@ -18,6 +18,5 @@ build ./build/bin/vga.o: compile-cpp ./src/kernel/src/vga.cpp
 build ./isodir/boot/fgOS.bin: link ./build/bin/bootloader.o ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/terminal.o ./build/bin/vga.o
 # images
 build ./build/fgOS.iso: iso ./isodir
-build ./build/fgOS.flp: flp ./isodir
 
-default ./build/bin/bootloader.o ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/terminal.o ./build/bin/vga.o ./isodir/boot/fgOS.bin ./build/fgOS.iso ./build/fgOS.flp
+default ./build/bin/bootloader.o ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/terminal.o ./build/bin/vga.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
