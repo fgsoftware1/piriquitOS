@@ -1,0 +1,21 @@
+rule HELP
+  command = ninja -t targets
+  description = targets available:
+rule CLEAN
+  command = ninja -t clean
+  description = cleaning built files
+rule compile-c
+  command = gcc -c -I src/include -ffreestanding $in -o $out
+  description = --GCC compiling $in
+rule compile-asm-bootloader
+  command = nasm -f bin $in -o $out
+  description = --NASM compiling $in
+rule compile-asm-kernel
+  command = nasm -f elf64 $in -o $out
+  description = --NASM compiling $in
+rule link
+  command = ld -n -o $out -T src/linker.ld $in
+  description = --LD linking $in
+rule iso
+  command = grub-mkrescue /usr/lib/grub/i386-pc -o $out $in
+  description = creating fgOS iso
