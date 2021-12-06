@@ -1,3 +1,6 @@
 [submodule "src/bootloader"]
 	path = src/bootloader
 	url = https://github.com/fgsoftware1/fgOS-bootloader.git
+[submodule "src/kernel"]
+	path = src/kernel
+	url = https://github.com/fgsoftware1/fgOS-kernel.git

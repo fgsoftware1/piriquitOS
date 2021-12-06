@@ -8,5 +8,6 @@ ECHO = echo
 CXXFLAGS = -c -I ../include/ -ffreestanding -fno-exceptions -fno-rtti -fpermissive
 ASFLAGS	= -f elf64
 # directories
+BINDIR = ./build/bin
 KERNELDIR = ./src/kernel
-SUBDIRS = ./src/kernel
+BOOTLOADER = ./src/bootloader
