@@ -4,5 +4,12 @@ build help: HELP
 build clean: CLEAN
 # bootloader
 build ./build/bin/bootloader.o: compile-asm-bootloader ./src/bootloader/src/bootloader.asm
+# kernel
+
+# link
+build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/print.o
+# images
+build ./build/fgOS.iso: iso ./isodir
+build ./build/fgOS.flp: flp ./isodir
 
 default ./build/bin/bootloader.o
