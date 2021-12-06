@@ -6,16 +6,16 @@ build clean: CLEAN
 build ./build/bin/bootloader.o: compile-asm-bootloader ./src/bootloader/src/bootloader.asm
 # kernel
 # assembly
-build ./build/bin/main.o: compile-asm ./src/kernel/main.asm
-build ./build/bin/main64.o: compile-asm ./src/kernel/main64.asm
-build ./build/bin/header.o: compile-asm ./src/kernel/header.asm
+build ./build/bin/main.o: compile-asm-kernel ./src/kernel/main.asm
+build ./build/bin/main64.o: compile-asm-kernel ./src/kernel/main64.asm
+build ./build/bin/header.o: compile-asm-kernel ./src/kernel/header.asm
 # C
 build ./build/bin/kernel.o: compile-c ./src/kernel/src/kernel.cpp
 build ./build/bin/string.o: compile-c ./src/kernel/src/string.c
 build ./build/bin/terminal.o: compile-c ./src/kernel/src/terminal.c
 build ./build/bin/vga.o: compile-c ./src/kernel/src/vga.c
 # link
-build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/print.o
+build ./isodir/boot/fgOS.bin: link ./build/bin/bootloader.o ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/terminal.o ./build/bin/vga.o
 # images
 build ./build/fgOS.iso: iso ./isodir
 build ./build/fgOS.flp: flp ./isodir
