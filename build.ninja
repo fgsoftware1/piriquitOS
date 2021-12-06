@@ -10,10 +10,10 @@ build ./build/bin/main.o: compile-asm-kernel ./src/kernel/main.asm
 build ./build/bin/main64.o: compile-asm-kernel ./src/kernel/main64.asm
 build ./build/bin/header.o: compile-asm-kernel ./src/kernel/header.asm
 # C
-build ./build/bin/kernel.o: compile-c ./src/kernel/src/kernel.cpp
-build ./build/bin/string.o: compile-c ./src/kernel/src/string.c
-build ./build/bin/terminal.o: compile-c ./src/kernel/src/terminal.c
-build ./build/bin/vga.o: compile-c ./src/kernel/src/vga.c
+build ./build/bin/kernel.o: compile-cpp ./src/kernel/src/kernel.cpp
+build ./build/bin/string.o: compile-cpp ./src/kernel/src/string.cpp
+build ./build/bin/terminal.o: compile-cpp ./src/kernel/src/terminal.cpp
+build ./build/bin/vga.o: compile-cpp ./src/kernel/src/vga.cpp
 # link
 build ./isodir/boot/fgOS.bin: link ./build/bin/bootloader.o ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/terminal.o ./build/bin/vga.o
 # images
