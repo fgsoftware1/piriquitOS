@@ -19,6 +19,3 @@ rule link
 rule iso
   command = grub-mkrescue /usr/lib/grub/i386-pc -o $out $in
   description = creating fgOS iso
-rule flp
-  command = grub-mkrescue /usr/lib/grub/i386-pc -o $out $in
-  description = creating fgOS floppy
