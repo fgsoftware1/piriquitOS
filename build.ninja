@@ -20,4 +20,4 @@ build ./isodir/boot/fgOS.bin: link ./build/bin/bootloader.o ./build/bin/main.o .
 build ./build/fgOS.iso: iso ./isodir
 build ./build/fgOS.flp: flp ./isodir
 
-default ./build/bin/bootloader.o
+default ./build/bin/bootloader.o ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/terminal.o ./build/bin/vga.o ./isodir/boot/fgOS.bin ./build/fgOS.iso ./build/fgOS.flp
