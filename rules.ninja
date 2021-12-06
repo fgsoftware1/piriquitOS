@@ -4,8 +4,8 @@ rule HELP
 rule CLEAN
   command = ninja -t clean
   description = cleaning built files
-rule compile-c
-  command = gcc -c -I src/include -ffreestanding $in -o $out
+rule compile-cpp
+  command = g++ -c -I ../include/ -ffreestanding -fno-exceptions -fno-rtti -fpermissive $in -o $out
   description = --GCC compiling $in
 rule compile-asm-bootloader
   command = nasm -f bin $in -o $out
