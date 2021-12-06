@@ -4,3 +4,5 @@
 *.o
 *.bin
 /.dccache
+/.ninja_deps
+/.ninja_log
