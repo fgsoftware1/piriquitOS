@@ -6,9 +6,9 @@ build clean: CLEAN
 build ./build/bin/bootloader.o: compile-asm-bootloader ./src/bootloader/src/bootloader.asm
 # kernel
 # assembly
-build ./build/bin/main.o: compile-asm-kernel ./src/kernel/main.asm
-build ./build/bin/main64.o: compile-asm-kernel ./src/kernel/main64.asm
-build ./build/bin/header.o: compile-asm-kernel ./src/kernel/header.asm
+build ./build/bin/main.o: compile-asm-kernel ./src/kernel/src/main.asm
+build ./build/bin/main64.o: compile-asm-kernel ./src/kernel/src/main64.asm
+build ./build/bin/header.o: compile-asm-kernel ./src/kernel/src/header.asm
 # C
 build ./build/bin/kernel.o: compile-cpp ./src/kernel/src/kernel.cpp
 build ./build/bin/string.o: compile-cpp ./src/kernel/src/string.cpp
