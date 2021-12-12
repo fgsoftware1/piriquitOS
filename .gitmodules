@@ -1,3 +1,0 @@
-[submodule "src/kernel"]
-	path = src/kernel
-	url = https://github.com/fgsoftware1/fgOS-kernel.git
