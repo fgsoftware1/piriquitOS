@@ -1,6 +1,4 @@
 .vscode/
-*.iso
-*.flp
 *.o
 *.bin
 /.dccache
