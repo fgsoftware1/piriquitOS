@@ -1,6 +1,7 @@
 .vscode/
 *.o
 *.bin
+*.iso
 /.dccache
 /.ninja_deps
 /.ninja_log
