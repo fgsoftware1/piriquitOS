@@ -2,8 +2,7 @@
 fgOS
 ====
 
-.. image:: https://app.codacy.com/project/badge/Grade/ed7a424ed40f46b7951a63c882f6fbf6
-:target: https://www.codacy.com/gh/fgsoftware1/fgOS/dashboard?utm_source=github.comamputm_medium=referralamp;utm_content=fgsoftware1/fgOS&amp;utm_campaign=Badge_Grade
+.. image:: https://app.codacy.com/project/badge/Grade/ed7a424ed40f46b7951a63c882f6fbf6:target: https://www.codacy.com/gh/fgsoftware1/fgOS/dashboard?utm_source=github.comamputm_medium=referralamp;utm_content=fgsoftware1/fgOS&amp;utm_campaign=Badge_Grade
 
 =============
 documentation
