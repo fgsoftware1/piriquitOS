@@ -9,6 +9,6 @@ fgOS
 documentation
 =============
 
-[Setup](https://github.com/fgsoftware1/fgOS-BETA/blob/master/docs/setup.rst)
+.. Setup: https://github.com/fgsoftware1/fgOS-BETA/blob/master/docs/setup.rst
 
-[Compile](https://github.com/fgsoftware1/fgOS-BETA/blob/master/docs/compile.rst)
+.. Compile: https://github.com/fgsoftware1/fgOS-BETA/blob/master/docs/compile.rst
