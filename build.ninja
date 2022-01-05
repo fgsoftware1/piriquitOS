@@ -2,9 +2,6 @@ include rules.ninja
 
 build help: HELP
 build clean: CLEAN
-# bootloader
-# build ./build/bin/bootloader.o: compile-asm-bootloader ./src/bootloader/src/bootloader.asm
-# kernel
 # assembly
 build ./build/bin/main.o: compile-asm-kernel ./src/kernel/src/main.asm
 build ./build/bin/main64.o: compile-asm-kernel ./src/kernel/src/main64.asm
