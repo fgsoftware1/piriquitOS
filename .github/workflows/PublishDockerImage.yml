@@ -4,10 +4,16 @@ on:
   push:
     paths:
       - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/docker-publish.yml'
 jobs:
   push_to_registries:
     name: Push Docker image to multiple registries
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      FORCE_COLOR: 1
     permissions:
       packages: write
       contents: read
@@ -33,9 +39,9 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: |
-            fgygh/fgos-env
+            fgygh/fglanguage
             ghcr.io/${{ github.repository }}
-
+          tags: latest
       - name: Build and push Docker images
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
