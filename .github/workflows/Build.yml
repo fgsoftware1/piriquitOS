@@ -16,8 +16,14 @@ jobs:
       - name: build 
         run: ninja
         
-      - uses: actions/upload-artifact@v2
-        name: capture build artifacts
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v2
         with:
             name: Artifacts
             path: build/
+            
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: fgOS.iso
