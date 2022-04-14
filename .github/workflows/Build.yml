@@ -11,8 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: deps
         run: sudo bash linux-deps.sh
       - name: build 
         run: ninja
+        
+      - uses: actions/upload-artifact@v2
+        name: capture build artifacts
+        with:
+            name: Artifacts
+            path: build/
