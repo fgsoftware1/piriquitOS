@@ -29,5 +29,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "fgOS.iso"
-          tag_name: fgOS
+          tag: fgOS
           token: ${{ secrets.TOKEN }}
