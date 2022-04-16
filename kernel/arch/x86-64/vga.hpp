@@ -28,6 +28,6 @@ static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
 uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
-uint16_t vga_entry(char c, uint8_t color);
+uint16_t vga_entry(uint8_t c, uint8_t color);
 
 #endif
