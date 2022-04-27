@@ -5,9 +5,6 @@ size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
 
-long current_line = 0;
-long current_column = 0;
-
 /*#######################################
 ###################VGA###################
 #######################################*/
@@ -23,7 +20,7 @@ uint16_t vga_entry(char c, uint8_t color)
 
 
 /*##########################################
-#################CONSOLE###################
+#################TERMINAL###################
 ##########################################*/
 void terminal_initialize()
 {
