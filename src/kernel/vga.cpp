@@ -1,12 +1,27 @@
-#include "./include/terminal.hpp"
-#include "./include/string.hpp"
-#include "./include/vga.hpp"
+#include "./include/driver/vga.hpp"
 
 size_t terminal_row;
 size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
 
+/*#######################################
+###################VGA###################
+#######################################*/
+uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg)
+{
+  return fg | bg << 4;
+}
+
+uint16_t vga_entry(char c, uint8_t color)
+{
+  return (uint16_t)c | (uint16_t)color << 8;
+}
+
+
+/*##########################################
+#################TERMINAL###################
+##########################################*/
 void terminal_initialize()
 {
 	terminal_row = 0;
@@ -28,7 +43,7 @@ void terminal_setcolor(uint8_t fg, uint8_t bg)
 	terminal_color = fg, bg;
 }
 
-void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
+void terminal_putentry(char c, uint8_t color, size_t x, size_t y)
 {
 	const size_t index = y * VGA_WIDTH + x;
 	terminal_buffer[index] = vga_entry(c, color);
@@ -36,7 +51,7 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
 
 void terminal_putchar(char c)
 {
-	terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
+	terminal_putentry(c, terminal_color, terminal_column, terminal_row);
 	if ( ++terminal_column == VGA_WIDTH )
 	{
 		terminal_column = 0;

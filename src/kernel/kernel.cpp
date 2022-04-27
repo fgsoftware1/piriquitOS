@@ -1,5 +1,4 @@
-#include "./include/terminal.hpp"
-#include "./include/vga.hpp"
+#include "./include/driver/vga.hpp"
 
 extern "C" void kernel_main() {
   terminal_initialize();
