@@ -18,3 +18,19 @@ jobs:
         run: sudo bash linux-deps.sh
       - name: build
         run: ninja
+<<<<<<< HEAD
+=======
+        
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: Artifacts
+            path: build/
+            
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "fgOS.iso"
+          tag_name: fgOS
+          token: ${{ secrets.TOKEN }}
+>>>>>>> parent of 0140c26 (Update Build.yml)
