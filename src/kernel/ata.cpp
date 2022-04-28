@@ -1,10 +1,10 @@
-#include "ata.hpp"
-#include "kernel_utils.hpp"
-#include "timer.hpp"
-#include "memory.hpp"
-#include "thor.hpp"
-#include "interrupts.hpp"
-#include "console.hpp"
+#include "include/drivers/ata.hpp"
+#include "include/utils/kernel.hpp"
+#include "include/timer.hpp"
+#include "include/memory.hpp"
+#include "include/fg.hpp"
+#include "include/interrupts.hpp"
+#include "include/console.hpp"
 
 namespace
 {
