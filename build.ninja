@@ -14,15 +14,15 @@ build ./build/bin/irqs.o: compile-asm-kernel ./src/kernel/irqs.s
 build ./build/bin/isrs.o: compile-asm-kernel ./src/kernel/isrs.s
 # C
 build ./build/bin/kernel.o: compile-cpp ./src/kernel/kernel.cpp
-build ./build/bin/string.o: compile-cpp ./src/kernel/string.cpp
-build ./build/bin/vga.o: compile-cpp ./src/kernel/vga.cpp
+build ./build/bin/string.o: compile-cpp ./src/kernel/stl/string.cpp
+#build ./build/bin/vga.o: compile-cpp ./src/kernel/vga.cpp
 build ./build/bin/acpi.o: compile-cpp ./src/kernel/acpi.cpp
 build ./build/bin/arch.o: compile-cpp ./src/kernel/arch.cpp
 build ./build/bin/ata.o: compile-cpp ./src/kernel/ata.cpp
 build ./build/bin/interrupts.o: compile-cpp ./src/kernel/interrupts.cpp
 # link
-build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/arch.o ./build/bin/common.o ./build/bin/irqs.o ./build/bin/isrs.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o ./build/bin/acpi.o ./build/bin/ata.o ./build/bin/interrupts.o ./build/bin/asm/arch.o ./build/bin/arch.o ./build/bin/ata.o
+build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/arch.o ./build/bin/common.o ./build/bin/irqs.o ./build/bin/isrs.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/acpi.o ./build/bin/ata.o ./build/bin/interrupts.o ./build/bin/asm/arch.o ./build/bin/arch.o ./build/bin/ata.o
 # images
 build ./build/fgOS.iso: iso ./isodir
 
-default ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o ./build/bin/acpi.o ./build/bin/arch.o ./build/bin/asm/arch.o ./build/bin/ata.o ./build/bin/common.o ./build/bin/interrupts.o ./build/bin/irqs.o ./build/bin/isrs.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
+default ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/acpi.o ./build/bin/arch.o ./build/bin/asm/arch.o ./build/bin/ata.o ./build/bin/common.o ./build/bin/interrupts.o ./build/bin/irqs.o ./build/bin/isrs.o ./isodir/boot/fgOS.bin ./build/fgOS.iso

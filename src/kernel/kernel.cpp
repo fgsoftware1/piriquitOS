@@ -10,7 +10,6 @@
 
 extern "C"
 {
-
     void _init();
 
     void kernel_main()
