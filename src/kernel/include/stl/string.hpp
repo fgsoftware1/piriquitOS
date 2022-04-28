@@ -1,12 +1,14 @@
 #ifndef STRING_HPP
 #define STRING_HPP
 
-#include "stddef.h"
+#include "stl/types.hpp"
+#include "stl/algorithms.hpp"
+#include "stl/vector.hpp"
+#include <utility>
 
 namespace std
 {
     uint64_t str_len(const char *a);
-    size_t strlen(const char *str);
 
     template <typename CharT>
     struct basic_string
