@@ -8,7 +8,7 @@ rule compile-cpp
   command = g++ -c -I ./src/kernel/include -ffreestanding -fno-exceptions -fno-rtti -fpermissive $in -o $out
   description = --GCC compiling $in
 rule compile-asm-bootloader
-  command = nasm -f bin $in -o $out
+  command = nasm -f elf64 $in -o $out
   description = --NASM compiling $in
 rule compile-asm-kernel
   command = as -c $in -o $out
