@@ -7,8 +7,8 @@ build clean: CLEAN
 build ./build/bin/main.o: compile-asm-bootloader ./src/bootloader/main.asm
 build ./build/bin/main64.o: compile-asm-bootloader ./src/bootloader/main64.asm
 build ./build/bin/header.o: compile-asm-bootloader ./src/bootloader/header.asm
-build ./build/bin/common.o: compile-asm-kernel ./src/kernel/common.s
 #kernel
+build ./build/bin/common.o: compile-asm-kernel ./src/kernel/common.s
 build ./build/bin/asm/arch.o: compile-asm-kernel ./src/kernel/arch.s
 build ./build/bin/irqs.o: compile-asm-kernel ./src/kernel/irqs.s
 build ./build/bin/isrs.o: compile-asm-kernel ./src/kernel/isrs.s
