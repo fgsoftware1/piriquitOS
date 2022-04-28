@@ -1,4 +1,4 @@
-#include "./include/driver/vga.hpp"
+#include "./include/drivers/vga.hpp"
 
 size_t terminal_row;
 size_t terminal_column;

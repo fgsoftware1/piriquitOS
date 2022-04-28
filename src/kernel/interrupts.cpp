@@ -1,6 +1,6 @@
 #include "include/interrupts.hpp"
 #include "include/console.hpp"
-#include "kernel_utils.hpp"
+#include "include/utils/kernel.hpp"
 #include "include/gdt.hpp"
 #include "include/isrs.hpp"
 #include "include/irqs.hpp"

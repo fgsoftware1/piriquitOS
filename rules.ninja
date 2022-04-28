@@ -11,7 +11,7 @@ rule compile-asm-bootloader
   command = nasm -f elf64 $in -o $out
   description = --NASM compiling $in
 rule compile-asm-kernel
-  command = as -c $in -o $out
+  command = as -I src/kernel/ -c $in -o $out
   description = --AS compiling $in
 rule link
   command = ld -n -o $out -T src/linker.ld $in
