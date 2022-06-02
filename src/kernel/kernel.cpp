@@ -3,6 +3,6 @@
 extern "C" void kernel_main() {
   terminal_initialize();
   terminal_setcolor(COLOR_GREEN, COLOR_BLACK);
-  terminal_writestring("wellcome to fgOS!");
+  terminal_writestring("welcome to fgOS!");
   for(;;);
 }
