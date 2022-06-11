@@ -1,12 +1,4 @@
-#include "include/kernel.hpp"
-#include "include/memory.hpp"
-#include "include/timer.hpp"
-#include "include/shell.hpp"
-#include "include/disks.hpp"
-#include "include/drivers/acpi.hpp"
-#include "include/interrupts.hpp"
-#include "include/arch.hpp"
-#include "include/e820.hpp"
+#include "./include/driver/vga.hpp"
 
 extern "C" void kernel_main() {
   terminal_initialize();
