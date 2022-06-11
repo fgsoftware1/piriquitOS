@@ -3,16 +3,18 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 # assembly
-build ./build/bin/main.o: compile-asm-kernel ./src/bootloader/main.asm
-build ./build/bin/main64.o: compile-asm-kernel ./src/bootloader/main64.asm
-build ./build/bin/header.o: compile-asm-kernel ./src/bootloader/header.asm
-# C
+# bootloader
+build ./build/bin/main.o: compile-asm-bootloader ./src/bootloader/main.asm
+build ./build/bin/main64.o: compile-asm-bootloader ./src/bootloader/main64.asm
+build ./build/bin/header.o: compile-asm-bootloader ./src/bootloader/header.asm
+#kernel
+# CPP
 build ./build/bin/kernel.o: compile-cpp ./src/kernel/kernel.cpp
-build ./build/bin/string.o: compile-cpp ./src/kernel/string.cpp
 build ./build/bin/vga.o: compile-cpp ./src/kernel/vga.cpp
+
 # link
-build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o
+build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o
 # images
 build ./build/fgOS.iso: iso ./isodir
 
-default ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
+default ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
