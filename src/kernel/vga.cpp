@@ -1,3 +1,4 @@
+#include <cstring>
 #include "./include/drivers/vga.hpp"
 
 size_t terminal_row;
