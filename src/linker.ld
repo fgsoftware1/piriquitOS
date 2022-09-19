@@ -1,32 +1,26 @@
-ENTRY(start)
+ENTRY(loader)
 
 SECTIONS
 {
-	. = 1M;
+	. = 1M  ;
 
-	.boot :
-	{
-		KEEP(*(.multiboot_header))
-	}
-
-	.text BLOCK(4K) : ALIGN(4K)
+	.text :
 	{
 		*(.text)
 	}
 
-  .rodata BLOCK(4K) : ALIGN(4K)
+	.data :
 	{
-		*(.rodata)
-	}
+        start_ctors = .;
+        KEEP(*( .init_array ));
+        KEEP(*(SORT_BY_INIT_PRIORITY( .init_array.* )));
+        end_ctors = .;
 
-	.data BLOCK(4K) : ALIGN(4K)
-	{
 		*(.data)
 	}
 
-	.bss BLOCK(4K) : ALIGN(4K)
+	.bss :
 	{
-		*(COMMON)
 		*(.bss)
 	}
 }

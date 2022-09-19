@@ -30,16 +30,16 @@ static const size_t VGA_HEIGHT = 25;
 
 extern size_t terminal_row;
 extern size_t terminal_column;
-extern uint8_t terminal_color;
-extern uint16_t* terminal_buffer;
+extern tuc terminal_color;
+extern tus* terminal_buffer;
 
-uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
-uint16_t vga_entry(char c, uint8_t color);
+tuc vga_entry_color(enum vga_color fg, enum vga_color bg);
+tus vga_entry(c c, tuc color);
 
 void terminal_initialize();
-void terminal_setcolor(uint8_t fg, uint8_t bg);
-void terminal_putentry(uint8_t c, uint8_t color, size_t x, size_t y);
-void terminal_putchar(uint8_t c);
+void terminal_setcolor(tuc fg, tuc bg);
+void terminal_putentry(tuc c, tuc color, size_t x, size_t y);
+void terminal_putchar(tuc c);
 void terminal_writestring(const char* data);
 
 #endif
