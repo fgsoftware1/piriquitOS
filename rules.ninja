@@ -5,14 +5,14 @@ rule CLEAN
   command = ninja -t clean
   description = cleaning built files
 rule compile-cpp
-  command = g++ -c -I ./src/kernel/include -ffreestanding -fno-exceptions -fno-rtti -fpermissive $in -o $out
+  command = g++ -c -I ./src/kernel/include -std=c++11 -ffreestanding -fno-exceptions -fno-rtti -fpermissive $in -o $out
   description = --GCC compiling $in
 rule compile-asm-bootloader
-  command = nasm -f bin $in -o $out
-  description = --NASM compiling $in
-rule compile-asm-kernel
   command = nasm -f elf64 $in -o $out
   description = --NASM compiling $in
+rule compile-asm-kernel
+  command = as -I src/kernel/ -c $in -o $out
+  description = --AS compiling $in
 rule link
   command = ld -n -o $out -T src/linker.ld $in
   description = --LD linking $in
