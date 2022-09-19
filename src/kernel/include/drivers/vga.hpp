@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include "../stl/string.hpp"
+#include "../string.hpp"
 
 enum vga_color
 {
@@ -34,12 +34,12 @@ extern uint8_t terminal_color;
 extern uint16_t* terminal_buffer;
 
 uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
-uint16_t vga_entry(uint8_t c, uint8_t color);
+uint16_t vga_entry(char c, uint8_t color);
 
 void terminal_initialize();
 void terminal_setcolor(uint8_t fg, uint8_t bg);
-void terminal_putentry(char c, uint8_t color, size_t x, size_t y);
-void terminal_putchar(char c);
+void terminal_putentry(uint8_t c, uint8_t color, size_t x, size_t y);
+void terminal_putchar(uint8_t c);
 void terminal_writestring(const char* data);
 
 #endif
