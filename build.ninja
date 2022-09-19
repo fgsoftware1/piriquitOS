@@ -11,7 +11,6 @@ build ./build/bin/header.o: compile-asm-bootloader ./src/bootloader/header.asm
 
 #kernel
 build ./build/bin/kernel.o: compile-cpp ./src/kernel/kernel.cpp
-build ./build/bin/string.o: compile-cpp ./src/kernel/string.cpp
 build ./build/bin/vga.o: compile-cpp ./src/kernel/vga.cpp
 
 #link
