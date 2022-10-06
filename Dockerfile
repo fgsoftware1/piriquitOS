@@ -1,5 +1,5 @@
 #syntax=docker/dockerfile:1.3
-FROM ubuntu:jammy-20220815
+FROM ubuntu:22.04
 
 VOLUME /fgOS
 WORKDIR /fgOS
