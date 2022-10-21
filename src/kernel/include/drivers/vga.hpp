@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "../string.hpp"
+#include "../types.hpp"
 
 enum vga_color
 {
