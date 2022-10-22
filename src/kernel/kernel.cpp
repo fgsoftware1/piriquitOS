@@ -1,4 +1,3 @@
-#include "./include/types.hpp"
 #include "./include/drivers/vga.hpp"
 
 extern "C" void kernelMain()
