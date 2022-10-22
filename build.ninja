@@ -4,7 +4,7 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 
-# bootloader
+#bootloader
 build ./build/bin/main.o: compile-asm-bootloader ./src/bootloader/main.asm
 build ./build/bin/main64.o: compile-asm-bootloader ./src/bootloader/main64.asm
 build ./build/bin/header.o: compile-asm-bootloader ./src/bootloader/header.asm
@@ -15,9 +15,10 @@ build ./build/bin/vga.o: compile-cpp ./src/kernel/vga.cpp
 build ./build/bin/kernel.o: compile-cpp ./src/kernel/kernel.cpp
 
 #link
+#amd64
 build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o
 
-# image
+#images
 build ./build/fgOS.iso: iso ./isodir
 
 default ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o ./isodir/boot/fgOS.bin ./build/fgOS.iso

@@ -2,6 +2,7 @@
 *.o
 *.bin
 *.iso
+*.elf
 /.dccache
 /.ninja_deps
 /.ninja_log

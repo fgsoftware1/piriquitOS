@@ -4,20 +4,20 @@
 
 size_t terminal_row;
 size_t terminal_column;
-tuc terminal_color;
-tus* terminal_buffer;
+uc terminal_color;
+us* terminal_buffer;
 
 /*#######################################
 ###################VGA###################
 #######################################*/
-tuc vga_entry_color(enum vga_color fg, enum vga_color bg)
+uc vga_entry_color(enum vga_color fg, enum vga_color bg)
 {
   return fg | bg << 4;
 }
 
-tus vga_entry(c c, tuc color)
+us vga_entry(c c, uc color)
 {
-  return (tus)c | (tus)color << 8;
+  return (us)c | (us)color << 8;
 }
 
 
@@ -29,7 +29,7 @@ void terminal_initialize()
 	terminal_row = 0;
 	terminal_column = 0;
 	terminal_color = vga_entry_color(COLOR_LIGHT_GREY, COLOR_BLACK);
-	terminal_buffer = (tus*) 0xB8000;
+	terminal_buffer = (us*) 0xB8000;
 	for ( size_t y = 0; y < VGA_HEIGHT; y++ )
 	{
 		for ( size_t x = 0; x < VGA_WIDTH; x++ )
@@ -40,12 +40,12 @@ void terminal_initialize()
 	}
 }
 
-void terminal_setcolor(tuc fg, tuc bg)
+void terminal_setcolor(uc fg, uc bg)
 {
 	terminal_color = fg, bg;
 }
 
-void terminal_putentry(char c, tuc color, size_t x, size_t y)
+void terminal_putentry(char c, uc color, size_t x, size_t y)
 {
 	const size_t index = y * VGA_WIDTH + x;
 	terminal_buffer[index] = vga_entry(c, color);
