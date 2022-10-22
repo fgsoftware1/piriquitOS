@@ -1,13 +1,13 @@
 #ifndef TYPES_HPP
-#define TYPES_H
+#define TYPES_HPP
 
-    typedef char                        c;
-    typedef unsigned char             tuc;
-    typedef short                      ts;
-    typedef unsigned short            tus;
-    typedef int                        ti;
-    typedef unsigned int              tui;
-    typedef long long int            tlli;
-    typedef unsigned long long int  tulli;
+    typedef char                       c;
+    typedef unsigned char             uc;
+    typedef short                      s;
+    typedef unsigned short            us;
+    typedef int                        i;
+    typedef unsigned int              ui;
+    typedef long long int            lli;
+    typedef unsigned long long int  ulli;
 
 #endif
