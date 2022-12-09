@@ -4,21 +4,31 @@ include rules.ninja
 build help: HELP
 build clean: CLEAN
 
-#bootloader
-build ./build/bin/main.o: compile-asm-bootloader ./src/bootloader/main.asm
-build ./build/bin/main64.o: compile-asm-bootloader ./src/bootloader/main64.asm
-build ./build/bin/header.o: compile-asm-bootloader ./src/bootloader/header.asm
+#libc
+build ./build/libc/string.o: gcc ./src/arch/i386/kernel/include/libc/string.c
+build ./libs/libc.a: ar ./build/libc/string.o
 
-#kernel
-build ./build/bin/string.o: compile-cpp ./src/kernel/string.cpp
-build ./build/bin/vga.o: compile-cpp ./src/kernel/vga.cpp
-build ./build/bin/kernel.o: compile-cpp ./src/kernel/kernel.cpp
+#i386
+build ./build/i386/boot.o: nasm ./src/arch/i386/boot.asm
+build ./build/i386/gdt.asm.o: nasm ./src/arch/i386/kernel/gdt.asm
+build ./build/i386/idt.asm.o: nasm ./src/arch/i386/kernel/idt.asm
+build ./build/i386/irq.o: nasm ./src/arch/i386/kernel/irq.asm
+build ./build/i386/exceptions.o: nasm ./src/arch/i386/kernel/exceptions.asm
+build ./build/i386/gdt.c.o: gcc ./src/arch/i386/kernel/gdt.c
+build ./build/i386/idt.c.o: gcc ./src/arch/i386/kernel/idt.c
+build ./build/i386/isr.o: gcc ./src/arch/i386/kernel/isr.c
+build ./build/i386/io.o: gcc ./src/arch/i386/kernel/io.c
+build ./build/i386/vga.o: gcc ./src/arch/i386/kernel/drivers/vga.c
+build ./build/i386/pic.o: gcc ./src/arch/i386/kernel/drivers/pic.c
+build ./build/i386/keyboard.o: gcc ./src/arch/i386/kernel/drivers/keyboard.c
+build ./build/i386/console.o: gcc ./src/arch/i386/kernel/console.c
+build ./build/i386/kernel.o: gcc ./src/arch/i386/kernel/kernel.c
 
-#link
-#amd64
-build ./isodir/boot/fgOS.bin: link ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o
+build ./isodir/boot/fgOS-i386.bin: ld ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/gdt.c.o ./build/i386/idt.c.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/kernel.o
+build ./build/fgOS-i386.iso: iso ./isodir
 
-#images
-build ./build/fgOS.iso: iso ./isodir
+#phony
+build libc: phony ./build/libc/string.o ./libs/libc.a
+build i386: phony ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/kernel.o ./isodir/boot/fgOS-i386.bin ./build/fgOS-i386.iso
 
-default ./build/bin/main.o ./build/bin/header.o ./build/bin/main64.o ./build/bin/kernel.o ./build/bin/string.o ./build/bin/vga.o ./isodir/boot/fgOS.bin ./build/fgOS.iso
+default help
