@@ -64,10 +64,10 @@ void kmain()
     char buffer[255];
     const char *shell = "shell>";
 
+    console_init(COLOR_WHITE, COLOR_BLACK);
     gdt_init();
     idt_init();
     keyboard_init();
-    console_init(COLOR_WHITE, COLOR_BLACK);
 
     while (1)
     {
