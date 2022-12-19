@@ -74,7 +74,8 @@ void kmain()
         printf(shell);
         memset(buffer, 0, sizeof(buffer));
         getstr_bound(buffer, strlen(shell));
-        if (strlen(buffer) == 0)
+
+        if (strlen(buffer) == 0){
             continue;
         }
         if(strcmp(buffer, "clear") == 0)
@@ -92,8 +93,7 @@ void kmain()
         }else if (strcmp(buffer, "shutdown") == 0)
         {
             shutdown();
-        }else
-        {
+        }else{
             printf("invalid command: %s\n", buffer);
         }
     }
