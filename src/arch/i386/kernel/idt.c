@@ -18,6 +18,7 @@ void idt_set_entry(int index, u32 base, u16 seg_sel, u8 flags) {
 }
 
 void idt_init() {
+    printf("initiating IDT...\n");
     g_idt_ptr.base_address = (u32)g_idt;
     g_idt_ptr.limit = sizeof(g_idt) - 1;
     pic_init();

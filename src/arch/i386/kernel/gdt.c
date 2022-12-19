@@ -20,6 +20,7 @@ void gdt_set_entry(int index, u32 base, u32 limit, u8 access, u8 gran) {
 
 
 void gdt_init() {
+    printf("initiating GDT...\n");
     g_gdt_ptr.limit = sizeof(g_gdt) - 1;
     g_gdt_ptr.base_address = (u32)g_gdt;
 

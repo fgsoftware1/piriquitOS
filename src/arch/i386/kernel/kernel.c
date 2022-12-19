@@ -7,7 +7,7 @@
 #include "include/io.h"
 #include "./include/libc/include/defines.h"
 
-void __cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
+void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
     asmv("cpuid"
          : "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
@@ -66,11 +66,9 @@ void kmain()
 
     gdt_init();
     idt_init();
-
-    console_init(COLOR_WHITE, COLOR_BLACK);
     keyboard_init();
+    console_init(COLOR_WHITE, COLOR_BLACK);
 
-    printf("starting terminal...\n");
     while (1)
     {
         printf(shell);
@@ -78,7 +76,11 @@ void kmain()
         getstr_bound(buffer, strlen(shell));
         if (strlen(buffer) == 0)
             continue;
-        if (strcmp(buffer, "cpuid") == 0)
+        }
+        if(strcmp(buffer, "clear") == 0)
+        {
+            console_clear(COLOR_WHITE, COLOR_BLACK);
+        }else if (strcmp(buffer, "cpuid") == 0)
         {
             cpuid_info(1);
         }else if (strcmp(buffer, "help") == 0)

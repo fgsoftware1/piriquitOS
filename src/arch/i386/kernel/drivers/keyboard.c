@@ -157,6 +157,7 @@ void keyboard_handler(REGISTERS *r)
 
 void keyboard_init()
 {
+    printf("initiating keyboard...\n");
     isr_register_interrupt_handler(IRQ_BASE + 1, keyboard_handler);
 }
 
