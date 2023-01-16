@@ -4,8 +4,8 @@
 #include "../include/io.h"
 #include "../include/drivers/pic.h"
 
-void pic_init() {
-    printf("initiating PIC...\n");
+void init_pic() {
+    printf("Initiating PIC...\n");
     u8 a1, a2;
 
     a1 = inportb(PIC1_DATA);

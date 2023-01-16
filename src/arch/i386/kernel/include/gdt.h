@@ -25,6 +25,6 @@ extern void load_gdt(u32 gdt_ptr);
 
 void gdt_set_entry(int index, u32 base, u32 limit, u8 access, u8 gran);
 
-void gdt_init();
+void init_gdt();
 
 #endif

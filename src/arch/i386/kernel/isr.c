@@ -3,7 +3,7 @@
 #include "include/drivers/pic.h"
 #include "include/console.h"
 
-ISR g_interrupt_handlers[NO_INTERRUPT_HANDLERS];
+isr_t g_interrupt_handlers[NO_INTERRUPT_HANDLERS];
 
 char *exception_messages[32] = {
     "Division By Zero",

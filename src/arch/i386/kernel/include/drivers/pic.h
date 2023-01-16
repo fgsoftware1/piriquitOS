@@ -15,7 +15,7 @@
 #define ICW1            0x11    /* interrupt control command word PIC for initialization */
 #define ICW4_8086       0x01    /* 8086/88 (MCS-80/85) mode */
 
-void pic_init();
+void init_pic();
 
 void pic_eoi(u8 irq);
 

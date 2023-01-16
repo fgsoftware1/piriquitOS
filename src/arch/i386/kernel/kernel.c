@@ -1,17 +1,19 @@
+#include "./include/libc/include/string.h"
+#include "./include/libc/include/defines.h"
+#include "include/drivers/pic.h"
+#include "include/drivers/keyboard.h"
+#include "include/drivers/cmos.h"
 #include "include/kernel.h"
 #include "include/console.h"
-#include "./include/libc/include/string.h"
 #include "include/gdt.h"
 #include "include/idt.h"
-#include "include/drivers/keyboard.h"
 #include "include/io.h"
-#include "./include/libc/include/defines.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
     asmv("cpuid"
-         : "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
-         : "0"(type));
+         :  "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
+         :  "0"(type));
 }
 
 int cpuid_info(int print)
@@ -65,9 +67,11 @@ void kmain()
     const char *shell = "shell>";
 
     console_init(COLOR_WHITE, COLOR_BLACK);
-    gdt_init();
-    idt_init();
-    keyboard_init();
+    init_gdt();
+    init_pic();
+    init_idt();
+    init_cmos();
+    init_keyboard();
 
     while (1)
     {
@@ -75,10 +79,11 @@ void kmain()
         memset(buffer, 0, sizeof(buffer));
         getstr_bound(buffer, strlen(shell));
 
-        if (strlen(buffer) == 0){
+        if (strlen(buffer) == 0)
+        {
             continue;
         }
-        if(strcmp(buffer, "clear") == 0)
+        if (strcmp(buffer, "clear") == 0)
         {
             console_clear(COLOR_WHITE, COLOR_BLACK);
         }else if (strcmp(buffer, "cpuid") == 0)
@@ -93,7 +98,15 @@ void kmain()
         }else if (strcmp(buffer, "shutdown") == 0)
         {
             shutdown();
-        }else{
+        }else if (strcmp(buffer, "time") == 0)
+        {
+            u8 seconds = cmos_read(RTC_SECONDS);
+            u8 minutes = cmos_read(RTC_MINUTES);
+            u8 hours   = cmos_read(RTC_HOURS);
+
+            printf("Time: %d:%d:%d\n", hours, minutes, seconds);
+        }else
+        {
             printf("invalid command: %s\n", buffer);
         }
     }

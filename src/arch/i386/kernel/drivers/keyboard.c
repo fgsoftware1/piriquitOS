@@ -155,10 +155,10 @@ void keyboard_handler(REGISTERS *r)
     }
 }
 
-void keyboard_init()
+void init_keyboard()
 {
-    printf("initiating keyboard...\n");
-    isr_register_interrupt_handler(IRQ_BASE + 1, keyboard_handler);
+    printf("Initiating keyboard...\n");
+    isr_register_interrupt_handler(IRQ_BASE + IRQ_KEYBOARD, keyboard_handler);
 }
 
 char kb_getchar()

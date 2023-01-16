@@ -23,6 +23,6 @@ extern void load_idt(u32 idt_ptr);
 
 void idt_set_entry(int index, u32 base, u16 seg_sel, u8 flags);
 
-void idt_init();
+void init_idt();
 
 #endif
