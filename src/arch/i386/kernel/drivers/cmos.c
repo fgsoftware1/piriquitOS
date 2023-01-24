@@ -1,7 +1,7 @@
 #include "../include/drivers/cmos.h"
 #include "../include/io.h"
 
-void rtc_handler(struct REGISTERS *r) {
+void rtc_handler(struct registers_t *r) {
     u8 seconds = cmos_read(RTC_SECONDS);
     u8 minutes = cmos_read(RTC_MINUTES);
     u8 hours = cmos_read(RTC_HOURS);
