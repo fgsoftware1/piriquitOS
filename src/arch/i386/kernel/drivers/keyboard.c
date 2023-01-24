@@ -88,7 +88,7 @@ char alternate_chars(char ch)
     }
 }
 
-void keyboard_handler(REGISTERS *r)
+void keyboard_handler(registers_t *r)
 {
     int scancode;
 
@@ -157,7 +157,7 @@ void keyboard_handler(REGISTERS *r)
 
 void init_keyboard()
 {
-    printf("Initiating keyboard...\n");
+    printf("Initializing keyboard...\n");
     isr_register_interrupt_handler(IRQ_BASE + IRQ_KEYBOARD, keyboard_handler);
 }
 
