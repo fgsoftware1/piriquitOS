@@ -30,6 +30,6 @@ build ./build/piriquitOS-i386.iso: iso ./isodir
 
 #phony
 build libc: phony ./build/libc/string.o ./libs/libc.a
-build i386: phony ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/cmos.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/kernel.o ./isodir/boot/fgOS-i386.bin ./build/fgOS-i386.iso
+build i386: phony ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/cmos.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/kernel.o ./isodir/boot/piriquitOS-i386.bin ./build/piriquitOS-i386.iso
 
 default help

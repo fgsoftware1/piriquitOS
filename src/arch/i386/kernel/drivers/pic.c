@@ -5,7 +5,7 @@
 #include "../include/drivers/pic.h"
 
 void init_pic() {
-    printf("Initializing PIC...\n");
+    printf("Initiating PIC...\n");
     u8 a1, a2;
 
     a1 = inportb(PIC1_DATA);

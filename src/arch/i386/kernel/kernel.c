@@ -12,8 +12,12 @@
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
     asmv("cpuid"
-         :  "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
-         :  "0"(type));
+         :  "=a"(*eax),
+            "=b"(*ebx),
+            "=c"(*ecx),
+            "=d"(*edx)
+         :  "0"(type)
+        );
 }
 
 int cpuid_info(int print)

@@ -11,4 +11,6 @@ void outportb(u16 port, u8 val);
 void outports(u16 port, u16 data);
 void outportl(u16 port, u32 data);
 
+void insw(u16 port, void *buffer, u32 count);
+
 #endif

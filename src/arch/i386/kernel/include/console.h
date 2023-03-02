@@ -19,7 +19,6 @@ void console_ungetchar_bound(u8 n);
 void console_gotoxy(u16 x, u16 y);
 
 void console_putstr(const char *str);
-void printf(const char *format, ...);
 
 void getstr(char *buffer);
 void getstr_bound(char *buffer, u8 bound);
