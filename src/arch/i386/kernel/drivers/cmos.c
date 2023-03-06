@@ -11,7 +11,7 @@ void rtc_handler(struct registers_t *r) {
 }
 
 void init_cmos(){
-    printf("Initializing CMOS...\n");
+    printf("Initiating CMOS...\n");
     isr_register_interrupt_handler(IRQ_BASE + IRQ_CMOS, rtc_handler);
     cmos_write(0x0A, cmos_read(0x0A) | 0x40);
 }

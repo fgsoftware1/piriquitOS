@@ -1,19 +1,22 @@
 #include "./include/libc/include/string.h"
 #include "./include/libc/include/defines.h"
-#include "include/drivers/pic.h"
-#include "include/drivers/keyboard.h"
-#include "include/drivers/cmos.h"
 #include "include/kernel.h"
 #include "include/console.h"
 #include "include/gdt.h"
-#include "include/idt.h"
-#include "include/io.h"
+#include "include/drivers/pic.h"
+#include "include/drivers/keyboard.h"
+#include "include/drivers/cmos.h"
+#include "include/drivers/fpu.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
     asmv("cpuid"
-         :  "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
-         :  "0"(type));
+         :  "=a"(*eax),
+            "=b"(*ebx),
+            "=c"(*ecx),
+            "=d"(*edx)
+         :  "0"(type)
+        );
 }
 
 int cpuid_info(int print)
@@ -43,12 +46,12 @@ int cpuid_info(int print)
     return BRAND_VBOX;
 }
 
-BOOL is_echo(char *b)
+bool is_echo(char *b)
 {
     if ((b[0] == 'e') && (b[1] == 'c') && (b[2] == 'h') && (b[3] == 'o'))
         if (b[4] == ' ' || b[4] == '\0')
-            return TRUE;
-    return FALSE;
+            return true;
+    return false;
 }
 
 void shutdown()
@@ -71,7 +74,12 @@ void kmain()
     init_pic();
     init_idt();
     init_cmos();
+    init_fpu();
     init_keyboard();
+
+    printf("TESTS\n");
+    printf("FPU test: ");
+    float_print("", 1.73728, "\n");
 
     while (1)
     {

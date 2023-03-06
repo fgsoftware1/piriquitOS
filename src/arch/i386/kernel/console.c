@@ -1,6 +1,6 @@
-#include "include/console.h"
 #include "include/libc/include/types.h"
 #include "include/libc/include/string.h"
+#include "include/console.h"
 #include "include/drivers/keyboard.h"
 #include "include/drivers/vga.h"
 
@@ -28,7 +28,7 @@ void console_clear(VGA_COLOR_TYPE fore_color, VGA_COLOR_TYPE back_color)
 
 void console_init(VGA_COLOR_TYPE fore_color, VGA_COLOR_TYPE back_color)
 {
-    printf("initiating terminal...\n");
+    printf("Initializing terminal...\n");
     g_vga_buffer = (u16 *)VGA_ADDRESS;
     g_fore_color = fore_color;
     g_back_color = back_color;
@@ -236,6 +236,13 @@ void printf(const char *format, ...)
                 while (*p)
                     console_putchar(*p++);
                 break;
+
+            case 'c':
+            {
+                wchar_t wc = (wchar_t)*arg++;
+                console_putchar(wc);
+                break;
+            }
 
             default:
                 console_putchar(*((int *)arg++));

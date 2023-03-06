@@ -40,7 +40,7 @@ char *exception_messages[32] = {
     "Reserved"
 };
 
-void isr_register_interrupt_handler(int num, ISR handler) {
+void isr_register_interrupt_handler(u8 num, isr_t handler) {
     printf("IRQ %d registered\n", num);
     if (num < NO_INTERRUPT_HANDLERS)
         g_interrupt_handlers[num] = handler;
@@ -51,15 +51,15 @@ void isr_end_interrupt(int num) {
     pic_eoi(num);
 }
 
-void isr_irq_handler(REGISTERS *reg) {
+void isr_irq_handler(registers_t *reg) {
     if (g_interrupt_handlers[reg->int_no] != NULL) {
-        ISR handler = g_interrupt_handlers[reg->int_no];
+        isr_t handler = g_interrupt_handlers[reg->int_no];
         handler(reg);
     }
     pic_eoi(reg->int_no);
 }
 
-static void print_registers(REGISTERS *reg) {
+static void print_registers(registers_t *reg) {
     printf("REGISTERS:\n");
     printf("err_code=%d\n", reg->err_code);
     printf("eax=0x%x, ebx=0x%x, ecx=0x%x, edx=0x%x\n", reg->eax, reg->ebx, reg->ecx, reg->edx);
@@ -67,7 +67,7 @@ static void print_registers(REGISTERS *reg) {
     printf("eip=0x%x, cs=0x%x, ss=0x%x, eflags=0x%x, useresp=0x%x\n", reg->eip, reg->ss, reg->eflags, reg->useresp);
 }
 
-void isr_exception_handler(REGISTERS reg) {
+void isr_exception_handler(registers_t reg) {
     if (reg.int_no < 32) {
         printf("EXCEPTION: %s\n", exception_messages[reg.int_no]);
         print_registers(&reg);
@@ -75,7 +75,7 @@ void isr_exception_handler(REGISTERS reg) {
             ;
     }
     if (g_interrupt_handlers[reg.int_no] != NULL) {
-        ISR handler = g_interrupt_handlers[reg.int_no];
+        isr_t handler = g_interrupt_handlers[reg.int_no];
         handler(&reg);
     }
 }
