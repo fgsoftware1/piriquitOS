@@ -1,7 +1,6 @@
 {
 	"recommendations": [
 		"EditorConfig.EditorConfig",
-        "vscode.cpptools",
         "mhutchie.git-graph",
         "GitHub.vscode-pull-request-github",
         "Gruntfuggly.todo-tree"

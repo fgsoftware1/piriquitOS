@@ -6,8 +6,8 @@
 #include "../include/libc/include/types.h"
 #include "../include/libc/include/string.h"
 
-static BOOL g_caps_lock = FALSE;
-static BOOL g_shift_pressed = FALSE;
+static bool g_caps_lock = false;
+static bool g_shift_pressed = false;
 char g_ch = 0, g_scan_code = 0;
 
 char g_scan_code_chars[128] = {
@@ -104,10 +104,10 @@ void keyboard_handler(registers_t *r)
         switch (scancode)
         {
         case SCAN_CODE_KEY_CAPS_LOCK:
-            if (g_caps_lock == FALSE)
-                g_caps_lock = TRUE;
+            if (g_caps_lock == false)
+                g_caps_lock = true;
             else
-                g_caps_lock = FALSE;
+                g_caps_lock = false;
             break;
 
         case SCAN_CODE_KEY_ENTER:
@@ -119,7 +119,7 @@ void keyboard_handler(registers_t *r)
             break;
 
         case SCAN_CODE_KEY_LEFT_SHIFT:
-            g_shift_pressed = TRUE;
+            g_shift_pressed = true;
             break;
 
         default:
@@ -148,7 +148,7 @@ void keyboard_handler(registers_t *r)
                 }
                 else
                     g_ch = g_scan_code_chars[scancode];
-                g_shift_pressed = FALSE;
+                g_shift_pressed = false;
             }
             break;
         }

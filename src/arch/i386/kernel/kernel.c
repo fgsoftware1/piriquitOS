@@ -6,8 +6,7 @@
 #include "include/kernel.h"
 #include "include/console.h"
 #include "include/gdt.h"
-#include "include/idt.h"
-#include "include/io.h"
+#include "include/fs/fat8.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
@@ -47,12 +46,12 @@ int cpuid_info(int print)
     return BRAND_VBOX;
 }
 
-BOOL is_echo(char *b)
+bool is_echo(char *b)
 {
     if ((b[0] == 'e') && (b[1] == 'c') && (b[2] == 'h') && (b[3] == 'o'))
         if (b[4] == ' ' || b[4] == '\0')
-            return TRUE;
-    return FALSE;
+            return true;
+    return false;
 }
 
 void shutdown()

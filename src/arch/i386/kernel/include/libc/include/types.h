@@ -24,8 +24,19 @@ typedef u16 word;
 typedef u32 dword;
 
 typedef enum {
-    FALSE,
-    TRUE
-} BOOL;
+    false,
+    true
+} bool;
+
+typedef struct file
+{
+    char *ptr;
+    int cnt;
+    char *base;
+    int flag;
+    int fd;
+    int bufsize;
+    char *tmpfname;
+}file_t;
 
 #endif
