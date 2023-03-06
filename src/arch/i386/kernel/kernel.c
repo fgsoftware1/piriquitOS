@@ -1,12 +1,12 @@
 #include "./include/libc/include/string.h"
 #include "./include/libc/include/defines.h"
-#include "include/drivers/pic.h"
-#include "include/drivers/keyboard.h"
-#include "include/drivers/cmos.h"
 #include "include/kernel.h"
 #include "include/console.h"
 #include "include/gdt.h"
-#include "include/fs/fat8.h"
+#include "include/drivers/pic.h"
+#include "include/drivers/keyboard.h"
+#include "include/drivers/cmos.h"
+#include "include/drivers/fpu.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
@@ -74,7 +74,12 @@ void kmain()
     init_pic();
     init_idt();
     init_cmos();
+    init_fpu();
     init_keyboard();
+
+    printf("TESTS\n");
+    printf("FPU test: ");
+    float_print("", 1.73728, "\n");
 
     while (1)
     {
