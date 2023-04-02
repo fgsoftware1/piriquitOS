@@ -19,5 +19,5 @@ void fpu_enable(registers_t *r) {
 
 void init_fpu(){
     printf("Initiating FPU...\n");
-    isr_register_interrupt_handler(IRQ_BASE + IRQ_FPU, fpu_enable);
+    isr_register_interrupt_handler(IRQ_FPU, fpu_enable);
 }
