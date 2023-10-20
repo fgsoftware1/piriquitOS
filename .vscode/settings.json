@@ -1,0 +1,5 @@
+{
+    "explorer.compactFolders": false,
+    "editor.formatOnSave": true,
+    "cmake.configureOnOpen": true
+}

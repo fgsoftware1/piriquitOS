@@ -1,10 +1,8 @@
 #ifndef VGA_HPP
 #define VGA_HPP
 
-#include <stddef.h>
-#include <stdint.h>
 #include "../string.hpp"
-#include "../../../../../common/libc/include/types.hpp"
+#include "../types.hpp"
 
 enum vga_color
 {
@@ -31,16 +29,16 @@ static const size_t VGA_HEIGHT = 25;
 
 extern size_t terminal_row;
 extern size_t terminal_column;
-extern uc terminal_color;
-extern us* terminal_buffer;
+extern uint8_t terminal_color;
+extern uint16_t* terminal_buffer;
 
-uc vga_entry_color(enum vga_color fg, enum vga_color bg);
-us vga_entry(c c, uc color);
+uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
+uint16_t vga_entry(int8_t int8_t, uint8_t color);
 
 void terminal_initialize();
-void terminal_setcolor(uc fg, uc bg);
-void terminal_putentry(uc c, uc color, size_t x, size_t y);
-void terminal_putchar(uc c);
+void terminal_setcolor(uint8_t fg, uint8_t bg);
+void terminal_putentry(uint8_t int8_t, uint8_t color, size_t x, size_t y);
+void terminal_putchar(uint8_t int8_t);
 void terminal_writestring(const char* data);
 
 #endif

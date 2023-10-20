@@ -13,9 +13,7 @@
 /missing
 **/Makefile
 **/Makefile.in
+**/Makefile.in~
 /configure
+/configure~
 /compile
-
-# Ignore Automake generated files and directories
-/Makefile.in
-/Makefile.in~
