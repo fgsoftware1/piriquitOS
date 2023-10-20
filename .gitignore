@@ -1,7 +1,21 @@
 *.o
 *.bin
 *.iso
-*.elf
-/.dccache
-/.ninja_deps
-/.ninja_log
+
+# Ignore Autotools generated files and directories
+/autom4te.cache/
+/aclocal.m4
+/config.log
+/config.status
+/compile
+/depcomp
+/install-sh
+/missing
+**/Makefile
+**/Makefile.in
+/configure
+/compile
+
+# Ignore Automake generated files and directories
+/Makefile.in
+/Makefile.in~
