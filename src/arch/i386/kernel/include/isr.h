@@ -82,7 +82,7 @@ extern void irq_15();
 #define IRQ_DISKETTE_DRIVE  0x06
 #define IRQ_PARALLEL_PORT   0x07
 #define IRQ_CMOS            0x08
-#define IRQ_CGA             0x09
+#define IRQ_ACPI            0x09
 #define IRQ_NIC1            0x0A
 #define IRQ_NIC2            0x0B
 #define IRQ_AUXILIARY       0x0C

@@ -73,14 +73,14 @@ void kmain()
     init_gdt();
     init_pic();
     init_idt();
-    //init_pit();
+    init_pit();
     init_cmos();
     init_fpu();
     init_keyboard();
 
     while (1)
     {
-        printf(shell);
+        printf("%s", shell);
         memset(buffer, 0, sizeof(buffer));
         getstr_bound(buffer, strlen(shell));
 
@@ -108,8 +108,12 @@ void kmain()
             u8 seconds = cmos_read(RTC_SECONDS);
             u8 minutes = cmos_read(RTC_MINUTES);
             u8 hours   = cmos_read(RTC_HOURS);
+            u8 day = cmos_read(RTC_DAY);
+            u8 month = cmos_read(RTC_MONTH);
+            u8 year = cmos_read(RTC_YEAR);
 
             printf("Time: %d:%d:%d\n", hours, minutes, seconds);
+            printf("Date: %d/%d/%d\n", day, month, year);
         }else
         {
             printf("invalid command: %s\n", buffer);

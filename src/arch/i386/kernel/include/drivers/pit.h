@@ -6,12 +6,11 @@
 #define PIT_CH2_DATA_PORT 0x42
 #define PIT_COMMAND_PORT 0x43
 #define PIT_COMMAND_REGISTER 0x36
-#define PIT_TICKS_PER_SECOND 65536
 
 #include "../libc/include/types.h"
 
 void init_pit();
-void start_pit_timer(u16 frequency);
+void start_pit_timer();
 void stop_pit_timer();
 void sleep(u32 milliseconds);
 u8 read_pit(u8 channel);
