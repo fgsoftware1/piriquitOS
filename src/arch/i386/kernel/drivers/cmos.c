@@ -1,4 +1,6 @@
 #include "../include/drivers/cmos.h"
+#include "../include/drivers/pic.h"
+#include "../include/isr.h"
 #include "../include/io.h"
 
 void rtc_handler(struct registers_t *r) {
@@ -8,6 +10,8 @@ void rtc_handler(struct registers_t *r) {
     u8 day = cmos_read(RTC_DAY);
     u8 month = cmos_read(RTC_MONTH);
     u8 year = cmos_read(RTC_YEAR);
+
+    pic_eoi(IRQ_CMOS);
 }
 
 void init_cmos(){

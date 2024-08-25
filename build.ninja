@@ -23,14 +23,15 @@ build ./build/i386/pic.o: gcc ./src/arch/i386/kernel/drivers/pic.c
 build ./build/i386/cmos.o: gcc ./src/arch/i386/kernel/drivers/cmos.c
 build ./build/i386/keyboard.o: gcc ./src/arch/i386/kernel/drivers/keyboard.c
 build ./build/i386/fpu.o: gcc ./src/arch/i386/kernel/drivers/fpu.c
+build ./build/i386/pit.o: gcc ./src/arch/i386/kernel/drivers/pit.c
 build ./build/i386/console.o: gcc ./src/arch/i386/kernel/console.c
 build ./build/i386/kernel.o: gcc ./src/arch/i386/kernel/kernel.c
 
-build ./isodir/boot/piriquitOS-i386.bin: ld ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/gdt.c.o ./build/i386/idt.c.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/cmos.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/fpu.o ./build/i386/kernel.o
+build ./isodir/boot/piriquitOS-i386.bin: ld ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/gdt.c.o ./build/i386/idt.c.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/cmos.o ./build/i386/keyboard.o ./build/i386/pit.o ./build/i386/console.o ./build/i386/fpu.o ./build/i386/kernel.o
 build ./build/piriquitOS-i386.iso: iso ./isodir
 
 #phony
 build libc: phony ./build/libc/string.o ./libs/libc.a
-build i386: phony ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/cmos.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/fpu.o ./build/i386/kernel.o ./isodir/boot/piriquitOS-i386.bin ./build/piriquitOS-i386.iso
+build i386: phony ./build/libc/string.o ./build/i386/boot.o ./build/i386/gdt.asm.o ./build/i386/idt.asm.o ./build/i386/irq.o ./build/i386/exceptions.o ./build/i386/isr.o ./build/i386/io.o ./build/i386/vga.o ./build/i386/pic.o ./build/i386/cmos.o ./build/i386/keyboard.o ./build/i386/console.o ./build/i386/fpu.o ./build/i386/pit.o ./build/i386/kernel.o ./isodir/boot/piriquitOS-i386.bin ./build/piriquitOS-i386.iso
 
 default help

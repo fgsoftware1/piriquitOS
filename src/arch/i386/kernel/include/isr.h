@@ -73,21 +73,21 @@ extern void irq_14();
 extern void irq_15();
 
 #define IRQ_BASE            0x20
-#define IRQ_TIMER           0x20
-#define IRQ_KEYBOARD        0x21
-#define IRQ_CASCADE         0x22
-#define IRQ_SERIAL_PORT2    0x23
-#define IRQ_SERIAL_PORT1    0x24
-#define IRQ_AUDIO           0x25
-#define IRQ_DISKETTE_DRIVE  0x26
-#define IRQ_PARALLEL_PORT   0x27
-#define IRQ_CMOS            0x28
-#define IRQ_CGA             0x29
-#define IRQ_NIC1            0x2A
-#define IRQ_NIC2            0x2B
-#define IRQ_AUXILIARY       0x2C
-#define IRQ_FPU             0x2D
-#define IRQ_ATA1            0x2E
-#define IRQ_ATA2            0x2F
+#define IRQ_TIMER           0x00
+#define IRQ_KEYBOARD        0x01
+#define IRQ_CASCADE         0x02
+#define IRQ_SERIAL_PORT2    0x03
+#define IRQ_SERIAL_PORT1    0x04
+#define IRQ_AUDIO           0x05
+#define IRQ_DISKETTE_DRIVE  0x06
+#define IRQ_PARALLEL_PORT   0x07
+#define IRQ_CMOS            0x08
+#define IRQ_ACPI            0x09
+#define IRQ_NIC1            0x0A
+#define IRQ_NIC2            0x0B
+#define IRQ_AUXILIARY       0x0C
+#define IRQ_FPU             0x0D
+#define IRQ_ATA1            0x0E
+#define IRQ_ATA2            0x0F
 
 #endif

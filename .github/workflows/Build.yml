@@ -17,15 +17,4 @@ jobs:
       - name: deps
         run: sudo bash linux-deps.sh
       - name: build
-        run: ninja
-      - name: capture build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-            name: Artifacts
-            path: build/
-            
-      - name: Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "fgOS.iso"
-          token: ${{ secrets.TOKEN }}
+        run: ninja i386

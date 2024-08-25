@@ -1,12 +1,12 @@
-#include "./include/libc/include/string.h"
 #include "./include/libc/include/defines.h"
-#include "include/kernel.h"
 #include "include/console.h"
+#include "include/drivers/vga.h"
 #include "include/gdt.h"
 #include "include/drivers/pic.h"
 #include "include/drivers/keyboard.h"
 #include "include/drivers/cmos.h"
 #include "include/drivers/fpu.h"
+#include "include/drivers/pit.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
@@ -59,9 +59,9 @@ void shutdown()
     int brand = cpuid_info(0);
 
     if (brand == BRAND_QEMU)
-        outports(0x604, 0x2000);
+        outportw(0x604, 0x2000);
     else
-        outports(0x4004, 0x3400);
+        outportw(0x4004, 0x3400);
 }
 
 void kmain()
@@ -73,17 +73,14 @@ void kmain()
     init_gdt();
     init_pic();
     init_idt();
+    init_pit();
     init_cmos();
     init_fpu();
     init_keyboard();
 
-    printf("TESTS\n");
-    printf("FPU test: ");
-    float_print("", 1.73728, "\n");
-
     while (1)
     {
-        printf(shell);
+        printf("%s", shell);
         memset(buffer, 0, sizeof(buffer));
         getstr_bound(buffer, strlen(shell));
 
@@ -99,7 +96,7 @@ void kmain()
             cpuid_info(1);
         }else if (strcmp(buffer, "help") == 0)
         {
-            printf("Commands: help, cpuid, echo, shutdown\n");
+            printf("Commands:\n help\n cpuid\n echo\n time\n shutdown\n");
         }else if (is_echo(buffer))
         {
             printf("%s\n", buffer + 5);
@@ -111,8 +108,12 @@ void kmain()
             u8 seconds = cmos_read(RTC_SECONDS);
             u8 minutes = cmos_read(RTC_MINUTES);
             u8 hours   = cmos_read(RTC_HOURS);
+            u8 day = cmos_read(RTC_DAY);
+            u8 month = cmos_read(RTC_MONTH);
+            u8 year = cmos_read(RTC_YEAR);
 
             printf("Time: %d:%d:%d\n", hours, minutes, seconds);
+            printf("Date: %d/%d/%d\n", day, month, year);
         }else
         {
             printf("invalid command: %s\n", buffer);
