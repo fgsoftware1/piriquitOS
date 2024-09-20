@@ -1,4 +1,4 @@
-#include "./include/libc/include/defines.h"
+#include "include/libc/include/defines.h"
 #include "include/console.h"
 #include "include/drivers/vga.h"
 #include "include/gdt.h"
@@ -74,9 +74,8 @@ void kmain()
     init_pic();
     init_idt();
     init_pit();
-    init_cmos();
-    init_fpu();
     init_keyboard();
+    init_cmos();
 
     while (1)
     {
@@ -111,9 +110,10 @@ void kmain()
             u8 day = cmos_read(RTC_DAY);
             u8 month = cmos_read(RTC_MONTH);
             u8 year = cmos_read(RTC_YEAR);
+            u8 century = cmos_read(RTC_CENTURY);
 
             printf("Time: %d:%d:%d\n", hours, minutes, seconds);
-            printf("Date: %d/%d/%d\n", day, month, year);
+            printf("Date: %d/%d/%d%d\n", day, month, year, century);
         }else
         {
             printf("invalid command: %s\n", buffer);

@@ -12,7 +12,8 @@
 #define RTC_HOURS   0x04
 #define RTC_DAY     0x07
 #define RTC_MONTH   0x08
-#define RTC_YEAR    0x09 //last two digits
+#define RTC_YEAR    0x09
+#define RTC_CENTURY 0x32
 
 void init_cmos();
 u8 cmos_read(u8 reg);

@@ -10,7 +10,7 @@ void pit_handler(struct registers_t *r) { ticks += 1; }
 
 void init_pit() {
   printf("Initiating PIT...\n");
-  isr_register_interrupt_handler(IRQ_BASE + IRQ_TIMER, pit_handler);
+  isr_register_interrupt_handler(IRQ_TIMER, pit_handler);
   start_pit_timer();
 }
 
