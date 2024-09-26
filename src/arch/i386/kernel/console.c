@@ -182,74 +182,104 @@ void console_putstr(const char *str)
     }
 }
 
-void printf(const char *format, ...)
-{
-    char **arg = (char **)&format;
-    int c;
-    char buf[32];
+static void print_num(unsigned int num, int base, int width, char pad_char) {
+    char buf[MAX_BUFFER];
+    char *str = &buf[sizeof(buf) - 1];
+    *str = '\0';
 
-    arg++;
+    do {
+        *--str = "0123456789abcdef"[num % base];
+        num /= base;
+    } while (num > 0);
 
-    memset(buf, 0, sizeof(buf));
-    while ((c = *format++) != 0)
-    {
-        if (c != '%')
-            console_putchar(c);
-        else
-        {
-            char *p, *p2;
-            int pad0 = 0, pad = 0;
-
-            c = *format++;
-            if (c == '0')
-            {
-                pad0 = 1;
-                c = *format++;
-            }
-
-            if (c >= '0' && c <= '9')
-            {
-                pad = c - '0';
-                c = *format++;
-            }
-
-            switch (c)
-            {
-            case 'd':
-            case 'u':
-            case 'x':
-                itoa(buf, c, *((int *)arg++));
-                p = buf;
-                goto string;
-                break;
-
-            case 's':
-                p = *arg++;
-                if (!p)
-                    p = "(null)";
-
-            string:
-                for (p2 = p; *p2; p2++)
-                    ;
-                for (; p2 < p + pad; p2++)
-                    console_putchar(pad0 ? '0' : ' ');
-                while (*p)
-                    console_putchar(*p++);
-                break;
-
-            case 'c':
-            {
-                wchar_t wc = (wchar_t)*arg++;
-                console_putchar(wc);
-                break;
-            }
-
-            default:
-                console_putchar(*((int *)arg++));
-                break;
-            }
-        }
+    int len = &buf[sizeof(buf) - 1] - str;
+    while (len < width) {
+        console_putchar(pad_char);
+        width--;
     }
+
+    while (*str) {
+        console_putchar(*str++);
+    }
+}
+
+void printf(const char *format, ...) {
+    va_list args;
+    va_start(args, format);
+
+    while (*format) {
+        if (*format != '%') {
+            console_putchar(*format++);
+            continue;
+        }
+
+        format++;
+
+        int width = 0;
+        char pad_char = ' ';
+
+        if (*format == '0') {
+            pad_char = '0';
+            format++;
+        }
+
+        while (*format >= '0' && *format <= '9') {
+            width = width * 10 + (*format - '0');
+            format++;
+        }
+
+        switch (*format) {
+            case 'd':
+            case 'i': {
+                int num = va_arg(args, int);
+                if (num < 0) {
+                    console_putchar('-');
+                    num = -num;
+                }
+                print_num((unsigned int)num, 10, width, pad_char);
+                break;
+            }
+            case 'u':
+                print_num(va_arg(args, unsigned int), 10, width, pad_char);
+                break;
+            case 'x':
+            case 'X':
+                print_num(va_arg(args, unsigned int), 16, width, pad_char);
+                break;
+            case 'p':
+                console_putchar('0');
+                console_putchar('x');
+                print_num((unsigned int)va_arg(args, void*), 16, width, pad_char);
+                break;
+            case 's': {
+                const char *str = va_arg(args, const char*);
+                if (!str) str = "(null)";
+                int len = 0;
+                while (str[len]) len++;
+                while (width > len) {
+                    console_putchar(pad_char);
+                    width--;
+                }
+                while (*str) {
+                    console_putchar(*str++);
+                }
+                break;
+            }
+            case 'c':
+                console_putchar((char)va_arg(args, int));
+                break;
+            case '%':
+                console_putchar('%');
+                break;
+            default:
+                console_putchar('%');
+                console_putchar(*format);
+                break;
+        }
+        format++;
+    }
+
+    va_end(args);
 }
 
 void getstr(char *buffer)

@@ -114,6 +114,9 @@ void kmain()
 
             printf("Time: %d:%d:%d\n", hours, minutes, seconds);
             printf("Date: %d/%d/%d%d\n", day, month, year, century);
+        }else if (strcmp(buffer, "devinfo") == 0){
+            printf("===PIC===\n");
+            probe_pic();
         }else
         {
             printf("invalid command: %s\n", buffer);
