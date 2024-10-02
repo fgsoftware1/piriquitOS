@@ -7,16 +7,16 @@
 #include "include/drivers/cmos.h"
 #include "include/drivers/fpu.h"
 #include "include/drivers/pit.h"
+#include "include/madt.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
     asmv("cpuid"
-         :  "=a"(*eax),
-            "=b"(*ebx),
-            "=c"(*ecx),
-            "=d"(*edx)
-         :  "0"(type)
-        );
+         : "=a"(*eax),
+           "=b"(*ebx),
+           "=c"(*ecx),
+           "=d"(*edx)
+         : "0"(type));
 }
 
 int cpuid_info(int print)
@@ -87,26 +87,34 @@ void kmain()
         {
             continue;
         }
+
         if (strcmp(buffer, "clear") == 0)
         {
             console_clear(COLOR_WHITE, COLOR_BLACK);
-        }else if (strcmp(buffer, "cpuid") == 0)
+        }
+        else if (strcmp(buffer, "cpuid") == 0)
         {
             cpuid_info(1);
-        }else if (strcmp(buffer, "help") == 0)
+        }
+        else if (strcmp(buffer, "help") == 0)
         {
             printf("Commands:\n help\n cpuid\n echo\n time\n shutdown\n");
-        }else if (is_echo(buffer))
+        }
+        else if (is_echo(buffer))
         {
             printf("%s\n", buffer + 5);
-        }else if (strcmp(buffer, "shutdown") == 0)
+        }
+        else if (strcmp(buffer, "shutdown") == 0)
         {
+            printf("Shutting down in 5s...\n");
+            sleep(5);
             shutdown();
-        }else if (strcmp(buffer, "time") == 0)
+        }
+        else if (strcmp(buffer, "time") == 0)
         {
             u8 seconds = cmos_read(RTC_SECONDS);
             u8 minutes = cmos_read(RTC_MINUTES);
-            u8 hours   = cmos_read(RTC_HOURS);
+            u8 hours = cmos_read(RTC_HOURS);
             u8 day = cmos_read(RTC_DAY);
             u8 month = cmos_read(RTC_MONTH);
             u8 year = cmos_read(RTC_YEAR);
@@ -114,10 +122,17 @@ void kmain()
 
             printf("Time: %d:%d:%d\n", hours, minutes, seconds);
             printf("Date: %d/%d/%d%d\n", day, month, year, century);
-        }else if (strcmp(buffer, "devinfo") == 0){
+        }
+        else if (strcmp(buffer, "devinfo") == 0)
+        {
             printf("===PIC===\n");
             probe_pic();
-        }else
+        }
+        else if (strcmp(buffer, "madtinfo") == 0)
+        {
+            probe_madt();
+        }
+        else
         {
             printf("invalid command: %s\n", buffer);
         }

@@ -6,6 +6,7 @@
 #define PIT_CH2_DATA_PORT 0x42
 #define PIT_COMMAND_PORT 0x43
 #define PIT_COMMAND_REGISTER 0x36
+#define PIT_FREQUENCY 1193182
 
 #include "../libc/include/types.h"
 

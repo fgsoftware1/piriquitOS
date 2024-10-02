@@ -25,8 +25,7 @@ void init_pic()
     outportb(PIC_SLAVE_DATA, a2);
 
     //! MASKING ALL INTERRUPTS
-    //outportb(PIC_MASTER_DATA, 0xFF);
-    //outportb(PIC_SLAVE_DATA, 0xFF);
+    pic_disable();
 }
 
 void pic_disable()
@@ -56,7 +55,7 @@ void mask(u8 irq)
         port = PIC_SLAVE_DATA;
         irq -= 8;
     }
-    value = inportb(port) &~ (1 << irq);
+    value = inportb(port) | (1 << irq);
     outportb(port, value);
 }
 
@@ -74,7 +73,7 @@ void unmask(u8 irq)
         port = PIC_SLAVE_DATA;
         irq -= 8;
     }
-    value = inportb(port) | (1 << irq);
+    value = inportb(port) &~ (1 << irq);
     outportb(port, value);
 }
 

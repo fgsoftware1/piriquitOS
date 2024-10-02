@@ -1,5 +1,5 @@
 ====
-fgOS
+PiriquitOS
 ====
 
 .. image:: https://app.codacy.com/project/badge/Grade/ed7a424ed40f46b7951a63c882f6fbf6

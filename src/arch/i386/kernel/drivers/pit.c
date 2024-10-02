@@ -3,28 +3,21 @@
 #include "../include/io.h"
 #include "../include/isr.h"
 
-u64 ticks;
-const u32 freq = 100;
+volatile u32 pit_ticks = 0;
 
-void pit_handler(struct registers_t *r) { ticks += 1; }
+void pit_handler(struct registers_t *r) { pit_ticks ++; }
 
 void init_pit() {
   printf("Initiating PIT...\n");
   isr_register_interrupt_handler(IRQ_TIMER, pit_handler);
-  start_pit_timer();
+  unmask(IRQ_TIMER - IRQ_BASE);
 }
 
-void start_pit_timer() {
-  if (freq == 0) {
-    printf("Can't divide by zero!");
-    return;
-  }
-
-  u16 divisor = 1193180 / freq;
-
-  outportb(PIT_COMMAND_PORT, PIT_COMMAND_REGISTER);
-  outportb(PIT_CH0_DATA_PORT, (u8)(divisor & 0xFF)); // Send the low byte
-  outportb(PIT_CH0_DATA_PORT, (u8)((divisor >> 8) & 0xFF)); // Send the high byte
+void start_pit_timer(u32 frequency) {
+    u32 divisor = PIT_FREQUENCY / frequency;
+    outportb(PIT_COMMAND_REGISTER, 0x36); // Set the operating mode to square wave generator
+    outportb(PIT_CH0_DATA_PORT, divisor & 0xFF); // Set low byte of divisor
+    outportb(PIT_CH0_DATA_PORT, (divisor >> 8) & 0xFF); // Set high byte of divisor
 }
 
 void stop_pit_timer() { outportb(PIT_COMMAND_PORT, 0x30); }
@@ -73,20 +66,21 @@ void write_pit(u8 channel, u8 value) {
 }
 
 void sleep(u32 milliseconds) {
-    // Calculate the number of PIT ticks needed for the delay
-    u32 ticks = milliseconds * 1000 / ticks;
+    u32 ticks = (milliseconds * PIT_FREQUENCY) / 1000;
 
     // Save the current PIT channel 0 count
-    u8 initialCounter = inportb(PIT_CH0_DATA_PORT);
+    u8 initialCounterLow = inportb(PIT_CH0_DATA_PORT);
+    u8 initialCounterHigh = inportb(PIT_CH0_DATA_PORT);
 
-    start_pit_timer();
+    pit_ticks = 0;
+    start_pit_timer(1000); // Set PIT to 1ms intervals
 
-    while (ticks > 0) {
+    while (pit_ticks < ticks) {
         // Wait for PIT interrupt
-        ticks--;
     }
 
     // Restore the initial PIT channel 0 count
     outportb(PIT_COMMAND_REGISTER, 0x36); // Set the operating mode to square wave generator
-    outportb(PIT_CH0_DATA_PORT, initialCounter); // Set the initial counter value
+    outportb(PIT_CH0_DATA_PORT, initialCounterLow); // Restore low byte of initial counter
+    outportb(PIT_CH0_DATA_PORT, initialCounterHigh); // Restore high byte of initial counter
 }

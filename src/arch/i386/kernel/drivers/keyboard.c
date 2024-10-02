@@ -1,4 +1,6 @@
 #include "../include/drivers/keyboard.h"
+#include "../include/drivers/pic.h"
+#include "../include/console.h"
 #include "../include/console.h"
 #include "../include/idt.h"
 #include "../include/io.h"
@@ -16,8 +18,7 @@ char g_scan_code_chars[128] = {
     0, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0,
     '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' ',
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-', 0, 0, 0, '+', 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0
-};
+    0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 static int get_scancode()
 {
@@ -153,12 +154,78 @@ void keyboard_handler(registers_t *r)
             break;
         }
     }
+
+    pic_eoi(IRQ_KEYBOARD);
+}
+
+static void wait_for_keyboard_controller(void){
+    while (inportb(KEYBOARD_STATUS_PORT) & 0x02)
+        ;
+}
+
+static void keyboard_send_command(u8 command){
+    wait_for_keyboard_controller();
+    outportb(KEYBOARD_COMMAND_PORT, command);
+}
+
+static void keyboard_send_data(u8 data){
+    wait_for_keyboard_controller();
+    outportb(KEYBOARD_DATA_PORT, data);
 }
 
 void init_keyboard()
 {
     printf("Initiating keyboard...\n");
+    flush_keyboard_buffer();
     isr_register_interrupt_handler(IRQ_KEYBOARD, keyboard_handler);
+    keyboard_self_test();
+    unmask(IRQ_KEYBOARD - IRQ_BASE);
+}
+
+void flush_keyboard_buffer(void){
+    while (inportb(KEYBOARD_STATUS_PORT) & 0x01)
+    {
+        inportb(KEYBOARD_DATA_PORT);
+    }
+}
+
+void keyboard_self_test(){
+    printf("Performing keyboard self-test...\n");
+
+    // disable keyboard
+    keyboard_send_command(0xAD);
+
+    // Flush the keyboard buffer
+    flush_keyboard_buffer();
+
+    // Perform keyboard controller self-test
+    keyboard_send_command(0xAA);
+    if (inportb(KEYBOARD_DATA_PORT) != 0x55)
+    {
+        printf("Keyboard controller self-test failed\n");
+        return;
+    }
+
+    // Perform keyboard interface test
+    keyboard_send_command(0xAB);
+    if (inportb(KEYBOARD_DATA_PORT) != 0x00)
+    {
+        printf("Keyboard interface test failed\n");
+        return;
+    }
+
+    // Enable keyboard
+    keyboard_send_command(0xAE);
+
+    // Reset keyboard
+    keyboard_send_data(0xFF);
+    if (inportb(KEYBOARD_DATA_PORT) != 0xFA)
+    {
+        printf("Keyboard reset failed\n");
+        return;
+    }
+
+    printf("If no errors where printed above keyboard self-test passed.\n");
 }
 
 char kb_getchar()
