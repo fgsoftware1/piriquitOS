@@ -2,8 +2,8 @@
 PiriquitOS
 ====
 
-.. image:: https://app.codacy.com/project/badge/Grade/ed7a424ed40f46b7951a63c882f6fbf6
-    :target: https://www.codacy.com/gh/fgsoftware1/fgOS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fgsoftware1/fgOS&amp;utm_campaign=Badge_Grade
+.. image:: https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffgsoftware1%2FpiriquitOS.svg?type=large&issueType=license
+    :target: https://app.fossa.com/projects/git%2Bgithub.com%2Ffgsoftware1%2FpiriquitOS?ref=badge_large&issueType=license
 
 =============
 documentation
