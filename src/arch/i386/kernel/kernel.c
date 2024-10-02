@@ -2,12 +2,13 @@
 #include "include/console.h"
 #include "include/drivers/vga.h"
 #include "include/gdt.h"
+#include "include/madt.h"
 #include "include/drivers/pic.h"
 #include "include/drivers/keyboard.h"
 #include "include/drivers/cmos.h"
 #include "include/drivers/fpu.h"
 #include "include/drivers/pit.h"
-#include "include/madt.h"
+#include "include/drivers/ata.h"
 
 void cpuid(u32 type, u32 *eax, u32 *ebx, u32 *ecx, u32 *edx)
 {
@@ -76,6 +77,7 @@ void kmain()
     init_pit();
     init_keyboard();
     init_cmos();
+    ata_init();
 
     while (1)
     {

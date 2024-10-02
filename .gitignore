@@ -2,6 +2,7 @@
 *.a
 *.bin
 *.iso
+*.img
 *.elf
 /.dccache
 /.ninja_deps

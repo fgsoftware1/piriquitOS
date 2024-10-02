@@ -31,3 +31,7 @@ u32 inportl(u16 port) {
 void outportl(u16 port, u32 data) {
   asmv("outl %%eax, %%dx" : : "dN"(port), "a"(data));
 }
+
+void io_wait(){
+    outportb(0x80, 0);
+}
